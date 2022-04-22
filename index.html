@@ -1,26 +1,83 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Solveware</title>
         <link rel = "stylesheet" href = "style/main.css">
+        <script defer type="module" src="main.js"></script>
+        <script defer type="module" src="js/entity/database.js"></script>
     </head>
     <body>
-        <p>Hellow world</p>
-        <table>
-            <tr>
-                <th colspan="2">Login</th>
-            </tr>
-            <tr>
-                <td>Login:</td>
-                <td><input type="text" placeholder="Enter username"></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><input type="password" placeholder="Enter password"></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit">Login</button></td>
-            </tr>
-        </table>
+        <p>Hello world</p>
+
+        <!-- Login Form -->        
+        <form name="user_login" id="login_form" action="index.html" method="post">
+            <table>
+                <tr>
+                    <th colspan="2">Login</th>
+                </tr>
+                <tr>
+                    <td>Login:</td>
+                    <td><input type="text" placeholder="Enter username" name="username" id="login_username"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" placeholder="Enter password" name="password" id="login_pwd"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit" id="login_btn">Login</button></td>
+                </tr>
+            </table>
+        </form>
+
+        <br>
+
+        <!-- Create Account Form -->
+        <form name="signUp" id="signUp_form" action="index.html" method="post">
+            <table>
+                <tr>
+                    <th colspan="2">Create New User</th>
+                </tr>
+                <tr>
+                    <td>Login:</td>
+                    <td><input type="text" placeholder="Enter username" name="username" id="signUp_username"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" placeholder="Enter password" name="password" id="signUp_pwd"></td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" placeholder="Enter name" name="name" id="signUp_name"></td>
+                </tr>
+                <tr> <!-- Need to change to a dropdown box with all profile type -->
+                    <td>Staff profile:</td>
+                    <td><input type="number" placeholder="Enter profile" name="profile" id="signUp_profile"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit" id="signUp_btn">Create</button></td>
+                </tr>
+            </table>
+        </form>
+
+        <br>
+
+        <!-- Temp learning delete function  -->
+        <form name="delete" id="delete_form" action="index.html" method="get">
+            <table>
+                <tr>
+                    <th colspan="2">Delete User</th>
+                </tr>
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" placeholder="Enter username" name="username" id="delete_username"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit" id="delete_btn">Delete</button></td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>
