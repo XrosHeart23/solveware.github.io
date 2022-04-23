@@ -1,4 +1,4 @@
-import { collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js"
+import { collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js";
 import { db } from "./database.js";
 
 export class Login {
