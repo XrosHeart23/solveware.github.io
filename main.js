@@ -1,19 +1,26 @@
-import * as login from "./js/boundary/login.js";
-
-
-
-
-
+import { LoginUI } from "./js/boundary/loginUI.js";
 
 // Add event listener for login click button
 const login_form = document.getElementById("login_form");
 
-login_form.addEventListener("submit", function (e) {
+login_form.addEventListener("submit", async function (e) {
     e.preventDefault();
-    //login.doLogin(login_form);
+    const userLogin = new LoginUI(login_form.username.value, login_form.password.value);
+    let result = await userLogin.loginStatus();
+    console.log(result);
 
-    let user_login = new login.Login(login_form);
+    // Get user info
+    let userInfo = userLogin.getUserInfo()
 
-    console.log(user_login.loginUsername);
-    console.log(user_login.loginPassword);
-})
+    if (userInfo.loginStatus) {
+        let span = document.createElement("span");
+        span.innerHTML = result;
+        
+        login_form.appendChild(span);
+    }
+
+    // Store user login info into browser session
+    for (const [key, value] of Object.entries(userInfo)) {
+        sessionStorage.setItem(key, value);
+    }
+});
