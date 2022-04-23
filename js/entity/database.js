@@ -24,89 +24,93 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 // Initialize services
 const db = getFirestore();
 
-// Collection reference
-const colRef = collection(db, 'userAccount');
+export { db };
 
-// Queries
-const qry = query(colRef, where("username" , "==", "admin"))
+// // Collection reference
+// const colRef = collection(db, 'userAccount');
 
-// Get Collection data
-// getDocs(colRef).then((snapshot) => {
+// // Queries
+// const qry = query(colRef, 
+//     where("username" , "==", "admin"),
+//     where("password", "==", "password"));
+
+// // Get Collection data
+// // getDocs(colRef).then((snapshot) => {
+// //     let acct = [];
+
+// //     // Snapshot contain the current table selected
+// //     // forEach loop through snapshot and pass each data as doc
+// //     snapshot.docs.forEach((doc) => {
+
+// //         // Data in doc is than added into acct array
+// //         // doc.data() = data of each row in table
+// //         // doc.id = id of the row
+// //         acct.push({ ...doc.data(), id: doc.id });
+// //     })
+
+// //     console.log(acct);
+
+// // }).catch(err => {
+// //     console.log(err.message); //Catch any error messages
+// // });
+
+// // Real time collection data
+// onSnapshot(qry, (snapshot) => {
 //     let acct = [];
+//     console.log(snapshot.size);
+//     // // Snapshot contain the current table selected
+//     // // forEach loop through snapshot and pass each data as doc
+//     // snapshot.docs.forEach((doc) => {
 
-//     // Snapshot contain the current table selected
-//     // forEach loop through snapshot and pass each data as doc
-//     snapshot.docs.forEach((doc) => {
+//     //     // Data in doc is than added into acct array
+//     //     // doc.data() = data of each row in table
+//     //     // doc.id = id of the row
+//     //     acct.push({ ...doc.data(), id: doc.id });
+//     // })
 
-//         // Data in doc is than added into acct array
-//         // doc.data() = data of each row in table
-//         // doc.id = id of the row
-//         acct.push({ ...doc.data(), id: doc.id });
-//     })
-
-//     console.log(acct);
-
-// }).catch(err => {
-//     console.log(err.message); //Catch any error messages
+//     // console.log(acct);
 // });
 
-// Real time collection data
-onSnapshot(qry, (snapshot) => {
-    let acct = [];
 
-    // Snapshot contain the current table selected
-    // forEach loop through snapshot and pass each data as doc
-    snapshot.docs.forEach((doc) => {
+// // Adding document
+// const signUp_form = document.getElementById("signUp_form");
+// signUp_form.addEventListener("submit", function (e) {
+//     e.preventDefault();
 
-        // Data in doc is than added into acct array
-        // doc.data() = data of each row in table
-        // doc.id = id of the row
-        acct.push({ ...doc.data(), id: doc.id });
-    })
-
-    console.log(acct);
-});
-
-
-// Adding document
-const signUp_form = document.getElementById("signUp_form");
-signUp_form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    // ID is auto generated
-    addDoc(colRef, {
-        name: signUp_form.name.value,
-        username: signUp_form.username.value,
-        password: signUp_form.password.value,
-        profile: signUp_form.profile.value,
-    }).then(() => {
-        signUp_form.reset()
-    });
-});
-
-
-// Deleting document
-const delete_form = document.getElementById("delete_form");
-delete_form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const docRef = doc(db, 'userAccount', delete_form.username.value);
-
-    deleteDoc(docRef).then(() => {
-        delete_form.reset()
-    });
-});
-
-
-// Update a single document
-// const docRef = doc(db, 'userAccount', updateForm.id.value);
-
-// updateDoc(docRef, {
-//     name: "nameeeeeeee",
+//     // ID is auto generated
+//     addDoc(colRef, {
+//         name: signUp_form.name.value,
+//         username: signUp_form.username.value,
+//         password: signUp_form.password.value,
+//         profile: signUp_form.profile.value,
+//     }).then(() => {
+//         signUp_form.reset()
+//     });
 // });
+
+
+// // Deleting document
+// const delete_form = document.getElementById("delete_form");
+// delete_form.addEventListener("submit", function (e) {
+//     e.preventDefault();
+
+//     const docRef = doc(db, 'userAccount', delete_form.username.value);
+
+//     deleteDoc(docRef).then(() => {
+//         delete_form.reset()
+//     });
+// });
+
+
+// // Update a single document
+// // const docRef = doc(db, 'userAccount', updateForm.id.value);
+
+// // updateDoc(docRef, {
+// //     name: "nameeeeeeee",
+// // });
 
