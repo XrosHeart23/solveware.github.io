@@ -4,12 +4,7 @@ import { } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-SERVICE.js'
 (where SERVICE is an SDK name such as firebase-firestore).
 */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
-import {
-    getFirestore, collection, getDocs, onSnapshot,
-    addDoc, deleteDoc, doc,
-    query, where,
-    getDoc, updateDoc
-} from "https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js"
+import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -30,6 +25,13 @@ initializeApp(firebaseConfig);
 const db = getFirestore();
 
 export { db };
+
+// import {
+//     getFirestore, collection, getDocs, onSnapshot,
+//     addDoc, deleteDoc, doc,
+//     query, where,
+//     getDoc, updateDoc
+// } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js"
 
 // // Collection reference
 // const colRef = collection(db, 'userAccount');

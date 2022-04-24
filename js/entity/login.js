@@ -18,7 +18,8 @@ export class Login {
     async getLogin() {
         const qry = query(collection(db, this.table),
                     where("username" , "==", this.username),
-                    where("password" , "==", this.password));
+                    where("password" , "==", this.password),
+                    where("acctStatus", "==", true));
         
         const result = await getDocs(qry);
 

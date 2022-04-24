@@ -1,20 +1,19 @@
 import { LoginController } from "../controller/loginController.js";
 
 export class LoginUI {
-
     constructor (username, password) {
         this.username = username;
         this.password = password;
-        this.loginCont = new LoginController(this.username, this.password);
+        this.loginCtrl = new LoginController(this.username, this.password);
     }
 
     // Methods
-    async loginStatus() {
-        return await this.loginCont.validateLogin();
+    async loginUser() {
+        return await this.loginCtrl.validateLogin();
     }
 
     // Get user info
     getUserInfo() {
-        return this.loginCont.getUserInfo();
+        return this.loginCtrl.getUserInfo();
     }
 }
