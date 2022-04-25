@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <div>
+  <br><br><br><br>
+  <div class="mnguserprofilemenu">
+    <button class="innertab" onclick="hideTable('search_profile_result', 'createProfile_form')">Add New Profile</button>
+    <form name="search" id="search_form" method="get">
+      <input type="text" placeholder="Search profile" name="searchprofile" id="search_profile">
+      <button type="submit" id="search_btn" onclick="hideTable('createProfile_form', 'search_profile_result')">Search</button>
+    </form>
+    <br>
+    <div class="mnguserprofilearea">
+    <table id="search_profile_result">
+    </table>
+    <form name="createProfile" id="createProfile_form" action="index.html" method="post" style="display:none">
+      <h2 style="color: black">Create Account</h2>
+      <table id="createprofiletable">
+          <tr>
+              <td>Profile name:</td>
+              <td><input type="text" placeholder="Enter profile name" name="profilename" id="createProfile_name"></td>
+          </tr>
+          <tr>
+              <td>Status:</td>
+              <td><input type="password" placeholder="Enter status" name="profilestatus" id="createProfile_status"></td>
+          </tr>
+          <tr>
+              <td><button type="submit" id="createProfile_btn">Create</button></td>
+              <td><span id="createProfile_Out"></span></td>
+          </tr>
+      </table>
+  </form>
+  </div>
+  </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel = "stylesheet" href = "style/Main.css">
+  <script type="text/javascript" src="Main.js"></script>
+<script>
+    var user = "nouser";
+</script>
+</head>
+<body>
+    <div class="topnav">
+        <button class="tablink" onclick="openTab('Menu', this)" id="defaultOpen">Menu</button>
+        <button class="tablink" onclick="openTab('MngUsrAcct', this)" id="MngUsrAcctTab" style="display: none;width:200px">Manage User Account</button>
+        <button class="tablink" onclick="openTab('MngUsrPrf', this)" id="MngUsrPrfTab" style="display: none; width:200px">Manage User Profile</button>
+        <button class="tablink" onclick="loginLogout()" id="LoginTab">Login</button>
+        <button class="tablink" onclick="openTab('UserProfile', this)" id="WelcomeDisplay">WELCOME USER!</button>
+    </div>
+
+    <div id="Menu" class="tabcontent">
+        <div include-html="Menu.html"></div> 
+    </div>
+
+    <div id="Login" class="tabcontent">
+        <div include-html="Login.html"></div> 
+    </div>
+
+    <div id="MngUsrAcct" class="tabcontent">
+        <div include-html="ManageUserAccount.html"></div> 
+    </div>
+
+    <div id="MngUsrPrf" class="tabcontent">
+        <div include-html="ManageUserProfile.html"></div> 
+    </div>
+
+    <div id="UserProfile" class="tabcontent">
+        <div include-html="UserProfile.html"></div> 
+    </div>
+
+<script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    includeHTML();
+</script>
+</body>
+</html>

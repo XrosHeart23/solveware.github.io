@@ -1,0 +1,195 @@
+body {
+    margin: 0;  
+    padding: 0;  
+    background-color:#d0fdffaf;  
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;  
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+  
+/* Style tab links */
+.tablink {
+    background-color: rgb(143, 6, 164);
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 80px;
+}
+
+.tablink:hover {
+    background-color: rgb(185, 11, 11);
+}
+
+.innertab {
+    background-color: rgb(143, 6, 164);
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 14px;
+    font-size: 15px;
+    width:110px; 
+    border-radius:12px; 
+    height: 50px;
+}
+  
+.innertab:hover {
+    background-color: rgb(185, 11, 11);
+} 
+  
+/* Style the tab content */
+.tabcontent {
+    color: rgb(0, 0, 0);
+    display: none;
+    padding: 50px;
+    text-align: center;
+}
+  
+.menu{  
+    width: 400px;  
+    overflow: hidden;  
+    margin: auto;  
+    margin: 20 0 0 450px;  
+    padding: 40px;  
+    background: #23463f;  
+    border-radius: 15px ;  
+      
+}  
+
+.login{  
+        width: 400px;  
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 450px;  
+        padding: 40px;  
+        background: #23463f;  
+        border-radius: 15px ;  
+          
+}  
+
+h2{  
+    text-align: center;  
+    color: #ffffff;  
+}
+
+label{  
+    color: #08ffd1;  
+    font-size: 17px;  
+} 
+
+#login_username{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}  
+
+#login_pwd{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+}  
+
+#login_btn{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: blue;
+    cursor: pointer;
+}
+
+#search_username{
+    height: 45px;
+    width: 250px;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+#search_profile{
+    height: 45px;
+    width: 250px;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+#search_btn{
+    height: 50px;
+    width: 70px;
+    border-radius:12px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#LoginTab{
+    float: right;
+}
+
+#WelcomeDisplay{
+    float: right;
+    padding-right: 50px;
+    padding-top: 15px;
+    width: 215px;
+    display: none;
+    background: none; 
+    border:none;
+}
+
+.useradminmenu{  
+    width: 450px;  
+    height: 500px;
+    overflow: hidden;  
+    margin: auto;  
+    margin: 20 0 0 450px;  
+    padding: 10px;  
+    background: #23463f;  
+    border-radius: 15px ;  
+      
+}
+
+.useradminarea{  
+    width: 430px;  
+    height: 410px;
+    overflow: hidden;  
+    margin: auto;    
+    padding: 10px;  
+    background: #ffffff;  
+    border-radius: 15px ;  
+}
+
+.mnguserprofilemenu{  
+    width: 450px;  
+    height: 500px;
+    overflow: hidden;  
+    margin: auto;  
+    margin: 20 0 0 450px;  
+    padding: 10px;  
+    background: #23463f;  
+    border-radius: 15px ; 
+}
+
+.mnguserprofilearea{  
+    width: 430px;  
+    height: 410px;
+    overflow: hidden;  
+    margin: auto;    
+    padding: 10px;  
+    background: #ffffff;  
+    border-radius: 15px ;
+}
