@@ -45,6 +45,7 @@ function loginLogout() {
   if (loginstatus == "Logout"){
     document.getElementById("MngUsrAcctTab").style.display = "none";  
     document.getElementById("MngUsrPrfTab").style.display = "none";  
+    document.getElementById("WelcomeDisplay").style.display = "none";
     document.getElementById("LoginTab").innerHTML = "Login";
     openTab("Menu", this);
     user = "nouser";
