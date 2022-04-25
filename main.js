@@ -4,7 +4,6 @@ import { AdminUI } from "./js/boundary/adminUI.js";
 
 // Add event listener for login click button
 const loginForm = document.getElementById("login_form");
-
 loginForm.addEventListener("submit", async function (e) {
     e.preventDefault(); // Stop page from changing
     const userLogin = new UserUI(loginForm.username.value, loginForm.password.value);
@@ -29,7 +28,6 @@ loginForm.addEventListener("submit", async function (e) {
 
 // Add event listener for create new user button
 const createUserForm = document.getElementById("createUser_form");
-
 createUserForm.addEventListener("submit", async function (e) {
     e.preventDefault(); // Stop page from changing
     const admin = new AdminUI();
@@ -41,26 +39,23 @@ createUserForm.addEventListener("submit", async function (e) {
 
 
 // Add event listener for suspend user button
-const deleteForm = document.getElementById("delete_form");
+// const deleteForm = document.getElementById("delete_form");
+// deleteForm.addEventListener("submit", async function (e) {
+//     e.preventDefault(); // Stop page from changing
+//     const admin = new AdminUI();
+//     let result = await admin.suspendAcct(deleteForm);
 
-deleteForm.addEventListener("submit", async function (e) {
-    e.preventDefault(); // Stop page from changing
-    const admin = new AdminUI();
-    let result = await admin.suspendAcct(deleteForm);
-
-    let span = document.getElementById("delete_Out");
-    span.innerHTML = result;
-});
+//     let span = document.getElementById("delete_Out");
+//     span.innerHTML = result;
+// });
 
 
 // Add event listener for search function
 const searchForm = document.getElementById("search_form");
-let searchResult;
-
 searchForm.addEventListener("submit", async function (e) {
     e.preventDefault(); // Stop page from changing
     const admin = new AdminUI();
-    searchResult = await admin.searchAcct(searchForm);
+    const searchResult = await admin.searchAcct(searchForm);
 
     //console.log(searchResult);
 
@@ -88,6 +83,7 @@ searchForm.addEventListener("submit", async function (e) {
         });
     });
 });
+
 
 // Display user information
 function displayUser(data) {
