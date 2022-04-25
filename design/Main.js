@@ -63,6 +63,7 @@ function checkUser(){
     document.getElementById("MngUsrAcctTab").style.display = "block";  
     document.getElementById("MngUsrPrfTab").style.display = "block";  
     document.getElementById("Menu").style.display = "block";
+    document.getElementById("WelcomeDisplay").style.display = "block";
     document.getElementById("Login").style.display = "none";
     document.getElementById("LoginTab").innerHTML = "Logout";
   }

@@ -15,7 +15,8 @@
         <button class="tablink" onclick="openTab('Menu', this)" id="defaultOpen">Menu</button>
         <button class="tablink" onclick="openTab('MngUsrAcct', this)" id="MngUsrAcctTab" style="display: none;width:200px">Manage User Account</button>
         <button class="tablink" onclick="openTab('MngUsrPrf', this)" id="MngUsrPrfTab" style="display: none; width:200px">Manage User Profile</button>
-        <button class="tablink" onclick="loginLogout()" id="LoginTab" style="float:right">Login</button>
+        <button class="tablink" onclick="loginLogout()" id="LoginTab">Login</button>
+        <button class="tablink" onclick="openTab('UserProfile', this)" id="WelcomeDisplay">WELCOME USER!</button>
     </div>
 
     <div id="Menu" class="tabcontent">
@@ -32,6 +33,10 @@
 
     <div id="MngUsrPrf" class="tabcontent">
         <div include-html="ManageUserProfile.html"></div> 
+    </div>
+
+    <div id="UserProfile" class="tabcontent">
+        <div include-html="UserProfile.html"></div> 
     </div>
 
 <script>
