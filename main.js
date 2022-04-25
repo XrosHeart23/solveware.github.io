@@ -1,4 +1,4 @@
-import { LoginUI } from "./js/boundary/loginUI.js";
+import { UserUI } from "./js/boundary/userUI.js";
 import { AdminUI } from "./js/boundary/adminUI.js";
 
 
@@ -7,20 +7,20 @@ const loginForm = document.getElementById("login_form");
 
 loginForm.addEventListener("submit", async function (e) {
     e.preventDefault(); // Stop page from changing
-    const userLogin = new LoginUI(loginForm.username.value, loginForm.password.value);
+    const userLogin = new UserUI(loginForm.username.value, loginForm.password.value);
     let result = await userLogin.loginUser();
-    // console.log(result);
+
+    console.log(userLogin.getUserInfo);
 
     let span = document.getElementById("loginUser_Out");
     span.innerHTML = result;
 
     // Get user info
-    if (userLogin.getLoginStatus) {       
-        let userInfo = userLogin.getUserInfo()
+    if (userLogin.getLoginStatus) {
 
         // TODO: After login need to reload page to homepage (index.html)
         // Store user login info into browser session
-        for (const [key, value] of Object.entries(userInfo)) {
+        for (const [key, value] of Object.entries(userLogin.getUserInfo)) {
             sessionStorage.setItem(key, value);
         }
     }

@@ -1,10 +1,10 @@
-import { LoginController } from "../controller/loginController.js";
+import { UserController } from "../controller/userController.js";
 
-export class LoginUI {
+export class UserUI {
     constructor (username, password) {
         this.username = username;
         this.password = password;
-        this.loginCtrl = new LoginController(this.username, this.password);
+        this.loginCtrl = new UserController(this.username, this.password);
     }
 
     // Methods
@@ -20,8 +20,8 @@ export class LoginUI {
     }
 
     // Get user info
-    getUserInfo() {
-        return this.loginCtrl.getUserInfo();
+    get getUserInfo() {
+        return this.loginCtrl.getUserInfo;
     }
 
     // Get login status
