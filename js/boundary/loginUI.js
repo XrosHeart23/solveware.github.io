@@ -9,11 +9,23 @@ export class LoginUI {
 
     // Methods
     async loginUser() {
-        return await this.loginCtrl.validateLogin();
+        let result = await this.loginCtrl.validateLogin();
+
+        if (result == 1)
+            return "Login sucess";
+        else if (result == 0)
+            return "Username does not exist";
+        else if (result > 1)
+            return "Invalid username or password";
     }
 
     // Get user info
     getUserInfo() {
         return this.loginCtrl.getUserInfo();
+    }
+
+    // Get login status
+    get getLoginStatus() {
+        return this.loginCtrl.getLoginStatus;
     }
 }

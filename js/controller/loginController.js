@@ -19,29 +19,35 @@ export class LoginController {
         const login = new Login(this.username, this.password);
         const loginAcct = await login.getLogin();
 
-        let outputMessage;
+        let status = 0;
         if (loginAcct.length == 1){
-            outputMessage = "Login success";
+            status = 1;
             this.loginStatus = true;
-            this.name = loginAcct[0].name;
+            this.fname = loginAcct[0].fname;
+            this.lname = loginAcct[0].lname;
             this.userProfile = loginAcct[0].staffProfile;
             this.acctStatus = loginAcct[0].acctStatus;
         }
         else if (loginAcct.length > 1)
-            outputMessage = "Invalid username or password";
-        else if (loginAcct.length == 0) 
-            outputMessage = "Username does not exist";
+            status = 2;
 
-        return outputMessage;
+        return status;
     }
 
     // Get user info
     // Return key-value pair for user info
     getUserInfo() {
-        return {"username" : this.username, 
+        return {"username" : this.username,
+                "password" : this.password, 
                 "loginStatus" : this.loginStatus,
-                "name" : this.name, 
+                "fname" : this.fname, 
+                "lname" : this.lname,
                 "userProfile" : this.userProfile, 
                 "acctStatus" : this.acctStatus};
+    }
+
+    // Get login status
+    get getLoginStatus() {
+        return this.loginStatus;
     }
 }

@@ -3,7 +3,7 @@ import { AdminController } from "../controller/adminController.js";
 export class AdminUI {
     adminCtrl = new AdminController();
 
-    // Account functions
+    // == Account functions ==
     async createAcct(form) {
         // TODO: Update form names
         let result = await this.adminCtrl.doCreateAcct(form.username.value, form.password.value, 
@@ -17,8 +17,9 @@ export class AdminUI {
         }   
     }
 
-    async updateAcct() {
-
+    async updateAcct(form) {
+        return await this.adminCtrl.doUpdateAcct(form.username.value, form.password.value, 
+            form.fname.value, form.lname.value, form.profile.value);
     }
 
     async suspendAcct(form) {
@@ -32,12 +33,12 @@ export class AdminUI {
         }
     }
 
-    async searchAcct() {
-
+    async searchAcct(form) {
+        return await this.adminCtrl.doSearchAcct(form.username.value);
     }
 
 
-    // Profile functions
+    // == Profile functions ==
     async createProfile(form) {
         // TODO: Update form profile name
         let result = await this.adminCtrl.doCreateProfile(form.profileName.value);
@@ -50,8 +51,8 @@ export class AdminUI {
         }
     }
 
-    async updateProfile() {
-
+    async updateProfile(form) {
+        return await this.adminCtrl.doUpdateProfile(form.profileName.value);
     }
 
     async suspendProfile(form) {
@@ -66,7 +67,8 @@ export class AdminUI {
         }
     }
     
-    async searchProfile() {
-
+    async searchProfile(form = null, type = "dropdown") {
+        let profileName = (form != null) ? form.profileName.value : "";
+        return await this.adminCtrl.doSearchProfile(profileName, type);
     }
 }

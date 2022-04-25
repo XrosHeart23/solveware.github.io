@@ -25,7 +25,7 @@ export class Login {
 
         let acct = []
         result.docs.forEach((doc) => {
-            acct.push({...doc.data()})
+            acct.push({...doc.data(), id: doc.id})
         });
 
         return acct;

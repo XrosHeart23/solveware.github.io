@@ -27,7 +27,8 @@
                     <td><input type="password" placeholder="Enter password" name="password" id="login_pwd"></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><button type="submit" id="login_btn">Login</button></td>
+                    <td><button type="submit" id="login_btn">Login</button></td>
+                    <td><span id="loginUser_Out"></span></td>
                 </tr>
             </table>
         </form>
@@ -57,8 +58,8 @@
                     <td><input type="text" placeholder="Enter last name" name="lname" id="createUser_lname"></td>
                 </tr>
                 <tr> <!-- Need to change to a dropdown box with all profile type -->
-                    <td>Staff profile:</td>
-                    <td><input type="text" placeholder="Enter profile" name="profile" id="createUser_profile"></td>
+                    <td>User profile:</td>
+                    <td><select id="createUser_profile"></td>
                 </tr>
                 <tr>
                     <td><button type="submit" id="createUser_btn">Create</button></td>
@@ -97,8 +98,11 @@
             <input type="text" placeholder="Search username" name="username" id="search_username">
             <button type="submit" id="search_btn">Search</button>
         </form>
-        <table id="search_result">
-            
-        </table>
+        <table id="search_result"></table>
+
+        <!-- View user details -->
+        <form name="update" id="update_form" method="get">
+            <table id="view_user"></table>
+        </form>
     </body>
 </html>
