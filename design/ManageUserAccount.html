@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <div>
+  <br><br><br><br>
+  <div class="useradminmenu">
+    <button class="innertab" onclick="hideTable('search_result', 'createUser_form')">Add New Account</button>
+    <form name="search" id="search_form" method="get">
+      <input type="text" placeholder="Search username" name="username" id="search_username">
+      <button type="submit" id="search_btn" onclick="hideTable('createUser_form', 'search_result')">Search</button>
+    </form>
+    <br>
+    <div class="useradminarea">
+    <table id="search_result">
+    </table>
+    <form name="createUser" id="createUser_form" action="index.html" method="post" style="display:none">
+      <h2 style="color: black">Create Account</h2>
+      <table id="createusertable">
+          <tr>
+              <td>Username:</td>
+              <td><input type="text" placeholder="Enter username" name="username" id="createUser_username"></td>
+          </tr>
+          <tr>
+              <td>Password:</td>
+              <td><input type="password" placeholder="Enter password" name="password" id="createUser_pwd"></td>
+          </tr>
+          <tr>
+              <td>First Name:</td>
+              <td><input type="text" placeholder="Enter first name" name="fname" id="createUser_fname"></td>
+          </tr>
+          <tr>
+              <td>Last Name:</td>
+              <td><input type="text" placeholder="Enter last name" name="lname" id="createUser_lname"></td>
+          </tr>
+          <tr> <!-- Need to change to a dropdown box with all profile type -->
+              <td>Staff profile:</td>
+              <td><input type="text" placeholder="Enter profile" name="profile" id="createUser_profile"></td>
+          </tr>
+          <tr>
+              <td><button type="submit" id="createUser_btn">Create</button></td>
+              <td><span id="createUser_Out"></span></td>
+          </tr>
+      </table>
+  </form>
+  </div>
+  </div>
+  </div>
+</body>
+</html>
