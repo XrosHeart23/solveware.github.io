@@ -1,104 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Solveware</title>
-        <link rel = "stylesheet" href = "style/main.css">
-        <script defer type="module" src="main.js"></script>
-    </head>
-    <body>
-        <p>Hello CSIT314</p>
-        <a href="testpage.html">Test page</a>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solveware</title>
 
-        <!-- Login Form -->        
-        <form name="user_login" id="login_form" action="index.html" method="post">
-            <table>
-                <tr>
-                    <th colspan="2">Login</th>
-                </tr>
-                <tr>
-                    <td>Login:</td>
-                    <td><input type="text" placeholder="Enter username" name="username" id="login_username"></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><input type="password" placeholder="Enter password" name="password" id="login_pwd"></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><button type="submit" id="login_btn">Login</button></td>
-                </tr>
-            </table>
-        </form>
+    <link rel="stylesheet" href="style/main.css">
+    <script defer type="module" src="js/main.js"></script>
+    <script type="text/javascript" src="js/include.js"></script>
 
-        <br>
+</head>
+<body onload="checkUser()">
+    <div class="topnav">
+        <button class="tablink" onclick="openTab('menu', this)" id="defaultOpen">Menu</button>
+        <button class="tablink" onclick="openTab('mngUsrAcct', this)" id="mngUsrAcctTab" style="display: none;width:200px">Manage User Account</button>
+        <button class="tablink" onclick="openTab('mngUsrPrf', this)" id="mngUsrPrfTab" style="display: none; width:200px">Manage User Profile</button>
+        <button class="tablink" onclick="loginLogout()" id="loginTab" style="float:right">Login</button>
+    </div>
 
-        <!-- Create Account Form -->
-        <form name="createUser" id="createUser_form" action="index.html" method="post">
-            <table>
-                <tr>
-                    <th colspan="2">Create New User</th>
-                </tr>
-                <tr>
-                    <td>Username:</td>
-                    <td><input type="text" placeholder="Enter username" name="username" id="createUser_username"></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><input type="password" placeholder="Enter password" name="password" id="createUser_pwd"></td>
-                </tr>
-                <tr>
-                    <td>First Name:</td>
-                    <td><input type="text" placeholder="Enter first name" name="fname" id="createUser_fname"></td>
-                </tr>
-                <tr>
-                    <td>Last Name:</td>
-                    <td><input type="text" placeholder="Enter last name" name="lname" id="createUser_lname"></td>
-                </tr>
-                <tr> <!-- Need to change to a dropdown box with all profile type -->
-                    <td>Staff profile:</td>
-                    <td><input type="text" placeholder="Enter profile" name="profile" id="createUser_profile"></td>
-                </tr>
-                <tr>
-                    <td><button type="submit" id="createUser_btn">Create</button></td>
-                    <td><span id="createUser_Out"></span></td>
-                </tr>
-            </table>
-        </form>
+    <div id="menu" class="tabcontent">
+        <div include-html="menu.html"></div> 
+    </div>
 
-        <br>
+    <div id="login" class="tabcontent">
+        <div include-html="login.html"></div> 
+    </div>
 
-        <!-- Temporary learning delete function  -->
-        <form name="delete" id="delete_form" action="index.html" method="get">
-            <table>
-                <tr>
-                    <th colspan="2">Delete User</th>
-                </tr>
-                <tr>
-                    <td>Username:</td>
-                    <td><input type="text" placeholder="Enter username" name="username" id="delete_username"></td>
-                </tr>
-                <tr>
-                    <td>Account Status:</td>
-                    <td><input type="text" placeholder="Enter status" name="status" id="delete_status"></td>
-                </tr>
-                <tr>
-                    <td><button type="submit" id="delete_btn">Delete</button></td>
-                    <td><span id="delete_Out"></span></td>
-                </tr>
-            </table>
-        </form>
+    <div id="mngUsrAcct" class="tabcontent">
+        <div include-html="manageUserAccount.html"></div> 
+    </div>
 
-        <br>
+    <div id="mngUsrPrf" class="tabcontent">
+        <div include-html="manageUserProfile.html"></div> 
+    </div>
 
-        <!-- Search form -->
-        <form name="search" id="search_form" method="get">
-            <input type="text" placeholder="Search username" name="username" id="search_username">
-            <button type="submit" id="search_btn">Search</button>
-        </form>
-        <table id="search_result">
-            
-        </table>
-    </body>
+<script>
+    // Get the element with id="defaultOpen" and click on it
+    // document.getElementById("defaultOpen").click();
+    includeHTML();
+</script>
+</body>
 </html>

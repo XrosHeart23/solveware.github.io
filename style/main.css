@@ -1,6 +1,274 @@
 body {
-    max-width: 100%;
-    margin-left: 20%;
-    margin-right: 20%;
-    padding: 10px;
+    margin: 0;  
+    padding: 0;  
+    background-color:#d0fdffaf;  
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;  
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+  
+/* Style tab links */
+.tablink {
+    background-color: rgb(143, 6, 164);
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 80px;
+}
+
+.tablink:hover {
+    background-color: rgb(185, 11, 11);
+}
+
+.innertab {
+    background-color: rgb(143, 6, 164);
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 14px;
+    font-size: 15px;
+    width:110px; 
+    border-radius:12px; 
+    height: 50px;
+}
+  
+.innertab:hover {
+    background-color: rgb(185, 11, 11);
+} 
+  
+/* Style the tab content */
+.tabcontent {
+    color: rgb(0, 0, 0);
+    display: none;
+    padding: 50px;
+    text-align: center;
+}
+  
+.menu{  
+    width: 400px;  
+    overflow: hidden;  
+    margin: auto;  
+    margin: 20 0 0 450px;  
+    padding: 40px;  
+    background: #23463f;  
+    border-radius: 15px ;  
+}  
+
+.login{  
+    width: 400px;  
+    overflow: hidden;  
+    margin: auto;
+    padding: 40px;  
+    background: #23463f;  
+    border-radius: 15px;
+}  
+
+h2{  
+    text-align: center;  
+    color: #ffffff;  
+}
+
+label{  
+    color: #08ffd1;  
+    font-size: 17px;  
+}
+
+#login_form {
+    width: 310px;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+.loginFormLabel {
+    float:left;
+}
+
+.loginFormErr {
+    float:left;
+    color:red;
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+#loginUser_Out {
+    float: none;
+}
+
+#login_username{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}
+
+#login_pwd{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+}  
+
+#login_btn{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: blue;
+    cursor: pointer;
+}
+
+/* Search bar */
+.searchBar {
+    height: 45px;
+    width: 230px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-left: 15px;
+}
+/* Search button */
+.searchBtn {
+    height: 50px;
+    width: 70px;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#search_btn:hover{
+    background-color: black;
+    color:white;
+}
+
+.useradminmenu{  
+    width: 450px;  
+    min-height: 500px;
+    overflow: hidden;  
+    margin: auto;  
+    margin: 20 0 0 450px;  
+    padding: 10px;  
+    background: #23463f;  
+    border-radius: 15px ;  
+      
+}
+
+.useradminarea{  
+    width: 430px;  
+    height: 410px;
+    overflow: hidden;  
+    margin: auto;    
+    padding: 10px;  
+    background: #ffffff;  
+    border-radius: 15px ;  
+}
+
+
+/* USER PAGE */
+.userCenterTable {
+    margin-left: auto;
+    margin-right: auto;
+    width: 270px;
+}
+
+.createUserTable tr, .viewTable tr{
+    height: 30px;
+}
+
+.createUserTable th, .searchResultTable th, .viewTable th {
+    font-size: 28px;
+}
+
+.createUserTable .errorRow, .viewTable .errorRow {
+    height: 16px;
+    font-size: 12px;
+    color: red;
+    text-align: left;
+}
+
+#createUser_profile, #viewUser_profile {
+    float: left;
+}
+
+.searchResultTable {
+    width: 250px;
+}
+
+.searchResultTable tr {
+    height: 30px;
+    text-align: left;
+}
+
+.searchResultTable tr:hover {
+    background-color: rgb(203, 203, 203);
+}
+
+#search_result {
+    /* display: none; */
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#searchResult_header {
+    text-align: center;
+    pointer-events: none;
+}
+/* ======================= */
+
+/* PROFILE PAGE */
+.profileCenterTable {
+    margin-left: auto;
+    margin-right: auto;
+    width: 290px;
+}
+
+.createProfileTable th, .searchProfileTable th, .viewProfileTable th {
+    font-size: 28px;
+}
+
+#createProfile_status {
+    float: left;
+}
+
+.createProfileTable .errorRow {
+    height: 16px;
+    font-size: 12px;
+    color: red;
+    text-align: left;
+}
+
+.searchProfileTable {
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+}
+
+.searchProfileTable tr {
+    height: 30px;
+    text-align: left;
+}
+
+.searchProfileTable tr:hover {
+    background-color: rgb(203, 203, 203);
+}
+
+#searchProfile_header {
+    text-align: center;
+    pointer-events: none;
+}
+/* ======================= */

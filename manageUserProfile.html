@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <br><br><br><br>
+    <div class="useradminmenu">
+        <button class="innertab" id="newProfile_btn">Add New Profile</button>
+        <form name="searchProfile" id="searchProfile_form" method="get">
+            <input type="text" placeholder="Search Profile" name="profileName" class="searchBar" id="searchProfile_name">
+            <button type="submit" class="searchBtn" id="searchProfile_btn">Search</button>
+        </form>
+        
+        <br>
+        
+        <div class="useradminarea">
+            <form name="createProfile" id="createProfile_form" class="profileCenterTable" style="display:none">
+                <table class="createProfileTable" id="createProfileTable">
+                    <th colspan="2">Create Account</th>
+                    <tr>
+                        <td>Profile Name:</td>
+                        <td><input type="text" placeholder="Enter profile name" name="profileName" id="createProfile_name"></td>
+                    </tr>
+                    <tr class="errorRow">
+                        <td></td>
+                        <td><span id="createProfileError"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Profile Status:</td>
+                        <td><select id="createProfile_status" name="profileStatus">
+                                <option value="Activated">Activate</option>
+                                <option value="Suspended">Suspend</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="submit" id="createProfile_btn">Create</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><span id="createProfile_Out"></span></td>
+                    </tr>
+                </table>
+            </form>
+
+            <table class="searchProfileTable" id="searchProfile_result"></table>
+
+            <form name="profileUpdateForm" id="profileUpdate_form" class="profileCenterTable">
+                <table class="viewProfileTable" id="view_profile"></table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

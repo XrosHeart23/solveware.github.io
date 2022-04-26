@@ -3,7 +3,7 @@ import { AdminController } from "../controller/adminController.js";
 export class AdminUI {
     adminCtrl = new AdminController();
 
-    // Account functions
+    // == Account functions ==
     async createAcct(form) {
         // TODO: Update form names
         let result = await this.adminCtrl.doCreateAcct(form.username.value, form.password.value, 
@@ -17,8 +17,9 @@ export class AdminUI {
         }   
     }
 
-    async updateAcct() {
-
+    async updateAcct(form, userId) {
+        return await this.adminCtrl.doUpdateAcct(form.username.value, form.password.value, 
+            form.fname.value, form.lname.value, form.profile.value, userId);
     }
 
     async suspendAcct(form) {
@@ -32,15 +33,22 @@ export class AdminUI {
         }
     }
 
-    async searchAcct() {
+    async searchAcct(form, searchData) {
+        let name;
+        if (searchData === "name") {
+            name = form.name.value;
+        } else {
+            name = form.username.value;
+        }
 
+        return await this.adminCtrl.doSearchAcct(name, searchData);
     }
 
 
-    // Profile functions
+    // == Profile functions ==
     async createProfile(form) {
-        // TODO: Update form profile name
-        let result = await this.adminCtrl.doCreateProfile(form.profileName.value);
+        let status = (form.profileStatus.value.toLowerCase() === "activated") ? true : false;
+        let result = await this.adminCtrl.doCreateProfile(form.profileName.value, status);
 
         if (result) {
             form.reset();
@@ -50,23 +58,23 @@ export class AdminUI {
         }
     }
 
-    async updateProfile() {
-
+    async updateProfile(form, userId) {
+        return await this.adminCtrl.doUpdateProfile(form.profileName.value, userId);
     }
 
-    async suspendProfile(form) {
-        // TODO: Update form name
-        let profileStatus = (form.status.value.toLowerCase() === "activated") ? true : false;
-        let result = await this.adminCtrl.doSuspendAcct(form.profileName.value, profileStatus);
+    async suspendProfile(form, userId) {
+        let status = (form.profileStatus.value.toLowerCase() === "activated") ? true : false;
+        let result = await this.adminCtrl.doSuspendProfile(form.profileName.value, status, userId);
 
         if (result) {
             return "Profile activated";
         } else {
-            return "Profile suspended"
+            return "Profile suspended";
         }
     }
     
-    async searchProfile() {
-
+    async searchProfile(form = null, type = "dropdown") {
+        let profileName = (form != null) ? form.profileName.value : "";
+        return await this.adminCtrl.doSearchProfile(profileName, type);
     }
 }
