@@ -1,7 +1,7 @@
 body {
     margin: 0;  
     padding: 0;  
-    background-color:#d0fdffaf;  
+    background-color:#F6F0EE;  
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -15,23 +15,23 @@ body {
   
 /* Style tab links */
 .tablink {
-    background-color: rgb(143, 6, 164);
+    background-color: #333;
     color: white;
     float: left;
     border: none;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
-    font-size: 17px;
-    width: 80px;
+    font-size: 16px;
+    width: 90px;
 }
 
 .tablink:hover {
-    background-color: rgb(185, 11, 11);
+    background-color: #7F7D7D;
 }
 
 .innertab {
-    background-color: rgb(143, 6, 164);
+    background-color: #333;
     color: white;
     float: left;
     border: none;
@@ -39,13 +39,13 @@ body {
     cursor: pointer;
     padding: 10px 14px;
     font-size: 15px;
-    width:110px; 
-    border-radius:12px; 
+    width:160px; 
+    border-radius:10px; 
     height: 50px;
 }
   
 .innertab:hover {
-    background-color: rgb(185, 11, 11);
+    background-color: #7F7D7D;
 } 
   
 /* Style the tab content */
@@ -138,13 +138,13 @@ label{
     height: 45px;
     width: 230px;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 15px;
     margin-left: 15px;
 }
 /* Search button */
 .searchBtn {
     height: 50px;
-    width: 70px;
+    width: 75px;
     border-radius: 10px;
     font-size: 15px;
     cursor: pointer;
@@ -156,25 +156,27 @@ label{
 }
 
 .useradminmenu{  
-    width: 450px;  
+    width: 500px;  
     min-height: 500px;
     overflow: hidden;  
     margin: auto;  
     margin: 20 0 0 450px;  
-    padding: 10px;  
-    background: #23463f;  
-    border-radius: 15px ;  
+    padding: 16px;  
+    border-color: #333;
+    box-shadow: 4px 2px #888888;
+    border-style: solid;
+    border-radius: 10px;  
       
 }
 
 .useradminarea{  
-    width: 430px;  
+    width: 474px;  
     height: 410px;
     overflow: hidden;  
     margin: auto;    
     padding: 10px;  
     background: #ffffff;  
-    border-radius: 15px ;  
+    border-radius: 8px ;  
 }
 
 
@@ -189,8 +191,14 @@ label{
     height: 30px;
 }
 
+.createUserTable td, .viewTable td{
+    padding: 5px;
+    /* border-bottom: 1px solid #ddd; */
+}
+
 .createUserTable th, .searchResultTable th, .viewTable th {
     font-size: 28px;
+    padding: 5px;
 }
 
 .createUserTable .errorRow, .viewTable .errorRow {
@@ -228,6 +236,26 @@ label{
     text-align: center;
     pointer-events: none;
 }
+
+ .btn {  /* Create button */
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 10px 40px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+    /* Gray */
+    .default {
+    border-color: #ddd;
+    color: black;
+    }
+  
+    .default:hover {
+        background: #ddd;
+    }
 /* ======================= */
 
 /* PROFILE PAGE */
