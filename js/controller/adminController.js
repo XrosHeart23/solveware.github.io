@@ -9,8 +9,8 @@ export class AdminController {
         return await this.admin.addAcct(username, password, fname, lname, profile, acctStatus);
     }
 
-    async doUpdateAcct(username, password, fname, lname, profile) {
-        return await this.admin.updateAcct(username, password, fname, lname, profile);
+    async doUpdateAcct(username, password, fname, lname, profile, userId) {
+        return await this.admin.updateAcct(username, password, fname, lname, profile, userId);
     }
 
     async doSuspendAcct(username, status) {
@@ -20,24 +20,23 @@ export class AdminController {
         return status;
     }
 
-    async doSearchAcct(username) {
-        return await this.admin.searchAcct(username);
+    async doSearchAcct(name, searchData) {
+        return await this.admin.searchAcct(name, searchData);
     }
 
 
     // == Profile functions ==
-    async doCreateProfile(profileName) {
-        let profileStatus = true;
+    async doCreateProfile(profileName, profileStatus) {
         return await this.admin.addProfile(profileName, profileStatus);
     }
 
-    async doUpdateProfile(profileName) {
-        return await this.admin.updateProfile(profileName);
+    async doUpdateProfile(profileName, userId) {
+        return await this.admin.updateProfile(profileName, userId);
     }
 
-    async doSuspendProfile(profileName, status) {
+    async doSuspendProfile(profileName, status, userId) {
         status = !status; // Toggle status boolean
-        await this.admin.suspendProfile(profileName, status);
+        await this.admin.suspendProfile(profileName, status, userId);
 
         return status;
     }

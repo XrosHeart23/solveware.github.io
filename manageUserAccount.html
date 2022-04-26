@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <br><br><br><br>
+    <div class="useradminmenu">
+        <button class="innertab" id="newAccount_btn">Add New Account</button>
+        <form name="search" id="search_form" method="get">
+            <input type="text" placeholder="Search Name" name="name" class="searchBar" id="search_name">
+            <button type="submit" class="searchBtn" id="search_btn">Search</button>
+        </form>
+        <br>
+        <div class="useradminarea">
+            <form name="createUser" id="createUser_form" class="userCenterTable" style="display:none">
+                <table class="createUserTable" id="createusertable">
+                    <th colspan="2">Create Account</th>
+                    <tr>
+                        <td>Username:</td>
+                        <td><input type="text" placeholder="Enter username" name="username" id="createUser_username"></td>
+                    </tr>
+                    <tr class="errorRow">
+                        <td></td>
+                        <td><span id="createUsernameError"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" placeholder="Enter password" name="password" id="createUser_pwd"></td>
+                    </tr>
+                    <tr class="errorRow">
+                        <td></td>
+                        <td><span id="createPasswordError"></span></td>
+                    </tr>
+                    <tr>
+                        <td>First Name:</td>
+                        <td><input type="text" placeholder="Enter first name" name="fname" id="createUser_fname"></td>
+                    </tr>
+                    <tr class="errorRow">
+                        <td></td>
+                        <td><span id="createFnameError"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name:</td>
+                        <td><input type="text" placeholder="Enter last name" name="lname" id="createUser_lname"></td>
+                    </tr>
+                    <tr class="errorRow">
+                        <td></td>
+                        <td><span id="createLnameError"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Staff profile:</td>
+                        <td><select name="profile" id="createUser_profile"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="submit" id="createUser_btn">Create</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><span id="createUser_Out"></span></td>
+                    </tr>
+                </table>
+            </form>
+
+            <table class="searchResultTable" id="search_result"></table>
+
+            <form name="updateForm" id="update_form"class="userCenterTable">
+                <table class="viewTable"  id="view_user"></table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

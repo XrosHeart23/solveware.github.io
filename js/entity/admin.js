@@ -31,13 +31,8 @@ export class Admin {
     }
 
     // TODO: update account - DONE
-    async updateAcct(username, password, fname, lname, profile) {
-        const qry = query(collection(db, this.#userTable),
-                    where("username", "==", username));
-        const result = await getDocs(qry);
-        let docId = result.docs[0].id;
-                
-        await updateDoc(doc(db, this.#userTable, docId), {
+    async updateAcct(username, password, fname, lname, profile, userId) {              
+        await updateDoc(doc(db, this.#userTable, userId), {
             username: username,
             password: password,
             fname: fname,
@@ -59,19 +54,29 @@ export class Admin {
     }
 
     // TODO: search accout - DONE
-    async searchAcct(username) {
-        const qry = query(collection(db, this.#userTable),
-                    orderBy('username'),
-                    startAt(username), endAt(username + '\uf8ff'));
-
-        const result = await getDocs(qry);
+    async searchAcct(name, searchData) {
+        const result = await getDocs(collection(db, this.#userTable));
 
         let acct = [];
         result.docs.forEach((doc) => {
             acct.push({...doc.data(), id: doc.id})
         });
         
-        return acct;
+        let searchResult = []
+        if (searchData === "username") {
+            acct.forEach((user) => {
+                if (user.username === name)
+                    searchResult.push(user);
+            });
+        } else {
+            acct.forEach((user) => {
+                let fullName = user.fname + " " + user.lname;
+                if (fullName.includes(name))
+                    searchResult.push(user);
+            });
+        }
+
+        return searchResult;
     }
 
 
@@ -94,25 +99,15 @@ export class Admin {
     }
 
     // TODO: update profile - DONE
-    async updateProfile(profileName) {
-        const qry = query(collection(db, this.#profileTable),
-                    where("profileName", "==", profileName));
-        const result = await getDocs(qry);
-        let docId = result.docs[0].id;
-                
-        await updateDoc(doc(db, this.#profileTable, docId), {
+    async updateProfile(profileName, userId) {              
+        await updateDoc(doc(db, this.#profileTable, userId), {
             profileName: profileName,
         });
     }
 
     // TODO: suspend profile - DONE
-    async suspendProfile(profileName, status) {
-        const qry = query(collection(db, this.#profileTable),
-                    where("profileName", "==", profileName));
-        const result = await getDocs(qry);
-        let docId = result.docs[0].id;
-                
-        await updateDoc(doc(db, this.#profileTable, docId), {
+    async suspendProfile(profileName, status, userId) {
+        await updateDoc(doc(db, this.#profileTable, userId), {
             profileStatus: status,
         });
     }
@@ -125,7 +120,12 @@ export class Admin {
                 where("profileStatus", "==", true),
                 orderBy('profileName'),
                 startAt(profileName), endAt(profileName + '\uf8ff'));
-        } else {
+        } 
+        else if (type === "exact") {
+            qry = query(collection(db, this.#profileTable),
+                where("profileName", "==", profileName));
+        }
+        else {
             qry = query(collection(db, this.#profileTable),
                 orderBy('profileName'),
                 startAt(profileName), endAt(profileName + '\uf8ff'));

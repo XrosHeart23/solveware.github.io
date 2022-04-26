@@ -16,14 +16,24 @@ export class UserController {
     async validateLogin() {
         const userAcct = await this.user.getLogin();
 
+        // Possible state
+        // 0 - No account found
+        // Account found
+        // 1 - Account with correct password
+        // 2 - Account with wrong password
+        // 3 - More than 1 account found (Very rarely possible but still track)
         let status = 0;
         if (userAcct.length == 1){
-            status = 1;
-            this.loginStatus = true;
-            this.user.setUserInfo(userAcct[0].fname, userAcct[0].lname, userAcct[0].staffProfile, userAcct[0].acctStatus);
+            if (userAcct[0].password == this.password) {
+                status = 1;
+                this.loginStatus = true;
+                this.user.setUserInfo(userAcct[0].fname, userAcct[0].lname, userAcct[0].staffProfile, userAcct[0].acctStatus);
+            } else {
+                status = 2;
+            }
         }
         else if (userAcct.length > 1)
-            status = 2;
+            status = 3;
 
         return status;
     }

@@ -17,9 +17,9 @@ export class AdminUI {
         }   
     }
 
-    async updateAcct(form) {
+    async updateAcct(form, userId) {
         return await this.adminCtrl.doUpdateAcct(form.username.value, form.password.value, 
-            form.fname.value, form.lname.value, form.profile.value);
+            form.fname.value, form.lname.value, form.profile.value, userId);
     }
 
     async suspendAcct(form) {
@@ -33,15 +33,22 @@ export class AdminUI {
         }
     }
 
-    async searchAcct(form) {
-        return await this.adminCtrl.doSearchAcct(form.username.value);
+    async searchAcct(form, searchData) {
+        let name;
+        if (searchData === "name") {
+            name = form.name.value;
+        } else {
+            name = form.username.value;
+        }
+
+        return await this.adminCtrl.doSearchAcct(name, searchData);
     }
 
 
     // == Profile functions ==
     async createProfile(form) {
-        // TODO: Update form profile name
-        let result = await this.adminCtrl.doCreateProfile(form.profileName.value);
+        let status = (form.profileStatus.value.toLowerCase() === "activated") ? true : false;
+        let result = await this.adminCtrl.doCreateProfile(form.profileName.value, status);
 
         if (result) {
             form.reset();
@@ -51,19 +58,18 @@ export class AdminUI {
         }
     }
 
-    async updateProfile(form) {
-        return await this.adminCtrl.doUpdateProfile(form.profileName.value);
+    async updateProfile(form, userId) {
+        return await this.adminCtrl.doUpdateProfile(form.profileName.value, userId);
     }
 
-    async suspendProfile(form) {
-        // TODO: Update form name
-        let profileStatus = (form.status.value.toLowerCase() === "activated") ? true : false;
-        let result = await this.adminCtrl.doSuspendAcct(form.profileName.value, profileStatus);
+    async suspendProfile(form, userId) {
+        let status = (form.profileStatus.value.toLowerCase() === "activated") ? true : false;
+        let result = await this.adminCtrl.doSuspendProfile(form.profileName.value, status, userId);
 
         if (result) {
             return "Profile activated";
         } else {
-            return "Profile suspended"
+            return "Profile suspended";
         }
     }
     
