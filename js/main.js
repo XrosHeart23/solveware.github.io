@@ -385,7 +385,7 @@ searchProfileForm.addEventListener("submit", async function (e) {
     document.getElementById("view_profile").style.display = "none";
 
     const admin = new AdminUI();
-    const searchResult = await admin.searchProfile(searchProfileForm);
+    const searchResult = await admin.searchProfile(searchProfileForm, "all");
 
     const viewTbl = document.getElementById("view_profile");
     viewTbl.innerHTML = "";
