@@ -115,3 +115,7 @@ export function checkCreateProfileForm (form) {
 
     return status;
 }
+
+export function resetCreateProfileForm() {
+    document.getElementById("createProfileError").innerHTML = "";
+}
