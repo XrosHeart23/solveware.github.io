@@ -45,7 +45,7 @@ function openTab(tabName, elmnt) {
 function loginLogout() {
     if (sessionStorage.getItem("loginStatus")) {
         sessionStorage.clear();
-        document.location.href="/index.html";
+        document.location.href="./index.html";
     }
     else {
         openTab("login", this);
