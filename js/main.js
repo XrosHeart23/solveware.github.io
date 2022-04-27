@@ -27,7 +27,7 @@ loginForm.addEventListener("submit", async function (e) {
                 sessionStorage.setItem(key, value);
             }
 
-            document.location.href="/index.html";
+            document.location.href="./index.html";
         }
     }
 });
