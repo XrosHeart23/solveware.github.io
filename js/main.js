@@ -1,7 +1,6 @@
-import { UserUI } from "./boundary/userUI.js";
+import { LoginUI } from "./boundary/loginUI.js";
 import { AdminUI } from "./boundary/adminUI.js";
 import * as Validation from "./validation.js";
-import { Admin } from "./entity/admin.js";
 
 // Add event listener for login click button
 const loginForm = document.getElementById("login_form");
@@ -10,10 +9,8 @@ loginForm.addEventListener("submit", async function (e) {
 
     let checkValid = Validation.checkLoginForm(loginForm);
     if (checkValid) {
-        const userLogin = new UserUI(loginForm.username.value, loginForm.password.value);
+        const userLogin = new LoginUI(loginForm);
         let result = await userLogin.loginUser();
-
-        console.log(userLogin.getLoginStatus);
 
         let span = document.getElementById("loginUser_Out");
         span.innerHTML = result;
@@ -32,11 +29,6 @@ loginForm.addEventListener("submit", async function (e) {
     }
 });
 
-
-// Display profile dropdown in create user
-const createDropdown = document.getElementById("createUser_profile");
-createDropdown.addEventListener("load", displayProfileDropDown(createDropdown));
-
 // Add event listener for create new user button
 const createUserForm = document.getElementById("createUser_form");
 createUserForm.addEventListener("submit", async function (e) {
@@ -52,10 +44,12 @@ createUserForm.addEventListener("submit", async function (e) {
     }
 });
 
+const createDropdown = document.getElementById("createUser_profile");
 const newAccountBtn = document.getElementById("newAccount_btn");
 newAccountBtn.addEventListener("click", function (e) {
     e.preventDefault();
     createUserForm.reset();
+    displayProfileDropDown(createDropdown); // Display profile dropdown in create user
     Validation.resetCreateForm();
 
     document.getElementById("createUser_form").style.display = "table";
@@ -277,7 +271,7 @@ function displayUser(data) {
     let selectField = document.createElement("select");
     selectField.setAttribute("name", "profile");
     selectField.setAttribute("id", "viewUser_profile");
-    displayProfileDropDown(selectField, data.staffProfile);
+    displayProfileDropDown(selectField, data.userProfile);
     tdValue.appendChild(selectField);
     //================================================
 
@@ -332,17 +326,19 @@ function displayUser(data) {
 }
 
 // Display profile in dropdown selection
-async function displayProfileDropDown(dropdownID, staffProfile = "") {
+async function displayProfileDropDown(dropdownID, userProfile = "") {
     const profileDropdown = dropdownID;
     const admin = new AdminUI();
     let searchProfile = await admin.searchProfile();
+
+    dropdownID.innerHTML = "";
 
     searchProfile.forEach((row) => {
         const option = document.createElement("option");
         option.setAttribute("value", row.profileName);
         option.innerHTML = row.profileName.charAt(0).toUpperCase() + row.profileName.slice(1);
 
-        if (row.profileName === staffProfile)
+        if (row.profileName === userProfile)
             option.setAttribute("selected", "selected");
 
         profileDropdown.appendChild(option);
