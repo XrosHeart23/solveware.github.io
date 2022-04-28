@@ -48,7 +48,7 @@ export class AdminUI {
     // == Profile functions ==
     async createProfile(form) {
         let status = (form.profileStatus.value.toLowerCase() === "activated") ? true : false;
-        let result = await this.adminCtrl.doCreateProfile(form.profileName.value, status);
+        let result = await this.adminCtrl.doCreateProfile(form.profileName.value.toLowerCase(), status);
 
         if (result) {
             form.reset();
@@ -59,7 +59,7 @@ export class AdminUI {
     }
 
     async updateProfile(form, userId) {
-        return await this.adminCtrl.doUpdateProfile(form.profileName.value, userId);
+        return await this.adminCtrl.doUpdateProfile(form.profileName.value.toLowerCase(), userId);
     }
 
     async suspendProfile(form, userId) {
