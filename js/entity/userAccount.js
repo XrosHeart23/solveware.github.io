@@ -96,13 +96,13 @@ export class UserAccount {
         let searchResult = []
         if (searchData === "username") {
             acct.forEach((user) => {
-                if (user.username === name)
+                if (user.username.toLowerCase() === name.toLowerCase())
                     searchResult.push(user);
             });
         } else {
             acct.forEach((user) => {
                 let fullName = user.fname + " " + user.lname;
-                if (fullName.includes(name))
+                if (fullName.toLowerCase().includes(name.toLowerCase()))
                     searchResult.push(user);
             });
         }
@@ -150,22 +150,26 @@ export class UserAccount {
                 where("profileStatus", "==", true),
                 orderBy('profileName'),
                 startAt(profileName), endAt(profileName + '\uf8ff'));
-        } 
-        else if (type === "exact") {
-            qry = query(collection(db, this.#profileTable),
-                where("profileName", "==", profileName));
         }
         else {
             qry = query(collection(db, this.#profileTable),
-                orderBy('profileName'),
-                startAt(profileName), endAt(profileName + '\uf8ff'));
+                orderBy('profileName'));
         }
 
         const result = await getDocs(qry);
 
         let profile = [];
         result.docs.forEach((doc) => {
-            profile.push({...doc.data(), id: doc.id})
+            if (type === "dropdown") {
+                profile.push({...doc.data(), id: doc.id});
+            }
+            else if (type === "exact") {
+                if (doc.data().profileName.toLowerCase() === profileName.toLowerCase())
+                    profile.push({...doc.data(), id: doc.id});
+            }
+            else if (doc.data().profileName.toLowerCase().includes(profileName.toLowerCase())) {
+                profile.push({...doc.data(), id: doc.id});
+            }
         });
         
         return profile;

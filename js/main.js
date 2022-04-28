@@ -119,18 +119,19 @@ updateForm.addEventListener("submit", async function (e) {
     else if (action === "update") {
         // Check for update
         let oldUserData = JSON.parse(sessionStorage.getItem("currentViewUser"));
-        let result = Validation.checkUpdateForm(updateForm, oldUserData);
+        let validation = Validation.checkUpdateForm(updateForm, oldUserData);
         let proceed = false;
+
         // Search if username exist
-        if (result == 1) {
+        if (validation == 1) {
             let searchResult = await admin.searchAcct(updateForm, "username");
             if (searchResult.length > 0) {
-                document.getElementById("updateOut").innerHTML = "Username exist";
+                document.getElementById("updateOut").innerHTML = "Username taken";
             } else {
                 proceed = true;
                 document.getElementById("updateOut").innerHTML = "";
             }
-        } else if (result == 2){
+        } else if (validation == 2){
             proceed = true;
         }
         
@@ -435,24 +436,31 @@ profileUpdateForm.addEventListener("submit", async function (e) {
         // Check for update
         let proceed = true;
 
-        // Search if profile exist
-        let result = await admin.searchProfile(profileUpdateForm, "exact");
-
-        if (profileUpdateForm.profileName.value === oldUserData.profileName) {
-            document.getElementById("updateOut").innerHTML = "No changes in profile name";
-            proceed = false;
-        }
-        else if (result.length > 0) {
-            document.getElementById("updateOut").innerHTML = "Profile name exist";
-            proceed = false;
-        }
-        else {
-            document.getElementById("updateOut").innerHTML = "";
-        }
+        let validation = Validation.checkUpdateProfileForm(profileUpdateForm);
+        if (validation) {
+            // Search if profile exist
+            let result = await admin.searchProfile(profileUpdateForm, "exact");
         
+            if(profileUpdateForm.profileName.value.toLowerCase() === oldUserData.profileName.toLowerCase()) {
+                document.getElementById("updateOut").innerHTML = "No change in profile name";
+                proceed = false;
+            }
+            else if (result.length > 0) {
+                document.getElementById("updateOut").innerHTML = "Profile name exist";
+                proceed = false;
+            }
+            else {
+                document.getElementById("updateOut").innerHTML = "";
+            }
+        } else {
+            document.getElementById("updateOut").innerHTML = "";
+            proceed = false;
+        }
+
+
         if (proceed) { 
             await admin.updateProfile(profileUpdateForm, oldUserData.id);
-            formMsg = "User account updated";
+            formMsg = "Profile name updated";
             formAction = true;
         };
     }
@@ -461,8 +469,6 @@ profileUpdateForm.addEventListener("submit", async function (e) {
         let searchResult = await admin.searchProfile(profileUpdateForm, "exact");
         // Update browser with updated details
         sessionStorage.setItem("currentViewUser", JSON.stringify((searchResult[0])));
-        
-        console.log(searchResult);
 
         displayProfile(searchResult[0]);
         document.getElementById("updateOut").innerHTML = formMsg;
