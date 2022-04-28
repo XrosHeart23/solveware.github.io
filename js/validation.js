@@ -74,7 +74,7 @@ export function checkUpdateForm (form, oldUserData) {
     // 0 - No change to form
     // 1 - Change to username (Verify in db that no conflict)
     // 2 - Change to everything other than username (No verification need with db)
-    if (form.username.value === oldUserData.username &&
+    if (form.username.value.toLowerCase() === oldUserData.username.toLowerCase() &&
         form.password.value === oldUserData.password &&
         form.fname.value === oldUserData.fname &&
         form.lname.value === oldUserData.lname &&
@@ -83,7 +83,7 @@ export function checkUpdateForm (form, oldUserData) {
         outMsg.innerHTML = "No changes in user data";
         status = 0;
     } 
-    else if (!(form.username.value === oldUserData.username)) {
+    else if (!(form.username.value.toLowerCase() === oldUserData.username.toLowerCase())) {
         outMsg.innerHTML = "";
         status = 1;
     }
