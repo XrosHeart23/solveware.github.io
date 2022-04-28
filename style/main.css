@@ -108,7 +108,7 @@ label{
     float: none;
 }
 
-#login_username{  
+#login_username{  /* Login page - Input field */
     width: 300px;  
     height: 30px;  
     border: 1px solid;  
@@ -116,13 +116,20 @@ label{
     padding-left: 8px;  
 }
 
-#login_pwd{  
+#login_pwd{  /* Login page - Input field */
     width: 300px;  
     height: 30px;  
     border: 1px solid;  
     border-radius: 3px;  
-    padding-left: 8px;  
-      
+    padding-left: 8px;   
+}  
+
+#login_profile{  /* Login page - dropdown box */
+    width: 314px;  
+    height: 30px;  
+    border: 1px solid;  
+    border-radius: 3px;  
+    padding-left: 8px;   
 }  
 
 #login_btn{  
@@ -167,8 +174,7 @@ label{
     border-color: #333;
     box-shadow: 4px 2px #888888;
     border-style: solid;
-    border-radius: 10px;  
-      
+    border-radius: 10px; 
 }
 
 .useradminarea{  
@@ -178,7 +184,8 @@ label{
     margin: auto;    
     padding: 10px;  
     background: #ffffff;  
-    border-radius: 8px ;  
+    border-radius: 8px ;
+    /* overflow: auto; */
 }
 
 
@@ -186,7 +193,7 @@ label{
 .userCenterTable {
     margin-left: auto;
     margin-right: auto;
-    width: 270px;
+    /* width: 270px; */
 }
 
 .createUserTable tr, .viewTable tr{
@@ -195,7 +202,6 @@ label{
 
 .createUserTable td, .viewTable td{
     padding: 5px;
-    /* border-bottom: 1px solid #ddd; */
 }
 
 .createUserTable th, .searchResultTable th, .viewTable th {
@@ -210,12 +216,57 @@ label{
     text-align: left;
 }
 
+#createUser_username { /* manage user account page: input field + 4 below */
+    width: 200px;  
+    height: 30px;  
+    border: 1px solid;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}
+
+#createUser_pwd {
+    width: 200px;  
+    height: 30px;  
+    border: 1px solid;  
+    border-radius: 3px;  
+    padding-left: 8px; 
+}
+
+#createUser_fname {
+    width: 200px;  
+    height: 30px;  
+    border: 1px solid;  
+    border-radius: 3px;  
+    padding-left: 8px; 
+}
+
+#createUser_lname {
+    width: 200px;  
+    height: 30px;  
+    border: 1px solid;  
+    border-radius: 3px;  
+    padding-left: 8px; 
+}
+
+#createUser_profile {
+    width: 213px;  
+    height: 30px;  
+    border: 1px solid;  
+    border-radius: 3px;  
+    padding-left: 8px; 
+}
+
 #createUser_profile, #viewUser_profile {
     float: left;
 }
 
-.searchResultTable {
-    width: 250px;
+.searchResultTable { /* manage user account page: grey hover width */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.searchResultTable tr:hover { /* manage user account page: grey hover */
+    background-color: rgb(203, 203, 203);
 }
 
 .searchResultTable tr {
@@ -223,20 +274,24 @@ label{
     text-align: left;
 }
 
-.searchResultTable tr:hover {
-    background-color: rgb(203, 203, 203);
-}
-
-#search_result {
-    /* display: none; */
+#search_result td {
+    /* display: none;
     margin-left: auto;
-    margin-right: auto;
-
+    margin-right: auto; */
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
 }
+
+#search_result tr:hover {background-color: #ddd;}
 
 #searchResult_header {
     text-align: center;
     pointer-events: none;
+    /* position: sticky;
+    top: 0;
+    background: #eee;
+    padding: 8px 20px; */
 }
 
  .btn {  /* Create button */
@@ -265,7 +320,15 @@ label{
 .profileCenterTable {
     margin-left: auto;
     margin-right: auto;
-    width: 290px;
+    /* width: 290px; */
+}
+
+.createProfileTable tr, .viewProfileTable tr{
+    height: 30px;
+}
+
+.createProfileTable td, .viewProfileTable td{
+    padding: 5px;
 }
 
 .createProfileTable th, .searchProfileTable th, .viewProfileTable th {
@@ -283,14 +346,35 @@ label{
     text-align: left;
 }
 
+#createProfile_name { /* manage user profile page: input field + 1 below */
+    width: 200px;  
+    height: 30px;  
+    border: 1px solid;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}
+
+#createProfile_status { 
+    width: 200px;  
+    height: 30px;  
+    border: 1px solid;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}
+
 .searchProfileTable {
-    margin-left: auto;
-    margin-right: auto;
-    width: 250px;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .searchProfileTable tr {
     height: 30px;
+    text-align: left;
+}
+
+#searchProfile_result td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
     text-align: left;
 }
 
