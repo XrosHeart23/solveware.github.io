@@ -179,7 +179,7 @@ label{
 
 .useradminarea{  
     width: 474px;  
-    height: 410px;
+    min-height: 410px;
     overflow: hidden;  
     margin: auto;    
     padding: 10px;  
