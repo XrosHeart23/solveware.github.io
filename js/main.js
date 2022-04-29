@@ -52,7 +52,7 @@ newAccountBtn.addEventListener("click", function (e) {
     displayProfileDropDown(createDropdown); // Display profile dropdown in create user
     Validation.resetCreateForm();
 
-    document.getElementById("createUser_form").style.display = "table";
+    document.getElementById("createusertable").style.display = "table";
     document.getElementById("search_result").style.display = "none";
     document.getElementById("view_user").style.display = "none";
 });
@@ -63,7 +63,7 @@ const searchForm = document.getElementById("search_form");
 searchForm.addEventListener("submit", async function (e) {
     e.preventDefault(); // Stop page from changing
     document.getElementById("search_result").style.display = "table";
-    document.getElementById("createUser_form").style.display = "none";
+    document.getElementById("createusertable").style.display = "none";
     document.getElementById("view_user").style.display = "none";
 
     const admin = new AdminUI();
@@ -92,7 +92,7 @@ searchForm.addEventListener("submit", async function (e) {
 
         tdUser.addEventListener("click", function (e) {
             document.getElementById("search_result").style.display = "none";
-            document.getElementById("createUser_form").style.display = "none";
+            document.getElementById("createusertable").style.display = "none";
             document.getElementById("view_user").style.display = "table";
 
             sessionStorage.setItem("currentViewUser", JSON.stringify(row));
@@ -354,7 +354,7 @@ newProfileBtn.addEventListener("click", function (e) {
     createProfileForm.reset();
     Validation.resetCreateProfileForm();
 
-    document.getElementById("createProfile_form").style.display = "table";
+    document.getElementById("createProfileTable").style.display = "table";
     document.getElementById("searchProfile_result").style.display = "none";
     document.getElementById("view_profile").style.display = "none";
 });
@@ -377,7 +377,7 @@ createProfileForm.addEventListener("submit", async function (e) {
 const searchProfileForm = document.getElementById("searchProfile_form");
 searchProfileForm.addEventListener("submit", async function (e) {
     e.preventDefault();
-    document.getElementById("createProfile_form").style.display = "none";
+    document.getElementById("createProfileTable").style.display = "none";
     document.getElementById("searchProfile_result").style.display = "table";
     document.getElementById("view_profile").style.display = "none";
 
@@ -406,7 +406,7 @@ searchProfileForm.addEventListener("submit", async function (e) {
         tdUser.setAttribute("class", "viewProfile_row");
 
         tdUser.addEventListener("click", function (e) {
-            document.getElementById("createProfile_form").style.display = "none";
+            document.getElementById("createProfileTable").style.display = "none";
             document.getElementById("searchProfile_result").style.display = "none";
             document.getElementById("view_profile").style.display = "table";
 
