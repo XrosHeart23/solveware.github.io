@@ -317,7 +317,7 @@ label{
 /* ======================= */
 
 /* PROFILE PAGE */
-.profileCenterTable {
+.profileCenterTable, .createProfileTable {
     margin-left: auto;
     margin-right: auto;
     /* width: 290px; */
