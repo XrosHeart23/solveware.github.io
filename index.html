@@ -7,8 +7,16 @@
     <title>Solveware</title>
 
     <link rel="stylesheet" href="style/main.css">
-    <script defer type="module" src="js/main.js"></script>
     <script type="text/javascript" src="js/include.js"></script>
+
+    <script>
+        window.addEventListener("load", function () {
+            let script = document.createElement("script");
+            script.type = "module";
+            script.src = "js/main.js";
+            document.head.appendChild(script);
+        });
+    </script>
 
 </head>
 <body onload="checkUser()">
