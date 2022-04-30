@@ -7,19 +7,11 @@
     <title>Solveware</title>
 
     <link rel="stylesheet" href="style/main.css">
+    <script defer type="module" src="js/main.js"></script>
     <script type="text/javascript" src="js/include.js"></script>
 
-    <script>
-        window.onload = function () {
-            let script = document.createElement("script");
-            script.type = "module";
-            script.src = "js/main.js";
-            document.head.appendChild(script);
-        };
-    </script>
-
 </head>
-<body onload="checkUser()">
+<body onload="checkUser(); loadJS();">
     <div class="topnav">
         <button class="tablink" onclick="openTab('menu', this)" id="defaultOpen">Menu</button>
         <button class="tablink" onclick="openTab('mngUsrAcct', this)" id="mngUsrAcctTab" style="display: none;width:200px">Manage User Account</button>
