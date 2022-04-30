@@ -216,7 +216,7 @@ label{
     text-align: left;
 }
 
-#createUser_username, #viewUser_name { /* manage user account page: input field + 4 below */
+#createUser_username { /* manage user account page: input field + 4 below */
     width: 200px;  
     height: 30px;  
     border: 1px solid;  
@@ -224,7 +224,7 @@ label{
     padding-left: 8px;  
 }
 
-#createUser_pwd, #viewUser_password {
+#createUser_pwd {
     width: 200px;  
     height: 30px;  
     border: 1px solid;  
@@ -232,7 +232,7 @@ label{
     padding-left: 8px; 
 }
 
-#createUser_fname, #viewUser_fname {
+#createUser_fname {
     width: 200px;  
     height: 30px;  
     border: 1px solid;  
@@ -240,7 +240,7 @@ label{
     padding-left: 8px; 
 }
 
-#createUser_lname, #viewUser_lname {
+#createUser_lname {
     width: 200px;  
     height: 30px;  
     border: 1px solid;  
@@ -248,7 +248,7 @@ label{
     padding-left: 8px; 
 }
 
-#createUser_profile, #viewUser_profile {
+#createUser_profile {
     width: 213px;  
     height: 30px;  
     border: 1px solid;  
@@ -347,7 +347,7 @@ label{
     text-align: left;
 }
 
-#createProfile_name, #viewProfile_name { /* manage user profile page: input field + 1 below */
+#createProfile_name { /* manage user profile page: input field + 1 below */
     width: 200px;  
     height: 30px;  
     border: 1px solid;  

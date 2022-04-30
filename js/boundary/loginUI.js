@@ -18,30 +18,16 @@ export class LoginUI {
     // Methods
     async loginUser() {
         let result;
-        let sysMsg;
         if (this.controller) {
             result = await this.controller.validateLogin();
         }
         
         if (result == 1)
-            sysMsg = "Login sucess";
+            return "Login sucess";
         else if (result == 0)
-            sysMsg = "Invalid username";
+            return "Invalid username";
         else if (result > 1 || !this.controller)
-            sysMsg = "Invalid username or password";
-
-        document.getElementById("loginUser_Out").innerHTML = sysMsg;
-
-        // Get user info
-        if (this.getLoginStatus) {
-            // Store user login info into browser session
-            sessionStorage.setItem("loginStatus", this.getLoginStatus);
-            for (const [key, value] of Object.entries(this.getUserInfo)) {
-                sessionStorage.setItem(key, value);
-            }
-
-            document.location.href="./index.html";
-        }
+            return "Invalid username or password";
     }
 
     // Get user info
