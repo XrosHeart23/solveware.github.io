@@ -4,7 +4,7 @@ export function checkLoginForm (form) {
     let usernameError = document.getElementById("usernameError")
     let passwordError = document.getElementById("passwordError")
 
-    if (!form.username.value) {
+    if (!form.username.value || form.username.value.trim() === "") {
         usernameError.innerHTML = "Please enter username";
         status = false;
     } else {
@@ -28,7 +28,7 @@ export function checkCreateUserForm (form) {
     let fnameError = document.getElementById("createFnameError");
     let lnameError = document.getElementById("createLnameError"); 
 
-    if (!form.username.value) {
+    if (!form.username.value || form.username.value.trim() === "") {
         usernameError.innerHTML = "Please enter username";
         status = false;
     } else {
@@ -74,7 +74,7 @@ export function checkUpdateForm (form, oldUserData) {
     let fnameError = document.getElementById("updateFnameError");
     let lnameError = document.getElementById("updateLnameError"); 
 
-    if (!form.username.value) {
+    if (!form.username.value || form.username.value.trim() === "") {
         usernameError.innerHTML = "Please enter username";
         status = false;
     } else {
@@ -142,7 +142,7 @@ export function checkCreateProfileForm (form) {
     let status = true;
     let prNameError = document.getElementById("createProfileError");
 
-    if (!form.profileName.value) {
+    if (!form.profileName.value || form.profileName.value.trim() === "") {
         status = false;
         prNameError.innerHTML = "Please enter profile name";
     }
@@ -159,8 +159,8 @@ export function resetCreateProfileForm() {
 
 export function checkUpdateProfileForm (form) {
     let status = true;
-    if (!form.profileName.value) {
-        document.getElementById("updateProfileNameError").innerHTML = "Please enter username";
+    if (!form.profileName.value || form.profileName.value.trim() === "") {
+        document.getElementById("updateProfileNameError").innerHTML = "Please enter profile name";
         status = false;
     } else {
         document.getElementById("updateProfileNameError").innerHTML = "";
