@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel = "stylesheet" href = "Menu.css">
+  <script type="text/javascript" src="Menu.js"></script>
+<script>
+</script>
+</head>
+<body>
+  <div id="menuItem_overlay" class="overlay">
+    <a class="closebtn" onclick="closeOverlay()">&times;</a>
+    <div class="overlay_content">
+      <div class="menuItem_overlayDisplay">
+        <div class="overlay_itemImage" id="overlay_itemImage"></div>
+        <div class="overlay_itemName" id="overlay_itemName"></div>
+        <div class="overlay_quantity">
+          <div class="overlay_itemPrice" id="overlay_itemPrice"></div>
+          <span class="overlay_minus" onclick="minus()">-</span>
+          <input class="overlay_quantityBox" id="overlay_quantityBox" type="text" value="1" readonly>
+          <span class="overlay_plus" onclick="plus()">+</span>
+          <button class="overlay_addToCart">Add To Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><br><br>
+  <div class="menu">    
+    <div class="menuCategory" id="appetizerMenu" onclick="collapseMenu('appetizerTable')"><h2>Appetizers</h2></div>
+    <table class="menuTable" id="appetizerTable">
+      <tr class="menuTable_row">
+        <td class="menuTable_item" onclick="openOverlay('appetizerImage_01','appetizeName_01','appetizePrice_01')">
+          <div class="itemImage" id="appetizerImage_01">Image - Appetizer 1</div>
+          <div class="itemName" id="appetizeName_01">Name - Appetizer 1</div>
+          <div class="itemPrice" id="appetizePrice_01">Price - Appetizer 1</div>
+        </td>
+        <td class="menuTable_item" onclick="openOverlay('appetizerImage_02','appetizeName_02','appetizePrice_02')">
+          <div class="itemImage" id="appetizerImage_02">Image - Appetizer 2</div>
+          <div class="itemName" id="appetizeName_02">Name - Appetizer 2</div>
+          <div class="itemPrice" id="appetizePrice_02">Price - Appetizer 2</div>
+        </td>
+        <td class="menuTable_item" onclick="openOverlay('appetizerImage_03','appetizeName_03','appetizePrice_03')">
+          <div class="itemImage" id="appetizerImage_03">Image - Appetizer 3</div>
+          <div class="itemName" id="appetizeName_03">Name - Appetizer 3</div>
+          <div class="itemPrice" id="appetizePrice_03">Price - Appetizer 3</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="menuTable_item" onclick="openOverlay('appetizerImage_04','appetizeName_04','appetizePrice_04')">
+          <div class="itemImage" id="appetizerImage_04">Image - Appetizer 4</div>
+          <div class="itemName" id="appetizeName_04">Name - Appetizer 4</div>
+          <div class="itemPrice" id="appetizePrice_04">Price - Appetizer 4</div>
+        </td>
+      </tr>
+    </table>
+      
+    <div class="menuCategory" id="soupMenu" onclick="collapseMenu('soupTable')"><h2>Soups</h2></div>
+    <table class="menuTable" id="soupTable">
+      <tr class="menuTable_row">
+        <td class="menuTable_item" onclick="openOverlay('soupImage_01','soupName_01','soupPrice_01')">
+          <div class="itemImage" id="soupImage_01">Image - Soup 1</div>
+          <div class="itemName" id="soupName_01">Name - Soup 1</div>
+          <div class="itemPrice" id="soupPrice_01">Price - Soup 1</div>
+        </td>
+        <td class="menuTable_item" onclick="openOverlay('soupImage_02','soupName_02','soupPrice_02')">
+          <div class="itemImage" id="soupImage_02">Image - Soup 2</div>
+          <div class="itemName" id="soupName_02">Name - Soup 2</div>
+          <div class="itemPrice" id="soupPrice_02">Price - Soup 2</div>
+        </td>
+      </tr>
+    </table>
+      
+    <div class="menuCategory" id="mainMenu" onclick="collapseMenu('mainTable')"><h2>Mains</h2></div>
+    <table class="menuTable" id="mainTable">
+      <tr class="menuTable_row">
+        <td class="menuTable_item" onclick="openOverlay('mainImage_01','mainName_01','mainPrice_01')">
+          <div class="itemImage" id="mainImage_01">Image - Main 1</div>
+          <div class="itemName" id="mainName_01">Name - Main 1</div>
+          <div class="itemPrice" id="mainPrice_01">Price - Main 1</div>
+        </td>
+        <td class="menuTable_item" onclick="openOverlay('mainImage_02','mainName_02','mainPrice_02')">
+          <div class="itemImage" id="mainImage_02">Image - Main 2</div>
+          <div class="itemName" id="mainName_02">Name - Main 2</div>
+          <div class="itemPrice" id="mainPrice_02">Price - Main 2</div>
+        </td>
+      </tr>
+    </table>  
+      
+    <div class="menuCategory" id="drinkMenu" onclick="collapseMenu('drinkTable')"><h2>Drinks</h2></div>
+    <table class="menuTable" id="drinkTable">
+      <tr class="menuTable_row">
+        <td class="menuTable_item" onclick="openOverlay('drinkImage_01','drinkName_01','drinkPrice_01')">
+          <div class="itemImage" id="drinkImage_01">Image - Drink 1</div>
+          <div class="itemName" id="drinkName_01">Name - Drink 1</div>
+          <div class="itemPrice" id="drinkPrice_01">Price - Drink 1</div>
+        </td>
+        <td class="menuTable_item" onclick="openOverlay('drinkImage_02','drinkName_02','drinkPrice_02')">
+          <div class="itemImage" id="drinkImage_02">Image - Drink 2</div>
+          <div class="itemName" id="drinkName_02">Name - Drink 2</div>
+          <div class="itemPrice" id="drinkPrice_02">Price - Drink 2</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+<script>
+</script>
+</body>
+</html>
