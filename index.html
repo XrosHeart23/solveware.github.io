@@ -7,18 +7,17 @@
     <title>Solveware</title>
 
     <link rel="stylesheet" href="style/main.css">
-    <script defer type="module" src="js/main.js"></script>
-    <script type="text/javascript" src="js/include.js"></script>
-
 </head>
-<body onload="checkUser(); loadJS();">
+<body onload="checkUser();">
     <div class="topnav">
         <button class="tablink" onclick="openTab('menu', this)" id="defaultOpen">Menu</button>
         <button class="tablink" onclick="openTab('mngUsrAcct', this)" id="mngUsrAcctTab" style="display: none;width:200px">Manage User Account</button>
         <button class="tablink" onclick="openTab('mngUsrPrf', this)" id="mngUsrPrfTab" style="display: none; width:200px">Manage User Profile</button>
         <button class="tablink" onclick="loginLogout()" id="loginTab" style="float:right">Login</button>
+        <button class="tablink" onclick="openTab('cart', this)" id="cartTab" style="float:right">Cart <i class='fas fa-shopping-cart'></i></button>
+        <button class="tablink" onclick="openTab('userTab', this)" id="userTab" style="float:right; width:200px; display: none;">User profile</button>
+        
     </div>
-
     <div id="menu" class="tabcontent">
         <div include-html="menu.html"></div> 
     </div>
@@ -35,10 +34,36 @@
         <div include-html="manageUserProfile.html"></div> 
     </div>
 
-<script>
-    // Get the element with id="defaultOpen" and click on it
-    // document.getElementById("defaultOpen").click();
-    includeHTML();
-</script>
+    <div id="cart" class="tabcontent">
+        <div include-html="cart.html"></div> 
+    </div>
+
+    <div id="payment" class="tabcontent">
+        <div include-html="payment.html"></div> 
+    </div>
+
 </body>
+<footer>
+    <script type="text/javascript" src="js/include.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script src="https://kit.fontawesome.com/09cf2947bd.js" crossorigin="anonymous"></script>
+    <script>
+        includeHTML();
+    </script>
+    <!-- <script defer type="module" src="js/main.js"></script> -->
+    <script>
+        // Delay loading of main.js
+        // Allow html to load before any js with listener to be loaded
+        setTimeout(loadJS, 100);
+
+        function loadJS() {
+            let footerTag = document.getElementsByTagName("footer")[0];
+            let script = document.createElement("script");
+            script.setAttribute("type", "module")
+            script.setAttribute("src", "js/main.js");
+
+            footerTag.appendChild(script);
+        }
+    </script>
+</footer>
 </html>
