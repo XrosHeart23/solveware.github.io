@@ -479,6 +479,7 @@ paymentForm.addEventListener("submit", async function (e) {
         await order.createOrder(paymentForm);
         sessionStorage.removeItem("cartOrder");
         document.location.href = "./index.html";
+        alert("Payment success");
     }
         
     // TODO: Include a popup that say payment successful
