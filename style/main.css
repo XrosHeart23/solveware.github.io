@@ -55,16 +55,6 @@ body {
     padding: 50px;
     text-align: center;
 }
-  
-.menu{  
-    width: 400px;  
-    overflow: hidden;  
-    margin: auto;  
-    margin: 20 0 0 450px;  
-    padding: 40px;  
-    background: #23463f;  
-    border-radius: 15px ;  
-}  
 
 .login{  
     width: 400px;  
@@ -395,5 +385,171 @@ label{
     font-size: 12px;
     color: red;
     text-align: left;
+}
+/* ======================= */
+
+/* ======== MENU ========= */
+.menu{  
+    width: 750px;  
+    overflow: hidden;  
+    margin-left: auto;  
+    margin-right: auto;
+    /* margin: 20 0 0 450px;   */
+    padding: 10px;
+    border-color: #333;
+    border-style: solid;  
+    border-radius: 10px;
+}  
+
+.menuTable {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 30px 25px;
+}
+
+.menuTable tr > td {
+    border: 1px solid black;
+    padding: 5px;
+    height: 145px;
+}
+
+.menuTable tr > td:hover {
+    background-color: rgb(203, 203, 203);
+}
+
+.menuTable th {
+    text-align: left;
+    font-size: 24px;
+    text-decoration: underline;
+    /* padding-left: 10px; */
+    border: 1px solid black;
+}
+
+.menuTable td {
+    width: 160px;
+}
+
+.menuTable .itemImage {
+    height: 50%;
+    margin-bottom: 5px;
+    border: 1px solid black;
+}
+.menuTable .itemName {
+    padding: 5px;
+    border: 1px solid black; /* remove later */
+}
+.menuTable .itemPrice {
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid black; /* remove later */
+}
+
+/* ======================= */
+
+
+/* ======== CART ========= */
+.cart {  
+    width: 500px;  
+    overflow: hidden;  
+    margin: auto;
+    padding: 20px 10px 20px 10px;
+    border-color: #333;
+    border-style: solid;  
+    border-radius: 10px;
+    min-height: 500px;
+}
+
+.cartTable {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black; /* remove later */
+    width: 100%;
+}
+
+.cartTable th {
+    font-size: 24px;
+}
+
+.cartTable tr > td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.cartTable .itemName{
+    width: 50%;
+    text-align: left;
+}
+
+.cartTable .itemPrice{
+    width: 25%;
+}
+
+.cartTable .itemRemove{
+    width: 5%;
+}
+
+.cartTable .itemTotalPriceLabel{
+    text-align: right;
+}
+
+.cartPayment {
+    margin-top: 10px;
+    width: 300px;  
+    height: 35px;  
+    border: 1px solid;  
+    border-radius: 3px;  
+    padding-left: 7px;  
+    color: black;
+    cursor: pointer;
+}
+
+/* ======================= */
+
+
+/* ======= PAYMENT ======== */
+.payment{  
+    width: 400px;  
+    overflow: hidden;  
+    margin: auto;
+    padding: 20px 40px 40px 40px;
+    border-color: #333;
+    border-style: solid;  
+    border-radius: 10px;
+}
+
+#payment_form {
+    width: 310px;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+.paymentFormLabel {
+    float:left;
+}
+
+.paymentFormErr {
+    float:left;
+    color:red;
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+#payment_phoneNumber, #payment_cc, #payment_totalPrice{  /* Payment page - Input field */
+    width: 300px;  
+    height: 30px;  
+    border: 1px solid;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}
+
+#cartPayment{  
+    width: 300px;  
+    height: 35px;  
+    border: 1px solid;  
+    border-radius: 3px;  
+    padding-left: 7px;  
+    color: black;
+    cursor: pointer;
 }
 /* ======================= */

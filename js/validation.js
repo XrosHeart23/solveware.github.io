@@ -168,3 +168,38 @@ export function checkUpdateProfileForm (form) {
     
     return status;
 }
+
+
+export function checkPaymentForm (form) {
+    let status = true;
+    let phoneNumberErr = document.getElementById("phoneNumberError");
+    let ccErr = document.getElementById("ccError");
+    
+    console.log("here?")
+
+    if (form.phoneNumber.value.trim() == "" || !form.phoneNumber.value) {
+        phoneNumberErr.innerHTML = "Please enter phone number";
+        status = false;
+    }
+    else if (!(/^[89]{1}\d{7}$/.test(form.phoneNumber.value))) {
+        phoneNumberErr.innerHTML = "Phone number must have 8 digit and starts with either 8 or 9";
+        status = false;
+    }
+    else {
+        phoneNumberErr.innerHTML = "";
+    }
+
+    if (form.creditCard.value.trim() == "" || !form.creditCard.value) {
+        ccErr.innerHTML = "Please enter credit card";
+        status = false;
+    }
+    else if (!(/^\d{16}$/.test(form.creditCard.value))) {
+        ccErr.innerHTML = "Credit card must have 16 digit";
+        status = false;
+    }
+    else {
+        ccErr.innerHTML = "";
+    }
+
+    return status;
+}

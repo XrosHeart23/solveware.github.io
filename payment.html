@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://kit.fontawesome.com/09cf2947bd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <br><br><br><br>
+    <div class="payment">
+    <form id="payment_form" name="your_payment" method="post">    
+        <h1>Payment</h1>
+        <label class="paymentFormLabel">
+            <b>Handphone Number:</b>
+        </label>
+        <input type="number" name="phoneNumber" id="payment_phoneNumber" placeholder="Enter phone number">
+        <br>
+        <span class="paymentFormErr" id="phoneNumberError"></span>    
+        
+        <br><br>
+        
+        <label class="paymentFormLabel">
+            <b>Credit Card Number: </b>
+        </label>    
+        <input type="number" name="creditCard" id="payment_cc" placeholder="Enter credit card number">
+        <br>
+        <span class="paymentFormErr" id="ccError"></span>
+
+        <br><br>
+
+        <label class="paymentFormLabel">
+            <b>Total Payable: </b>
+        </label>    
+        <input type="number" name="totalPrice" id="payment_totalPrice" readOnly>
+        <br>
+        <span class="paymentFormErr" id="ccError"></span>
+
+        <br><br>
+
+        <input type="submit" value="Confirm payment" class="cartPayment" id="cartPayment">
+    </form>
+    </div>
+</body>
+</html>
