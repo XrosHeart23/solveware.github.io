@@ -188,20 +188,25 @@ body {
   cursor: pointer;
 }
 
+.menuTable_item:hover{
+  background-color:#333;
+}
+
 .itemImage{
   height: 170px;
   width: 170px;
   border: solid #333;
   margin-bottom: 5px;
-  
+  background-color:#F6F0EE;  
 }
 
 .itemName{
   border: solid #333;
   margin-bottom: 5px;
+  background-color:#F6F0EE;  
 }
 
 .itemPrice{
   border: solid #333;
+  background-color:#F6F0EE;  
 }
-
