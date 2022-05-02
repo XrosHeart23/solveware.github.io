@@ -174,8 +174,6 @@ export function checkPaymentForm (form) {
     let status = true;
     let phoneNumberErr = document.getElementById("phoneNumberError");
     let ccErr = document.getElementById("ccError");
-    
-    console.log("here?")
 
     if (form.phoneNumber.value.trim() == "" || !form.phoneNumber.value) {
         phoneNumberErr.innerHTML = "Please enter phone number";

@@ -45,15 +45,16 @@
 </body>
 <footer>
     <script type="text/javascript" src="js/include.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
     <script src="https://kit.fontawesome.com/09cf2947bd.js" crossorigin="anonymous"></script>
     <script>
         includeHTML();
     </script>
-    <script defer type="module" src="js/main.js"></script>
+    <!-- <script defer type="module" src="js/main.js"></script> -->
     <script>
-        // Delay loading of main.js by 1second
+        // Delay loading of main.js
         // Allow html to load before any js with listener to be loaded
-        setTimeout(loadJS, 3000);
+        setTimeout(loadJS, 100);
 
         function loadJS() {
             let footerTag = document.getElementsByTagName("footer")[0];

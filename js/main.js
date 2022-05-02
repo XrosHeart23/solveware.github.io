@@ -4,6 +4,10 @@ import { MenuUI } from "./boundary/menuUI.js";
 import { OrdersUI } from "./boundary/ordersUI.js";
 import * as Validation from "./validation.js";
 
+// Global config
+let MAX_ORDER_QUANTITY = 10;
+
+
 // Add event listener for login click button
 const loginForm = document.getElementById("login_form");
 loginForm.addEventListener("submit", async function (e) {
@@ -215,6 +219,7 @@ document.getElementById("defaultOpen").click();
 
 async function displayMenuTable() {
     const menuTable = document.getElementById("menu_table");
+    menuTable.innerHTML = "";
 
     const menu = new MenuUI();
     let categories = await menu.getMenuCat();
@@ -265,15 +270,57 @@ async function displayMenuTable() {
 
                 // Temporary listener to add item to cart
                 itemTd.addEventListener("click", function (e) {
-                    let cartOrder = (sessionStorage.getItem("cartOrder") != null) ? JSON.parse(sessionStorage.getItem("cartOrder")) : {};
+                    openOverlay(items);
+                    const addToCartBtn = document.getElementById("overlay_addToCart");
+                    addToCartBtn.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        let cartOrder = (sessionStorage.getItem("cartOrder") != null) ? JSON.parse(sessionStorage.getItem("cartOrder")) : {};
+                        
+                        let quantityOrdered = Number(document.getElementById("overlay_quantity").value);
+                        if (items.id in cartOrder) {
+                            if ((cartOrder[items.id] + quantityOrdered) > MAX_ORDER_QUANTITY)
+                                cartOrder[items.id] = MAX_ORDER_QUANTITY;
+                            else
+                                cartOrder[items.id] = cartOrder[items.id] + quantityOrdered;
+                        }
+                        else {
+                            cartOrder[items.id] = quantityOrdered;
+                        }
 
-                    cartOrder[items.id] = (items.id in cartOrder) ? cartOrder[items.id] + 1 : 1;
-                    sessionStorage.setItem("cartOrder", JSON.stringify(cartOrder));
+                        sessionStorage.setItem("cartOrder", JSON.stringify(cartOrder));
+                        document.getElementById("overlay_closeBtn").click();
+                    }, {once : true});
                 });
             }
         });
     });
 }
+
+// Close overlay
+const closeOverlayBtn = document.getElementById("overlay_closeBtn");
+closeOverlayBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.getElementById("menuItem_overlay").style.height = "0%";
+    document.getElementById("overlay_quantity").value = 1;
+});
+
+function openOverlay(items) {
+    document.getElementById("overlay_itemImage").innerHTML = items.itemImage;
+    document.getElementById("overlay_itemName").innerHTML = items.itemName;
+    document.getElementById("overlay_itemPrice").innerHTML = "$" + items.itemPrice.toFixed(2);
+    document.getElementById("menuItem_overlay").style.height = "100%";
+}
+
+const overlayMinusBtn = document.getElementById("overlay_minus");
+overlayMinusBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    minus("overlay_quantity");
+});
+const overlayPlusBtn = document.getElementById("overlay_plus");
+overlayPlusBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    plus("overlay_quantity");
+});
 
 // ====== End of Menu functions =======
 
@@ -283,17 +330,23 @@ async function displayMenuTable() {
 const cartBtn = document.getElementById("cartTab");
 cartBtn.addEventListener("click", async function(e) {
     e.preventDefault();
-
     displayCart();
 });
 
 const cartForm = document.getElementById("cart_form");
 cartForm.addEventListener("submit", async function (e) {
     e.preventDefault();
-    document.getElementById("cart").style.display = "none";
-    document.getElementById("payment").style.display = "block";
+    let cartOrder = (sessionStorage.getItem("cartOrder") == null) ? {} : JSON.parse(sessionStorage.getItem("cartOrder"));
+    if (Object.keys(cartOrder).length > 0) {
+        document.getElementById("cartErr").innerHTML = "";
+        document.getElementById("cart").style.display = "none";
+        document.getElementById("payment").style.display = "block";
 
-    document.getElementById("payment_totalPrice").setAttribute("value", cartForm.totalPrice.value);
+        document.getElementById("payment_totalPrice").setAttribute("value", cartForm.totalPrice.value);
+    }
+    else {
+        document.getElementById("cartErr").innerHTML = "Please add item to cart before making payment"
+    }
 });
 
 // Display cart function
@@ -324,7 +377,27 @@ function displayCart() {
     
             const quantityTd = itemRow.insertCell();
             quantityTd.setAttribute("class", "itemQuantity");
-            quantityTd.innerHTML = value;
+            
+            const minusDiv = document.createElement("span");
+            minusDiv.setAttribute("class", "cartMinus");
+            minusDiv.setAttribute("id", item.id);
+            minusDiv.innerHTML = "&minus;";
+            
+            const quantityDiv = document.createElement("input");
+            quantityDiv.setAttribute("class", "cartQuantity");
+            quantityDiv.setAttribute("id", "cartQuantity" + item.id);
+            quantityDiv.setAttribute("name", "cartQuantity");
+            quantityDiv.setAttribute("value", value);
+            quantityDiv.readOnly = true;
+
+            const plusDiv = document.createElement("span");
+            plusDiv.setAttribute("class", "cartPlus");
+            plusDiv.setAttribute("id", item.id);
+            plusDiv.innerHTML = "&#43;";
+            
+            quantityTd.appendChild(minusDiv);
+            quantityTd.appendChild(quantityDiv);
+            quantityTd.appendChild(plusDiv);
     
             const removeTd = itemRow.insertCell();
             removeTd.setAttribute("class", "itemRemove");
@@ -359,6 +432,36 @@ function displayCart() {
             })
         });
     }
+
+    const cartMinusBtn = document.getElementsByClassName("cartMinus");
+    Array.from(cartMinusBtn).forEach((btn) => {
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            console.log(btn.id);
+            minus("cartQuantity", "cart", btn.id);
+            updateCart(btn.id);
+        });
+    });
+    const cartPlusBtn = document.getElementsByClassName("cartPlus");
+    Array.from(cartPlusBtn).forEach((btn) => {
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            console.log(btn.id);
+            plus("cartQuantity", "cart", btn.id);
+            updateCart(btn.id);
+        });
+    });
+}
+
+function updateCart(itemId) {
+    let cart = JSON.parse(sessionStorage.getItem("cartOrder"));
+    
+    if (Number(document.getElementById("cartQuantity" + itemId).value) != 0) {
+        cart[itemId] = Number(document.getElementById("cartQuantity" + itemId).value);
+        sessionStorage.setItem("cartOrder", JSON.stringify(cart));
+    }
+
+    displayCart();
 }
 
 // ====== End of Cart functions =======
@@ -387,9 +490,42 @@ paymentForm.addEventListener("submit", async function (e) {
 // ====== Time tracking function ======
 // !!!!DO NOT TOUCH!!!!
 window.timeSpent = 0;
-window.onload = function () {
-    window.timer = setInterval(function () {
-        timeSpent += 1;
-    }, 1000)
-}
+window.timer = setInterval(function () {
+    timeSpent += 1;
+    // console.log("Timespent : " + timeSpent);
+}, 1000);
 // ==== End of trackiong functions ====
+
+// ======= Plus and minus function to add quantity =======
+function minus(quantityId, form = "overlay", itemId = "") {
+    let quantity;
+    let id = (form === "overlay") ? quantityId : quantityId + itemId;
+
+    quantity = Number(document.getElementById(id).value) - 1;
+
+    if (quantity < 1 && form === "overlay") {
+        quantity = 1;
+    }
+    else {
+        if (quantity == 0) {
+            let cart = JSON.parse(sessionStorage.getItem("cartOrder"));
+            delete cart[itemId];
+            sessionStorage.setItem("cartOrder", JSON.stringify(cart));
+        }
+    }
+    document.getElementById(id).value = quantity;
+   
+}
+
+function plus(quantityId, form = "overlay", itemId = "") { // need to have a config setting for quantity limit
+    let quantity;
+    let id = (form === "overlay") ? quantityId : quantityId + itemId;
+
+    quantity = Number(document.getElementById(id).value) + 1;
+
+    if (quantity > MAX_ORDER_QUANTITY)
+        quantity = MAX_ORDER_QUANTITY;
+
+    document.getElementById(id).value = quantity;
+}
+// =======================================================

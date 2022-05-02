@@ -1,18 +1,18 @@
 body {
-    margin: 0;  
-    padding: 0;  
-    background-color:#F6F0EE;  
+    margin: 0;
+    padding: 0;
+    background-color: #f6f0ee;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .topnav {
     background-color: #333;
-    overflow: hidden;  
+    overflow: hidden;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
 }
-  
+
 /* Style tab links */
 .tablink {
     background-color: #333;
@@ -27,7 +27,7 @@ body {
 }
 
 .tablink:hover {
-    background-color: #7F7D7D;
+    background-color: #7f7d7d;
 }
 
 .innertab {
@@ -39,15 +39,15 @@ body {
     cursor: pointer;
     padding: 10px 14px;
     font-size: 15px;
-    width:160px; 
-    border-radius:10px; 
+    width: 160px;
+    border-radius: 10px;
     height: 50px;
 }
-  
+
 .innertab:hover {
-    background-color: #7F7D7D;
-} 
-  
+    background-color: #7f7d7d;
+}
+
 /* Style the tab content */
 .tabcontent {
     color: rgb(0, 0, 0);
@@ -56,25 +56,25 @@ body {
     text-align: center;
 }
 
-.login{  
-    width: 400px;  
-    overflow: hidden;  
+.login {
+    width: 400px;
+    overflow: hidden;
     margin: auto;
-    padding: 40px;  
+    padding: 40px;
     border-color: #333;
-    border-style: solid;  
+    border-style: solid;
     border-radius: 10px;
-}  
-
-h2{  
-    text-align: center;  
-    color: black;  
 }
 
-label{  
-    color: black;  
+h2 {
+    text-align: center;
+    color: black;
+}
+
+label {
+    color: black;
     font-size: 17px;
-    padding: 5px;  
+    padding: 5px;
 }
 
 #login_form {
@@ -84,12 +84,12 @@ label{
 }
 
 .loginFormLabel {
-    float:left;
+    float: left;
 }
 
 .loginFormErr {
-    float:left;
-    color:red;
+    float: left;
+    color: red;
     padding-top: 5px;
     font-size: 12px;
 }
@@ -98,36 +98,39 @@ label{
     float: none;
 }
 
-#login_username{  /* Login page - Input field */
-    width: 300px;  
-    height: 30px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 8px;  
+#login_username {
+    /* Login page - Input field */
+    width: 300px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
 }
 
-#login_pwd{  /* Login page - Input field */
-    width: 300px;  
-    height: 30px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 8px;   
-}  
+#login_pwd {
+    /* Login page - Input field */
+    width: 300px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+}
 
-#login_profile{  /* Login page - dropdown box */
-    width: 314px;  
-    height: 30px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 8px;   
-}  
+#login_profile {
+    /* Login page - dropdown box */
+    width: 314px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+}
 
-#login_btn{  
-    width: 300px;  
-    height: 35px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 7px;  
+#login_btn {
+    width: 300px;
+    height: 35px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 7px;
     color: black;
     cursor: pointer;
 }
@@ -149,114 +152,128 @@ label{
     cursor: pointer;
 }
 
-#search_btn:hover{
+#search_btn:hover {
     background-color: black;
-    color:white;
+    color: white;
 }
 
-.useradminmenu{  
-    width: 500px;  
+.useradminmenu {
+    width: 500px;
     min-height: 500px;
-    overflow: hidden;  
-    margin: auto;  
-    margin: 20 0 0 450px;  
-    padding: 16px;  
+    overflow: hidden;
+    margin: auto;
+    margin: 20 0 0 450px;
+    padding: 16px;
     border-color: #333;
     box-shadow: 4px 2px #888888;
     border-style: solid;
-    border-radius: 10px; 
+    border-radius: 10px;
 }
 
-.useradminarea{  
-    width: 474px;  
+.useradminarea {
+    width: 474px;
     min-height: 410px;
-    overflow: hidden;  
-    margin: auto;    
-    padding: 10px;  
-    background: #ffffff;  
-    border-radius: 8px ;
+    overflow: hidden;
+    margin: auto;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 8px;
     /* overflow: auto; */
 }
 
-
 /* USER PAGE */
-.createUserTable, .viewTable {
+.createUserTable,
+.viewTable {
     margin-left: auto;
     margin-right: auto;
     width: 70%;
 }
 
-.createUserTable tr, .viewTable tr{
+.createUserTable tr,
+.viewTable tr {
     height: 30px;
 }
 
-.createUserTable td, .viewTable td{
+.createUserTable td,
+.viewTable td {
     padding: 5px;
 }
 
-.createUserTable th, .searchResultTable th, .viewTable th {
+.createUserTable th,
+.searchResultTable th,
+.viewTable th {
     font-size: 28px;
     padding: 5px;
 }
 
-.createUserTable .errorRow, .viewTable .errorRow {
+.createUserTable .errorRow,
+.viewTable .errorRow {
     height: 16px;
     font-size: 12px;
     color: red;
     text-align: left;
 }
 
-#createUser_username, #viewUser_name { /* manage user account page: input field + 4 below */
-    width: 200px;  
-    height: 30px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 8px;  
+#createUser_username,
+#viewUser_name {
+    /* manage user account page: input field + 4 below */
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
 }
 
-#createUser_pwd, #viewUser_password {
-    width: 200px;  
-    height: 30px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 8px; 
+#createUser_pwd,
+#viewUser_password {
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
 }
 
-#createUser_fname, #viewUser_fname {
-    width: 200px;  
-    height: 30px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 8px; 
+#createUser_fname,
+#viewUser_fname {
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
 }
 
-#createUser_lname, #viewUser_lname {
-    width: 200px;  
-    height: 30px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 8px; 
+#createUser_lname,
+#viewUser_lname {
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
 }
 
-#createUser_profile, #viewUser_profile {
-    width: 213px;  
-    height: 30px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 8px; 
+#createUser_profile,
+#viewUser_profile {
+    width: 213px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
 }
 
-#createUser_profile, #viewUser_profile {
+#createUser_profile,
+#viewUser_profile {
     float: left;
 }
 
-.searchResultTable { /* manage user account page: grey hover width */
+.searchResultTable {
+    /* manage user account page: grey hover width */
     margin-left: auto;
     margin-right: auto;
     width: 70%;
 }
 
-.searchResultTable tr:hover { /* manage user account page: grey hover */
+.searchResultTable tr:hover {
+    /* manage user account page: grey hover */
     background-color: rgb(203, 203, 203);
 }
 
@@ -274,7 +291,9 @@ label{
     text-align: left;
 }
 
-#search_result tr:hover {background-color: #ddd;}
+#search_result tr:hover {
+    background-color: #ddd;
+}
 
 #searchResult_header {
     text-align: center;
@@ -285,7 +304,8 @@ label{
     padding: 8px 20px; */
 }
 
- .btn {  /* Create button */
+.btn {
+    /* Create button */
     width: 250px;
     border: 2px solid black;
     background-color: white;
@@ -294,35 +314,41 @@ label{
     font-size: 14px;
     cursor: pointer;
     border-radius: 5px;
-  }
+}
 
-    /* Gray */
-    .default {
+/* Gray */
+.default {
     border-color: #ddd;
     color: black;
-    }
-  
-    .default:hover {
-        background: #ddd;
-    }
+}
+
+.default:hover {
+    background: #ddd;
+}
 /* ======================= */
 
 /* PROFILE PAGE */
-.profileCenterTable, .createProfileTable, .viewProfileTable {
+.profileCenterTable,
+.createProfileTable,
+.viewProfileTable {
     margin-left: auto;
     margin-right: auto;
     /* width: 290px; */
 }
 
-.createProfileTable tr, .viewProfileTable tr{
+.createProfileTable tr,
+.viewProfileTable tr {
     height: 30px;
 }
 
-.createProfileTable td, .viewProfileTable td{
+.createProfileTable td,
+.viewProfileTable td {
     padding: 5px;
 }
 
-.createProfileTable th, .searchProfileTable th, .viewProfileTable th {
+.createProfileTable th,
+.searchProfileTable th,
+.viewProfileTable th {
     font-size: 28px;
 }
 
@@ -337,20 +363,22 @@ label{
     text-align: left;
 }
 
-#createProfile_name, #viewProfile_name { /* manage user profile page: input field + 1 below */
-    width: 200px;  
-    height: 30px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 8px;  
+#createProfile_name,
+#viewProfile_name {
+    /* manage user profile page: input field + 1 below */
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
 }
 
-#createProfile_status { 
-    width: 200px;  
-    height: 30px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 8px;  
+#createProfile_status {
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
 }
 
 .searchProfileTable {
@@ -380,7 +408,7 @@ label{
     pointer-events: none;
 }
 
-.viewProfileTable .errorRow{
+.viewProfileTable .errorRow {
     height: 16px;
     font-size: 12px;
     color: red;
@@ -389,17 +417,17 @@ label{
 /* ======================= */
 
 /* ======== MENU ========= */
-.menu{  
-    width: 750px;  
-    overflow: hidden;  
-    margin-left: auto;  
+.menu {
+    width: 750px;
+    overflow: hidden;
+    margin-left: auto;
     margin-right: auto;
     /* margin: 20 0 0 450px;   */
     padding: 10px;
     border-color: #333;
-    border-style: solid;  
+    border-style: solid;
     border-radius: 10px;
-}  
+}
 
 .menuTable {
     width: 80%;
@@ -447,15 +475,135 @@ label{
 
 /* ======================= */
 
+/* ==== MENU OVERLAY ===== */
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.overlay_content {
+    position: relative;
+    top: 10%;
+    width: 70%;
+    text-align: center;
+    background: #f6f0ee;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overlay .closebtn:hover, .overlay .closebtn:focus {
+    color: #8e8e8e;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    color: #f6f0ee;
+    cursor: pointer;
+}
+
+.overlay_content table {
+    width: 100%;
+    border-spacing: 10px;
+}
+
+.menuItem_overlayDisplay {
+    margin: auto;
+    width: 600px;
+    height: 600px;
+    background: #f6f0ee;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.overlay_itemImage {
+    border: solid #333;
+    height: 450px;
+    width: 450px;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.overlay_itemName {
+    border: solid #333;
+    height: 25px;
+    width: 450px;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: -25px;
+}
+
+.overlay_btmRow {
+    margin: 50px;
+}
+
+.overlay_itemPrice{
+    border: solid #333;
+    height: 35px;
+    width: 20%;
+    margin-bottom: 15px;
+    margin-right: 50px;
+}
+  
+.overlay_quantityBox {
+    text-align: center;
+    width: 60%;
+}
+
+.overlay_minus, .overlay_plus {
+    font-size: 20px;
+    background: #f2f2f2;
+    border-radius: 4px;
+    padding: 10px 15px 10px 15px;
+    border: 1px solid rgb(0, 0, 0);
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+}
+
+.overlay_quantity {
+    height: 34px;
+    width: 100px;
+    text-align: center;
+    font-size: 26px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overlay_addToCart {
+    border-radius: 5px;
+    height: 45px;
+    width: 20%;
+    border: 1px solid rgb(255, 255, 255);
+    font-weight: bold;
+    color: white;
+    background-color: #333;
+    cursor: pointer;
+}
+/* ======================= */
 
 /* ======== CART ========= */
-.cart {  
-    width: 500px;  
-    overflow: hidden;  
+.cart {
+    width: 500px;
+    overflow: hidden;
     margin: auto;
     padding: 20px 10px 20px 10px;
     border-color: #333;
-    border-style: solid;  
+    border-style: solid;
     border-radius: 10px;
     min-height: 500px;
 }
@@ -476,45 +624,69 @@ label{
     padding: 5px;
 }
 
-.cartTable .itemName{
+.cartTable .itemName {
     width: 50%;
     text-align: left;
 }
 
-.cartTable .itemPrice{
+.cartTable .itemPrice {
     width: 25%;
 }
 
-.cartTable .itemRemove{
+.cartTable .itemQuantity .cartQuantity {
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 15px;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+}
+
+.cartTable .itemQuantity .cartMinus, .cartTable .itemQuantity .cartPlus {
+    border: 1px solid black;
+    padding: 0px 5px 0px 5px;
+}
+
+.cartTable .itemQuantity .cartMinus:hover, .cartTable .itemQuantity .cartPlus:hover {
+    background-color: rgb(203, 203, 203);
+}
+
+.cartTable .itemRemove {
     width: 5%;
 }
 
-.cartTable .itemTotalPriceLabel{
+.cartTable .itemTotalPriceLabel {
     text-align: right;
 }
 
 .cartPayment {
     margin-top: 10px;
-    width: 300px;  
-    height: 35px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 7px;  
+    width: 300px;
+    height: 35px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 7px;
     color: black;
     cursor: pointer;
 }
 
+.cartFormErr {
+    color: red;
+    padding-top: 5px;
+    font-size: 12px;
+}
+
 /* ======================= */
 
-
 /* ======= PAYMENT ======== */
-.payment{  
-    width: 400px;  
-    overflow: hidden;  
+.payment {
+    width: 400px;
+    overflow: hidden;
     margin: auto;
     padding: 20px 40px 40px 40px;
     border-color: #333;
-    border-style: solid;  
+    border-style: solid;
     border-radius: 10px;
 }
 
@@ -525,30 +697,33 @@ label{
 }
 
 .paymentFormLabel {
-    float:left;
+    float: left;
 }
 
 .paymentFormErr {
-    float:left;
-    color:red;
+    float: left;
+    color: red;
     padding-top: 5px;
     font-size: 12px;
 }
 
-#payment_phoneNumber, #payment_cc, #payment_totalPrice{  /* Payment page - Input field */
-    width: 300px;  
-    height: 30px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 8px;  
+#payment_phoneNumber,
+#payment_cc,
+#payment_totalPrice {
+    /* Payment page - Input field */
+    width: 300px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
 }
 
-#cartPayment{  
-    width: 300px;  
-    height: 35px;  
-    border: 1px solid;  
-    border-radius: 3px;  
-    padding-left: 7px;  
+#cartPayment {
+    width: 300px;
+    height: 35px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 7px;
     color: black;
     cursor: pointer;
 }

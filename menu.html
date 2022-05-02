@@ -3,6 +3,29 @@
 <head>
 </head>
 <body>
+    <div id="menuItem_overlay" class="overlay">
+        <div class="closebtn" id="overlay_closeBtn">&times;</div>
+        <div class="overlay_content">
+            <table>
+                <tr class="imageRow">
+                    <td colspan="3" class="overlay_itemImage" id="overlay_itemImage"></td>
+                </tr>
+                <tr class="nameRow">
+                    <td colspan="3" class="overlay_itemName" id="overlay_itemName"></td>
+                </tr>
+                <tr class="orderItemRow">
+                    <td class="overlay_itemPrice" id="overlay_itemPrice"></td>
+                    <td class="overlay_itemQuantityBox" id="overlay_itemQuantityBox">
+                        <span class="overlay_minus" id="overlay_minus">&minus;</span>
+                        <input class="overlay_quantity" id="overlay_quantity" type="text" value="1" readonly>
+                        <span class="overlay_plus" id="overlay_plus">&#43;</span>
+                    </td>
+                    <td class="overlay_addToCart" id="overlay_addToCart">Add To Cart</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
     <h1>Menu</h1>
     <div class="menu" id="menuDiv">    
         <table class="menuTable" id="menu_table">
