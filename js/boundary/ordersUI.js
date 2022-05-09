@@ -22,7 +22,7 @@ export class OrdersUI {
             let phoneNumber = (form != null) ? form.phoneNumber.value : "";
             searchResult = await this.ordersController.doSearchOrder(phoneNumber, searchData);
         }
-        else if (searchData == "orderId"){
+        else if (searchData === "orderId"){
             let oldOrderData = JSON.parse(sessionStorage.getItem("currentViewOrder"));            
             searchResult = await this.ordersController.doSearchOrder(oldOrderData.id ,searchData);
         }
@@ -55,23 +55,13 @@ export class OrdersUI {
                 const tdUser = tr.insertCell();
                 tdUser.appendChild(document.createTextNode(row.phoneNumber));
                 tdUser.setAttribute("class", "viewOrder_row");
-
                 
                 const tdStatus = tr.insertCell();
                 let orderStatus = (row.orderStatus) ? "Completed" : "Incomplete";
                 tdStatus.appendChild(document.createTextNode(orderStatus));
                 tdStatus.setAttribute("class", "viewOrder_row");
 
-                tdUser.addEventListener("click", () => {
-                    document.getElementById("searchOrder_result").style.display = "none";
-                    document.getElementById("view_order").style.display = "table";
-                    document.getElementById("viewCart_Table").style.display = "table";
-
-                    sessionStorage.setItem("currentViewOrder", JSON.stringify(row));
-                    this.displayOrder(row);
-                });
-
-                tdStatus.addEventListener("click", () => {
+                tr.addEventListener("click", () => {
                     document.getElementById("searchOrder_result").style.display = "none";
                     document.getElementById("view_order").style.display = "table";
                     document.getElementById("viewCart_Table").style.display = "table";

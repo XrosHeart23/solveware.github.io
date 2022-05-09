@@ -559,8 +559,7 @@ orderUpdateForm.addEventListener("submit", async function (e) {
         formMsg = await order.completeOrder(orderUpdateForm, oldOrderData.id);
         formAction = true;
     }
-
-    if (action === "closeTicket") {
+    else if (action === "closeTicket") {
         document.getElementById("viewOrder_Ticket").value = "Closed";
         document.getElementById("close_ticket").style.display = "none";
         document.getElementById("order_status").disabled = true;
