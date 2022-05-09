@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <br><br><br><br>
+
+    <div class="manageOrderArea">
+        <form name="search" id="searchOrder_form" method="get">
+            <input type="text" placeholder="Please enter phone number" name="phoneNumber" class="orderSearchBar" id="orderSearchBar">
+            <button type="submit" class="orderSearchBtn" id="orderSearchBtn">Search</button>
+        </form>
+        
+        <br>
+
+        <div class="manageOrderDisplay">
+            <table class="searchOrderTable" id="searchOrder_result"></table>        
+
+            <form name="orderForm" id="order_form" class="orderCenterTable">
+                <table class="viewOrderTable" id="view_order"></table>
+            </form>
+
+            <br>
+
+            <table class="cartTable" id="viewCart_Table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th colspan="4">Order Cart</th>
+                    </tr>
+                </thead>
+                <tbody id="viewCart_tbody">
+    
+                </tbody>    
+
+        </div>        
+        
+    </div>
+</body>
+</html>
