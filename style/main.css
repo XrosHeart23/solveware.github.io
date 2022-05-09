@@ -836,6 +836,24 @@ label {
     border: 1px solid;
     border-radius: 3px;
     padding-left: 8px;
+    text-align: left;
+}
+
+.order_cartTable {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black; /* remove later */
+    width: 100%;
+    padding: 0px 5px 0px 5px;
+}
+
+.order_cartTable th {
+    font-size: 24px;
+}
+
+.order_cartTable tr > td {
+    border: 1px solid black;
+    padding: 5px;
 }
 
 /* ======================= */
