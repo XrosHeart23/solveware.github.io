@@ -19,4 +19,35 @@ export class Orders {
                         orderStatus: orderStatus,
         });
     }
+
+    async searchOrder(orderDetail, type) {
+        const qry = query(collection(db, this.#ordersTable));
+
+        const result = await getDocs(qry);
+
+        let order = [];
+
+        if (type == "phoneNumber"){
+            result.docs.forEach((doc) => {
+                if (doc.data().phoneNumber.toString().includes(orderDetail))
+                    order.push({...doc.data(), id: doc.id});
+                else if (orderDetail === "")
+                    order.push({...doc.data(), id: doc.id});
+            });
+        }
+        else if (type == "orderId"){
+            result.docs.forEach((doc) => {
+                if (orderDetail === doc.id)
+                    order.push({...doc.data(), id: doc.id});     
+                });       
+        }
+        
+        return order;
+    }
+
+    async completeOrder(status, orderId) {
+        await updateDoc(doc(db, this.#ordersTable, orderId), {
+            orderStatus: status,
+        });
+    }    
 }

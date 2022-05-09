@@ -70,8 +70,18 @@ function checkUser() {
         // Make it unable to be viewed
         document.getElementById("login").style.display = "none";
     }
+    else if (sessionStorage.getItem("userProfile") === "staff"){
+        // Toggling tabs between on/off/
+        // Only admin should see User Acct tab and User Profile tab
+        document.getElementById("mngOrderTab").style.display = "block";  
+
+        // Set login page to none
+        // Make it unable to be viewed
+        document.getElementById("login").style.display = "none";        
+    }
     else {
         document.getElementById("mngUsrAcctTab").style.display = "none";  
         document.getElementById("mngUsrPrfTab").style.display = "none";
+        document.getElementById("mngOrderTab").style.display = "none";  
     }
 }

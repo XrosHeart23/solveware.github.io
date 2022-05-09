@@ -530,3 +530,56 @@ function plus(quantityId, form = "overlay", itemId = "") { // need to have a con
     document.getElementById(id).value = quantity;
 }
 // =======================================================
+
+// ========== Manage Order functions ==========
+
+const searchOrderForm = document.getElementById("searchOrder_form");
+searchOrderForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    document.getElementById("searchOrder_result").style.display = "table";
+    document.getElementById("view_order").style.display = "none";
+    document.getElementById("viewCart_Table").style.display = "none";
+
+
+    const order = new OrdersUI();
+    await order.searchOrder(searchOrderForm, "phoneNumber", "search");
+});
+
+const orderUpdateForm = document.getElementById("order_form");
+orderUpdateForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const order = new OrdersUI();
+    let action = e.submitter.name;
+    let formAction = false;
+    let formMsg;
+    let oldOrderData = JSON.parse(sessionStorage.getItem("currentViewOrder"));
+
+    // Set order as complete or incomplete
+    if (action === "completeOrder") {
+        formMsg = await order.completeOrder(orderUpdateForm, oldOrderData.id);
+        formAction = true;
+    }
+
+    if (action === "closeTicket") {
+        document.getElementById("viewOrder_Ticket").value = "Closed";
+        document.getElementById("close_ticket").style.display = "none";
+        document.getElementById("order_status").disabled = true;
+    }
+
+    if (formAction) {
+        let searchResult = await order.searchOrder(orderUpdateForm, "orderId", "exact");
+        // Update browser with updated details
+        sessionStorage.setItem("currentViewOrder", JSON.stringify((searchResult[0])));
+
+        order.displayOrder(searchResult[0]);
+        document.getElementById("updateOut").innerHTML = formMsg;
+    }    
+    
+});
+
+orderUpdateForm.addEventListener("change", (event) => {
+    let ticketButton = document.getElementById("close_ticket");
+    let closeOption = document.getElementById("order_status");
+    ticketButton.style.display = closeOption.value == 2 ? 'block' : 'none';        
+});    
+// ====== End of Manage Order functions =======
