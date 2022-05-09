@@ -9,7 +9,7 @@ export class Orders {
 
     // }
 
-    async addOrder (phoneNumber, totalPrice, cart, visitDuration, visitDate, orderStatus) {
+    async addOrder (phoneNumber, totalPrice, cart, visitDuration, visitDate, orderStatus, orderTicketStatus) {
         await addDoc(collection(db, this.#ordersTable), {
                         phoneNumber: Number(phoneNumber),
                         totalPrice: Number(totalPrice),
@@ -17,6 +17,7 @@ export class Orders {
                         visitDurationInSec: Number(visitDuration),
                         visitDate: visitDate,
                         orderStatus: orderStatus,
+                        orderTicketStatus: orderTicketStatus,
         });
     }
 

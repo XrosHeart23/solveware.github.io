@@ -5,9 +5,15 @@ export class OrdersController {
         this.orders = new Orders();
     }
 
-    async doCreateOrder (phoneNumber, totalPrice, cart, visitDuration, visitDate, orderStatus) {
-        return await this.orders.addOrder(phoneNumber, totalPrice, cart, 
-                visitDuration, visitDate, orderStatus);
+    async doCreateOrder (phoneNumber, totalPrice) {
+        let cartOrder = JSON.parse(sessionStorage.getItem("cartOrder"));
+        let visitDuration = timeSpent;
+        let visitDate = new Date();
+        let orderStatus = "Received"; // New order status will always be "Received"
+        let orderTicketStatus = false; // New order ticket status will always be false
+
+        return await this.orders.addOrder(phoneNumber, totalPrice, cartOrder, 
+                visitDuration, visitDate, orderStatus, orderTicketStatus);
     }
 
     async doSearchOrder(orderDetail, type) {

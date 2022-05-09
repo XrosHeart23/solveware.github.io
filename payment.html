@@ -11,7 +11,8 @@
         <label class="paymentFormLabel">
             <b>Handphone Number:</b>
         </label>
-        <input type="number" name="phoneNumber" id="payment_phoneNumber" placeholder="Enter phone number">
+        <input type="number" name="phoneNumber" id="payment_phoneNumber" placeholder="Enter phone number"  
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "8"/>
         <br>
         <span class="paymentFormErr" id="phoneNumberError"></span>    
         
@@ -20,7 +21,8 @@
         <label class="paymentFormLabel">
             <b>Credit Card Number: </b>
         </label>    
-        <input type="number" name="creditCard" id="payment_cc" placeholder="Enter credit card number">
+        <input type="number" name="creditCard" id="payment_cc" placeholder="Enter credit card number"
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "16"/>
         <br>
         <span class="paymentFormErr" id="ccError"></span>
 

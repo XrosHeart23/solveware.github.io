@@ -1,5 +1,4 @@
 import { OrdersController } from "../controller/ordersController.js";
-import { db } from "../entity/database.js";
 
 export class OrdersUI {
     constructor () {
@@ -7,12 +6,7 @@ export class OrdersUI {
     }
 
     async createOrder (form) {
-        let cartOrder = JSON.parse(sessionStorage.getItem("cartOrder"));
-        let visitDuration = timeSpent;
-        let visitDate = new Date();
-        let orderStatus = false; // New order status is set to false, order not completed
-        return await this.ordersController.doCreateOrder(form.phoneNumber.value, 
-            form.totalPrice.value, cartOrder, visitDuration, visitDate, orderStatus);
+        return await this.ordersController.doCreateOrder(form.phoneNumber.value, form.totalPrice.value);
     }
 
     async searchOrder(form, searchData, searchType) {
