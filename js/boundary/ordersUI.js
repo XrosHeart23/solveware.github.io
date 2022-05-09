@@ -170,28 +170,7 @@ export class OrdersUI {
         orderReceived.setAttribute('selected', 'selected');
 
         tdValue.appendChild(inputField);    
-/*
-        // Update Order - Button (Left)
-        tr = tbl.insertRow();
-        let tdLeft = tr.insertCell();
 
-        // Complete Order - Button (Right)
-        let tdRight = tr.insertCell();
-
-        let btn = document.createElement("button");
-        btn.setAttribute("type", "submit");
-        btn.setAttribute("name", "completeOrder");
-        btn.setAttribute("id", "complete_order");
-        btn.innerHTML = "Complete";
-        tdRight.appendChild(btn);       
-
-        // Output for form
-        tr = tbl.insertRow();
-        let tdOutput = tr.insertCell();
-        tdOutput.setAttribute("colspan", 2);
-        tdOutput.setAttribute("id", "updateOut");
-        tdOutput.setAttribute("class", "updateOut");      
-*/        
         // Order Ticket
         tr = tbl.insertRow();
         tdKey = tr.insertCell();
@@ -218,7 +197,7 @@ export class OrdersUI {
         tdButton.appendChild(btn);    
 
         // Items Ordered
-        const cartTable = document.getElementById("viewCart_tbody");
+        const cartTable = document.getElementById("viewOrderCart_tbody");
         cartTable.innerHTML = "";        
         //const cartOrder = JSON.parse(data.orderInfo);
         const menuItem = JSON.parse(sessionStorage.getItem("menuItem"));
