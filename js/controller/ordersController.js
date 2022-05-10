@@ -22,7 +22,7 @@ export class OrdersController {
             orderTicketStatus = true;
         else if (searchOption === "incomplete")
             orderTicketStatus = false;
-        else if (searchOption === "all")
+        else
             orderTicketStatus = "";
 
         return await this.orders.searchOrder(orderDetail, type, orderTicketStatus);

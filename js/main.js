@@ -313,7 +313,7 @@ orderUpdateForm.addEventListener("change", async function (e) {
     let closeOption = document.getElementById("order_status");
     ticketButton.style.display = (closeOption.value === "completed") ? 'block' : 'none';
     let oldOrderData = JSON.parse(sessionStorage.getItem("currentViewOrder"));
-    console.log("trigger?")
+
     const order = new OrdersUI();
     await order.updateOrderStatus(orderUpdateForm, oldOrderData.id);
 });    

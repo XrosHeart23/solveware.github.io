@@ -81,7 +81,7 @@ export class OrdersUI {
     async closeOrderTicket(orderId) {
         await this.ordersController.doCloseOrder(orderId);
 
-        let searchResult = await this.searchOrder(orderId, "orderId", "exact");
+        let searchResult = await this.ordersController.doSearchOrder(orderId, "orderId", "exact");
         // Update browser with updated details
         sessionStorage.setItem("currentViewOrder", JSON.stringify((searchResult[0])));
         this.displayOrder(searchResult[0]);
