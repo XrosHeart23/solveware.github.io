@@ -728,8 +728,9 @@ label {
     cursor: pointer;
 }
 /* ======================= */
-/* ======= MANAGE ORDERS ======== */
 
+
+/* ======= MANAGE ORDERS ======== */
 .manageOrderArea {
     width: 500px;
     min-height: 500px;
@@ -760,8 +761,17 @@ label {
     width: 230px;
     border-radius: 10px;
     font-size: 15px;
-    margin-left: 15px;
 }
+
+.orderSearchStatus {
+    /* staff order page - dropdown box */
+    width: 120px;
+    height: 50px;
+    border: 2px solid;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
 /* Search button */
 .orderSearchBtn {
     height: 50px;
@@ -783,6 +793,11 @@ label {
     margin-right: auto;
 }
 
+.searchOrderTable th {
+    min-width: 200px;
+    font-size: 25px;
+}
+
 .searchOrderTable tr {
     height: 30px;
     text-align: left;
@@ -794,13 +809,17 @@ label {
     text-align: left;
 }
 
-.searchOrderTable tr:hover {
+.searchOrderTable .viewOrder_row:hover {
     background-color: rgb(203, 203, 203);
 }
 
 #searchOrder_header {
     text-align: center;
     pointer-events: none;
+}
+
+.searchOrderTable .tableHead {
+    font-weight: bold;
 }
 
 .viewOrderTable {
@@ -817,19 +836,14 @@ label {
     padding: 5px;
 }
 
-.searchOrderTable th {
-    min-width: 200px;
-    font-size: 25px;
-}
-
-
 .viewOrderTable th {
     font-size: 28px;
 }
 
 #view_phoneNumber,
 #viewOrder_date,
-#viewOrder_time {
+#viewOrder_time,
+#viewOrder_Ticket {
     /* manage user account page: input field + 4 below */
     width: 200px;
     height: 30px;
@@ -837,6 +851,27 @@ label {
     border-radius: 3px;
     padding-left: 8px;
     text-align: left;
+}
+
+.viewOrderTable #order_status {
+    /* staff order page - dropdown box */
+    width: 214px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+
+.viewOrderTable #close_ticket {
+    width: 300px;
+    height: 35px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 7px;
+    color: black;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .order_cartTable {
@@ -854,6 +889,14 @@ label {
 .order_cartTable tr > td {
     border: 1px solid black;
     padding: 5px;
+}
+
+.order_cartTable .itemName {
+    text-align: left;
+}
+
+.order_cartTable .itemTotalPriceLabel {
+    text-align: right;
 }
 
 /* ======================= */

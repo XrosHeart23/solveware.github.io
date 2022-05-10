@@ -21,14 +21,23 @@ export class Orders {
         });
     }
 
-    async searchOrder(orderDetail, type) {
-        const qry = query(collection(db, this.#ordersTable));
+    async searchOrder(orderDetail, type, searchOption) {
+        let qry;
+        if (searchOption === "") {
+            qry = query(collection(db, this.#ordersTable),
+                    orderBy("phoneNumber"));
+        }
+        else {
+            qry = query(collection(db, this.#ordersTable),
+                    where("orderTicketStatus", "==", searchOption),
+                    orderBy("phoneNumber"));
+        }
 
         const result = await getDocs(qry);
 
         let order = [];
 
-        if (type == "phoneNumber"){
+        if (type == "phoneNumber") {
             result.docs.forEach((doc) => {
                 if (doc.data().phoneNumber.toString().includes(orderDetail))
                     order.push({...doc.data(), id: doc.id});
@@ -36,7 +45,7 @@ export class Orders {
                     order.push({...doc.data(), id: doc.id});
             });
         }
-        else if (type == "orderId"){
+        else if (type == "orderId") {
             result.docs.forEach((doc) => {
                 if (orderDetail === doc.id)
                     order.push({...doc.data(), id: doc.id});     
@@ -46,9 +55,15 @@ export class Orders {
         return order;
     }
 
-    async completeOrder(status, orderId) {
+    async updateOrderStatus(status, orderId) {
         await updateDoc(doc(db, this.#ordersTable, orderId), {
             orderStatus: status,
         });
-    }    
+    }
+
+    async closeOrderTicket(orderId) {
+        await updateDoc(doc(db, this.#ordersTable, orderId), {
+            orderTicketStatus: true,
+        });
+    }
 }

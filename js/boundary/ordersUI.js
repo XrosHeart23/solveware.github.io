@@ -12,13 +12,12 @@ export class OrdersUI {
     async searchOrder(form, searchData, searchType) {
         let searchResult;
 
-        if (searchData === "phoneNumber"){
+        if (searchData === "phoneNumber") {
             let phoneNumber = (form != null) ? form.phoneNumber.value : "";
-            searchResult = await this.ordersController.doSearchOrder(phoneNumber, searchData);
+            searchResult = await this.ordersController.doSearchOrder(phoneNumber, searchData, form.searchStatus.value);
         }
-        else if (searchData === "orderId"){
-            let oldOrderData = JSON.parse(sessionStorage.getItem("currentViewOrder"));            
-            searchResult = await this.ordersController.doSearchOrder(oldOrderData.id ,searchData);
+        else if (searchData === "orderId") {            
+            searchResult = await this.ordersController.doSearchOrder(form ,searchData);
         }
 
         if (searchType === "search") {
@@ -33,10 +32,12 @@ export class OrdersUI {
             let th = document.createElement("th");
             th.setAttribute("id", "searchOrder_header");
             th.setAttribute("class", "searchOrder_header");
+            th.setAttribute("colspan", 2);
             th.innerHTML = "Search Result";
             trhead.appendChild(th);            
             
             let tr = tbl.insertRow();
+            tr.setAttribute("class", "tableHead");          
             let tdUser = tr.insertCell();
             tdUser.appendChild(document.createTextNode("Phone Number"));
             
@@ -45,13 +46,14 @@ export class OrdersUI {
 
             // Add table row for each result found
             searchResult.forEach((row) => {
-                const tr = tbl.insertRow();
+                tr = tbl.insertRow();
+                tr.setAttribute("class", "viewOrder_row");
                 const tdUser = tr.insertCell();
                 tdUser.appendChild(document.createTextNode(row.phoneNumber));
                 tdUser.setAttribute("class", "viewOrder_row");
                 
                 const tdStatus = tr.insertCell();
-                let orderStatus = (row.orderStatus) ? "Completed" : "Incomplete";
+                let orderStatus = (row.orderTicketStatus) ? "Completed" : "Incomplete";
                 tdStatus.appendChild(document.createTextNode(orderStatus));
                 tdStatus.setAttribute("class", "viewOrder_row");
 
@@ -70,18 +72,28 @@ export class OrdersUI {
         }
     }    
 
-    async completeOrder(form, orderId) {
-        let status = (form.orderStatus.value.toLowerCase() === "completed") ? true : false;
-        let result = await this.ordersController.doCompleteOrder(status, orderId);
+    async updateOrderStatus(form, orderId) {
+        await this.ordersController.doUpdateOrderStatus(form.orderStatus.value.toLowerCase(), orderId);
 
-        if (result) {
-            return "Order completed";
-        } else {
-            return "Order Incomplete";
-        }
-    }    
+        document.getElementById("updateOut").innerHTML = "Order status updated";
+    }
 
-    displayOrder (data){
+    async closeOrderTicket(orderId) {
+        await this.ordersController.doCloseOrder(orderId);
+
+        let searchResult = await this.searchOrder(orderId, "orderId", "exact");
+        // Update browser with updated details
+        sessionStorage.setItem("currentViewOrder", JSON.stringify((searchResult[0])));
+        this.displayOrder(searchResult[0]);
+
+        document.getElementById("updateOut").innerHTML = "Order have been closed";
+        document.getElementById("order_status").disabled = true;
+        document.getElementById("close_ticket").style.display = "none";
+    }
+
+
+
+    displayOrder(data) {
         const tbl = document.getElementById("view_order");
         tbl.innerHTML = ""; // Clear table     
         
@@ -105,6 +117,7 @@ export class OrdersUI {
         inputField.setAttribute("name", "phoneNumber");
         inputField.setAttribute("id", "view_phoneNumber");    
         inputField.setAttribute("value", data.phoneNumber);
+        inputField.readOnly = true;
         tdValue.appendChild(inputField);    
         
         // Time of Visit
@@ -119,6 +132,7 @@ export class OrdersUI {
         inputField.setAttribute("name", "order_date");
         inputField.setAttribute("id", "viewOrder_date");  
         inputField.setAttribute("value", data.visitDate.toDate().toDateString());
+        inputField.readOnly = true;
         tdValue.appendChild(inputField);
         
         // Time of Visit
@@ -133,7 +147,8 @@ export class OrdersUI {
         inputField.setAttribute("name", "order_time");
         inputField.setAttribute("id", "viewOrder_time");  
         inputField.setAttribute("value", data.visitDate.toDate().toLocaleTimeString('en-US'));
-        tdValue.appendChild(inputField);  
+        inputField.readOnly = true;
+        tdValue.appendChild(inputField);
         
         // Order Status
         tr = tbl.insertRow();
@@ -145,13 +160,16 @@ export class OrdersUI {
         inputField.setAttribute("class", "order_status");
         inputField.setAttribute("name", "orderStatus");
         inputField.setAttribute("id", "order_status");
+        if (data.orderTicketStatus)
+            inputField.disabled = true;
+
         let orderReceived = document.createElement("option");
         let orderInKitchen = document.createElement("option");
         let orderCompleted = document.createElement("option");
 
-        orderReceived.setAttribute ('value', 1);
-        orderInKitchen.setAttribute ('value', 1);
-        orderCompleted.setAttribute ('value', 2);
+        orderReceived.setAttribute ('value', "received");
+        orderInKitchen.setAttribute ('value', "in kitchen");
+        orderCompleted.setAttribute ('value', "completed");
 
         orderReceived.appendChild (document.createTextNode("Received"));
         orderInKitchen.appendChild (document.createTextNode("In Kitchen"));
@@ -161,11 +179,16 @@ export class OrdersUI {
         inputField.appendChild(orderInKitchen);
         inputField.appendChild(orderCompleted);
 
-        orderReceived.setAttribute('selected', 'selected');
+        if (data.orderStatus === "received")
+            orderReceived.setAttribute("selected", "selected");
+        else if (data.orderStatus === "in kitchen")
+            orderInKitchen.setAttribute("selected", "selected");
+        else
+            orderCompleted.setAttribute("selected", "selected");
 
-        tdValue.appendChild(inputField);    
+        tdValue.appendChild(inputField);
 
-        // Order Ticket
+        // Order Ticket Status
         tr = tbl.insertRow();
         tdKey = tr.insertCell();
         tdKey.appendChild(document.createTextNode("Order Ticket:"));
@@ -175,20 +198,30 @@ export class OrdersUI {
         inputField.setAttribute("type", "text");
         inputField.setAttribute("name", "orderTicket");
         inputField.setAttribute("id", "viewOrder_Ticket");
-        inputField.setAttribute("style", "border:0;outline:none;");     
-        inputField.setAttribute("value", "Open");   
+        let orderTicketStatus = (data.orderTicketStatus) ? "Closed" : "Open";
+        inputField.setAttribute("value", orderTicketStatus);  
         inputField.readOnly = true;
         tdValue.appendChild(inputField);    
 
-        let tdButton = tr.insertCell();              
-        
+        // Close Order Ticket Button
+        tr = tbl.insertRow();
+        let tdButton = tr.insertCell(); 
+        tdButton.setAttribute("colspan", 2);
+
         let btn = document.createElement("button");
         btn.setAttribute("type", "submit");
         btn.setAttribute("name", "closeTicket");
         btn.setAttribute("id", "close_ticket");
         btn.setAttribute("style", "display:none;");     
         btn.innerHTML = "Close Ticket";
-        tdButton.appendChild(btn);    
+        tdButton.appendChild(btn);
+
+        // Output for form
+        tr = tbl.insertRow();
+        let tdOutput = tr.insertCell();
+        tdOutput.setAttribute("colspan", 2);
+        tdOutput.setAttribute("id", "updateOut");
+        tdOutput.setAttribute("class", "updateOut");
 
         // Items Ordered
         const cartTable = document.getElementById("viewOrderCart_tbody");

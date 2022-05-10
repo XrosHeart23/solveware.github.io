@@ -8,6 +8,11 @@
     <div class="manageOrderArea">
         <form name="search" id="searchOrder_form" method="get">
             <input type="text" placeholder="Please enter phone number" name="phoneNumber" class="orderSearchBar" id="orderSearchBar">
+            <select name="searchStatus" class="orderSearchStatus" id="orderSearchStatus">
+                <option value="all" selected>All</option>
+                <option value="incomplete">Incomplete</option>
+                <option value="complete">Complete</option>
+            </select>
             <button type="submit" class="orderSearchBtn" id="orderSearchBtn">Search</button>
         </form>
         

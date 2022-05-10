@@ -302,38 +302,20 @@ searchOrderForm.addEventListener("submit", async function (e) {
 const orderUpdateForm = document.getElementById("order_form");
 orderUpdateForm.addEventListener("submit", async function (e) {
     e.preventDefault();
+    let currentViewOrder = JSON.parse(sessionStorage.getItem("currentViewOrder"));
+
     const order = new OrdersUI();
-    let action = e.submitter.name;
-    let formAction = false;
-    let formMsg;
-    let oldOrderData = JSON.parse(sessionStorage.getItem("currentViewOrder"));
-
-    // Set order as complete or incomplete
-    if (action === "completeOrder") {
-        formMsg = await order.completeOrder(orderUpdateForm, oldOrderData.id);
-        formAction = true;
-    }
-    else if (action === "closeTicket") {
-        document.getElementById("viewOrder_Ticket").value = "Closed";
-        document.getElementById("close_ticket").style.display = "none";
-        document.getElementById("order_status").disabled = true;
-    }
-
-    if (formAction) {
-        let searchResult = await order.searchOrder(orderUpdateForm, "orderId", "exact");
-        // Update browser with updated details
-        sessionStorage.setItem("currentViewOrder", JSON.stringify((searchResult[0])));
-
-        order.displayOrder(searchResult[0]);
-        document.getElementById("updateOut").innerHTML = formMsg;
-    }    
-    
+    order.closeOrderTicket(currentViewOrder.id);
 });
 
-orderUpdateForm.addEventListener("change", (event) => {
+orderUpdateForm.addEventListener("change", async function (e) {
     let ticketButton = document.getElementById("close_ticket");
     let closeOption = document.getElementById("order_status");
-    ticketButton.style.display = closeOption.value == 2 ? 'block' : 'none';        
+    ticketButton.style.display = (closeOption.value === "completed") ? 'block' : 'none';
+    let oldOrderData = JSON.parse(sessionStorage.getItem("currentViewOrder"));
+    console.log("trigger?")
+    const order = new OrdersUI();
+    await order.updateOrderStatus(orderUpdateForm, oldOrderData.id);
 });    
 // ====== End of Manage Order functions =======
 
