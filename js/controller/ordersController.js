@@ -9,21 +9,31 @@ export class OrdersController {
         let cartOrder = JSON.parse(sessionStorage.getItem("cartOrder"));
         let visitDuration = timeSpent;
         let visitDate = new Date();
-        let orderStatus = "Received"; // New order status will always be "Received"
+        let orderStatus = "received"; // New order status will always be "received"
         let orderTicketStatus = false; // New order ticket status will always be false
 
         return await this.orders.addOrder(phoneNumber, totalPrice, cartOrder, 
                 visitDuration, visitDate, orderStatus, orderTicketStatus);
     }
 
-    async doSearchOrder(orderDetail, type) {
-        return await this.orders.searchOrder(orderDetail, type);
+    async doSearchOrder(orderDetail, type, searchOption = "") {
+        let orderTicketStatus
+        if (searchOption === "complete")
+            orderTicketStatus = true;
+        else if (searchOption === "incomplete")
+            orderTicketStatus = false;
+        else if (searchOption === "all")
+            orderTicketStatus = "";
+
+        return await this.orders.searchOrder(orderDetail, type, orderTicketStatus);
     }    
 
-    async doCompleteOrder(status, orderId) {
-        status = !status; // Toggle status boolean
-        await this.orders.completeOrder(status, orderId);
+    async doUpdateOrderStatus(status, orderId) {
+        // status = !status; // Toggle status boolean
+        return await this.orders.updateOrderStatus(status, orderId);
+    }
 
-        return status;
+    async doCloseOrder(orderId) {
+        await this.orders.closeOrderTicket(orderId);
     }
 }
