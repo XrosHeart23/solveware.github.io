@@ -15,7 +15,7 @@ export class LoginUI {
             case "staff":
                 this.controller = new StaffLoginController(form.username.value.toLowerCase(), form.password.value.toLowerCase());
                 break;
-        }        
+        }
     }
 
     // Methods
