@@ -203,7 +203,7 @@ export class OrdersUI {
         let orderTicketStatus = (data.orderTicketStatus) ? "Closed" : "Open";
         inputField.setAttribute("value", orderTicketStatus);  
         inputField.readOnly = true;
-        tdValue.appendChild(inputField);    
+        tdValue.appendChild(inputField);
 
         // Close Order Ticket Button
         tr = tbl.insertRow();
@@ -214,7 +214,8 @@ export class OrdersUI {
         btn.setAttribute("type", "submit");
         btn.setAttribute("name", "closeTicket");
         btn.setAttribute("id", "close_ticket");
-        btn.setAttribute("style", "display:none;");     
+        let btnStyle = (data.orderStatus === "completed") ? "display:block;" : "display:none;";
+        btn.setAttribute("style", btnStyle);     
         btn.innerHTML = "Close Ticket";
         tdButton.appendChild(btn);
 

@@ -7,7 +7,8 @@
 
     <div class="manageOrderArea">
         <form name="search" id="searchOrder_form" method="get">
-            <input type="text" placeholder="Please enter phone number" name="phoneNumber" class="orderSearchBar" id="orderSearchBar">
+            <input type="number" placeholder="Please enter phone number" name="phoneNumber" class="orderSearchBar" id="orderSearchBar"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength = "8"/>
             <select name="searchStatus" class="orderSearchStatus" id="orderSearchStatus">
                 <option value="all" selected>All</option>
                 <option value="incomplete">Incomplete</option>
