@@ -56,6 +56,13 @@ body {
     text-align: center;
 }
 
+/* Remove arrow in number input field */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .login {
     width: 400px;
     overflow: hidden;
