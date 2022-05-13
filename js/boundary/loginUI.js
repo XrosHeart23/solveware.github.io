@@ -1,10 +1,10 @@
-import { AdminController } from "../controller/adminController.js";
+import { AdminLoginController } from "../controller/adminController.js";
 
 export class LoginUI {
     constructor (form) {
         switch (form.profile.value.toLowerCase()) {
             case "admin":
-                this.controller = new AdminController(form.username.value.toLowerCase(), form.password.value.toLowerCase());
+                this.controller = new AdminLoginController(form.username.value.toLowerCase(), form.password.value.toLowerCase());
                 break;
             case "owner":
                 break;

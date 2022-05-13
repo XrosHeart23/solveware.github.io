@@ -1,18 +1,16 @@
-import { MenuController } from "../controller/menuController.js";
+import { GetMenuItemCtrl, GetMenuCatCtrl } from "../controller/menuController.js";
 
 export class MenuUI {
     MAX_ORDER_QUANTITY = 10;
 
-    constructor() {
-        this.menuController = new MenuController();
-    }
-
     async getMenuItems() {
-        return await this.menuController.doGetAllMenuItems();
+        const menuController = new GetMenuItemCtrl();
+        return await menuController.doGetAllMenuItems();
     }
 
     async getMenuCat() {
-        return await this.menuController.doGetAllCat();
+        const menuController = new GetMenuCatCtrl();
+        return await menuController.doGetAllCat();
     }
 
     // Display menu table in index.html
