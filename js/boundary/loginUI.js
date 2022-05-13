@@ -1,18 +1,21 @@
-import { AdminController } from "../controller/adminController.js";
+import { AdminLoginController, StaffLoginController, ManagerLoginController, OwnerLoginController } from "../controller/loginController.js";
 
 export class LoginUI {
     constructor (form) {
         switch (form.profile.value.toLowerCase()) {
             case "admin":
-                this.controller = new AdminController(form.username.value.toLowerCase(), form.password.value.toLowerCase());
+                this.controller = new AdminLoginController(form.username.value.toLowerCase(), form.password.value.toLowerCase());
                 break;
             case "owner":
+                this.controller = new OwnerLoginController(form.username.value.toLowerCase(), form.password.value.toLowerCase());
                 break;
             case "manager":
+                this.controller = new ManagerLoginController(form.username.value.toLowerCase(), form.password.value.toLowerCase());
                 break;
             case "staff":
+                this.controller = new StaffLoginController(form.username.value.toLowerCase(), form.password.value.toLowerCase());
                 break;
-        }        
+        }
     }
 
     // Methods

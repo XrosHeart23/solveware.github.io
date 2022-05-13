@@ -1,5 +1,113 @@
 import { UserAccount } from "../entity/userAccount.js";
 
+// ======== Account Controller ========
+// Create account controller
+export class AdminCreateAcctCtrl {
+    constructor() {
+        this.admin = new UserAccount()
+    }
+
+    async doCreateAcct(username, password, fname, lname, profile) {
+        let acctStatus = true; // Account status = True - Default setting when creating new acount
+        return await this.admin.addAcct(username, password, fname, lname, profile, acctStatus);
+    }
+}
+
+
+// Update account controller
+export class AdminUpdateAcctCtrl {
+    constructor() {
+        this.admin = new UserAccount();
+    }
+
+    async doUpdateAcct(username, password, fname, lname, profile, userId) {
+        return await this.admin.updateAcct(username, password, fname, lname, profile, userId);
+    }
+}
+
+
+// Suspend account controller
+export class AdminSuspendAcctCtrl {
+    constructor() {
+        this.admin = new UserAccount();
+    }
+
+    async doSuspendAcct(username, status) {
+        status = !status; // Toggle status boolean
+        await this.admin.suspendAcct(username, status);
+
+        return status;
+    }
+}
+
+
+// Search account controller
+export class AdminSearchAcctCtrl {
+    constructor() {
+        this.admin = new UserAccount();
+    }
+
+    async doSearchAcct(name, searchData) {
+        return await this.admin.searchAcct(name, searchData);
+    }
+}
+// ======== End Account Controller ========
+
+
+// ======== Profile Controller ========
+// Create profile controller
+export class AdminCreatePrfCtrl {
+    constructor() {
+        this.admin = new UserAccount();
+    }
+
+    async doCreateProfile(profileName, profileStatus) {
+        return await this.admin.addProfile(profileName, profileStatus);
+    }
+}
+
+
+// Update profile controller
+export class AdminUpdatePrfCtrl {
+    constructor() {
+        this.admin = new UserAccount();
+    }
+
+    async doUpdateProfile(profileName, userId) {
+        return await this.admin.updateProfile(profileName, userId);
+    }
+}
+
+
+// Suspend profile controller
+export class AdminSuspendPrfCtrl {
+    constructor() {
+        this.admin = new UserAccount();
+    }
+
+    async doSuspendProfile(profileName, status, userId) {
+        status = !status; // Toggle status boolean
+        await this.admin.suspendProfile(profileName, status, userId);
+
+        return status;
+    }
+}
+
+
+// Search profile controller
+export class AdminSearchPrfCtrl {
+    constructor() {
+        this.admin = new UserAccount();
+    }
+
+    async doSearchProfile(profileName, type) {
+        return await this.admin.searchProfile(profileName, type);
+    }
+}
+// ======== End Profile Controller ========
+
+
+/* Depecrated controller
 export class AdminController {
     loginStatus = false;
 
@@ -91,4 +199,5 @@ export class AdminController {
     async doSearchProfile(profileName, type) {
         return await this.admin.searchProfile(profileName, type);
     }
-}
+} 
+*/

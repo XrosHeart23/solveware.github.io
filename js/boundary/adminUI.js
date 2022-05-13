@@ -1,11 +1,12 @@
-import { AdminController } from "../controller/adminController.js";
+// import { AdminController } from "../controller/adminController.js";
+import { AdminCreateAcctCtrl, AdminUpdateAcctCtrl, AdminSuspendAcctCtrl, AdminSearchAcctCtrl,
+AdminCreatePrfCtrl, AdminUpdatePrfCtrl, AdminSuspendPrfCtrl, AdminSearchPrfCtrl } from "../controller/adminController.js";
 
 export class AdminUI {
-    adminCtrl = new AdminController();
-
     // == Account functions ==
     async createAcct(form) {
-        let result = await this.adminCtrl.doCreateAcct(form.username.value.toLowerCase(), form.password.value, 
+        const adminCtrl = new AdminCreateAcctCtrl();
+        let result = await adminCtrl.doCreateAcct(form.username.value.toLowerCase(), form.password.value, 
             form.fname.value, form.lname.value, form.profile.value);
 
         let sysMsg;
@@ -20,13 +21,15 @@ export class AdminUI {
     }
 
     async updateAcct(form, userId) {
-        return await this.adminCtrl.doUpdateAcct(form.username.value.toLowerCase(), form.password.value, 
+        const adminCtrl = new AdminUpdateAcctCtrl();
+        return await adminCtrl.doUpdateAcct(form.username.value.toLowerCase(), form.password.value, 
             form.fname.value, form.lname.value, form.profile.value, userId);
     }
 
     async suspendAcct(form) {
+        const adminCtrl = new AdminSuspendAcctCtrl();
         let acctStatus = (form.status.value.toLowerCase() === "activated") ? true : false;
-        let result = await this.adminCtrl.doSuspendAcct(form.username.value.toLowerCase(), acctStatus);
+        let result = await adminCtrl.doSuspendAcct(form.username.value.toLowerCase(), acctStatus);
 
         if (result) {
             return "Account activated";
@@ -43,7 +46,8 @@ export class AdminUI {
             name = form.username.value.toLowerCase();
         }
 
-        let searchResult = await this.adminCtrl.doSearchAcct(name, searchData);
+        const searchCtrl = new AdminSearchAcctCtrl();
+        let searchResult = await searchCtrl.doSearchAcct(name, searchData);
 
         if (searchType === "search") {
             const viewTbl = document.getElementById("view_user");
@@ -85,8 +89,9 @@ export class AdminUI {
 
     // == Profile functions ==
     async createProfile(form) {
+        const adminCtrl = new AdminCreatePrfCtrl();
         let status = (form.profileStatus.value.toLowerCase() === "activated") ? true : false;
-        let result = await this.adminCtrl.doCreateProfile(form.profileName.value.toLowerCase(), status);
+        let result = await adminCtrl.doCreateProfile(form.profileName.value.toLowerCase(), status);
 
         let sysMsg;
         if (result) {
@@ -100,12 +105,14 @@ export class AdminUI {
     }
 
     async updateProfile(form, userId) {
-        return await this.adminCtrl.doUpdateProfile(form.profileName.value.toLowerCase(), userId);
+        const adminCtrl = new AdminUpdatePrfCtrl();
+        return await adminCtrl.doUpdateProfile(form.profileName.value.toLowerCase(), userId);
     }
 
     async suspendProfile(form, userId) {
+        const adminCtrl = new AdminSuspendPrfCtrl();
         let status = (form.profileStatus.value.toLowerCase() === "activated") ? true : false;
-        let result = await this.adminCtrl.doSuspendProfile(form.profileName.value, status, userId);
+        let result = await adminCtrl.doSuspendProfile(form.profileName.value, status, userId);
 
         if (result) {
             return "Profile activated";
@@ -115,8 +122,10 @@ export class AdminUI {
     }
     
     async searchProfile(form = null, type = "dropdown", searchType) {
+        const adminCtrl = new AdminSearchPrfCtrl();
+
         let profileName = (form != null) ? form.profileName.value : "";
-        let searchResult = await this.adminCtrl.doSearchProfile(profileName, type);
+        let searchResult = await adminCtrl.doSearchProfile(profileName, type);
 
         if (searchType === "search") {
             const viewTbl = document.getElementById("view_profile");

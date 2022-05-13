@@ -17,6 +17,20 @@ loginForm.addEventListener("submit", async function (e) {
     }
 });
 
+// Add event listern for user profile tab (When user login they can view their profile details)
+const viewUserDetails = document.getElementById("viewUserDetailsTab");
+viewUserDetails.addEventListener("click", async function (e) {
+    e.preventDefault();
+
+    document.getElementById("userDetails_name").value = sessionStorage.getItem("username");
+    document.getElementById("userDetails_password").value = sessionStorage.getItem("password");
+    document.getElementById("userDetails_fname").value = sessionStorage.getItem("fname");
+    document.getElementById("userDetails_lname").value = sessionStorage.getItem("lname");
+    document.getElementById("userDetails_profile").value = sessionStorage.getItem("userProfile");
+    document.getElementById("userDetails_status").value = (sessionStorage.getItem("acctStatus")) ? "Activated" : "Suspended"; 
+});
+
+
 // ====== Account Listner ======
 // Add event listener for create new user button
 const createUserForm = document.getElementById("createUser_form");

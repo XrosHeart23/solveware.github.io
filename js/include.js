@@ -45,7 +45,7 @@ function openTab(tabName, elmnt) {
 function loginLogout() {
     if (sessionStorage.getItem("loginStatus")) {
         sessionStorage.clear();
-        document.location.href="./index.html";
+        document.location.href = "./index.html";
     }
     else {
         openTab("login", this);
@@ -53,35 +53,53 @@ function loginLogout() {
 }
 
 function checkUser() {
+    let userDetailsTab = document.getElementById("viewUserDetailsTab");
+    let manageUserAcctTab = document.getElementById("mngUsrAcctTab");
+    let manageUserPrfTab = document.getElementById("mngUsrPrfTab");
+    let manageOrderTab = document.getElementById("mngOrderTab");
+    let currentUserProfile = sessionStorage.getItem("userProfile");
+
     // Check login status
-    if (sessionStorage.getItem("loginStatus"))
+    if (sessionStorage.getItem("loginStatus")) {
         document.getElementById("loginTab").innerHTML = "Logout";
-    else
+        
+        // Set user details tab to be visible
+        let name = document.createElement("span");
+        name.style.textDecoration = "underline";
+        name.innerHTML = sessionStorage.getItem("fname") + " " + sessionStorage.getItem("lname");
+        userDetailsTab.innerHTML = "Welcome ";
+        userDetailsTab.appendChild(name);
+        userDetailsTab.style.display = "block";
+    }
+    else {
         document.getElementById("loginTab").innerHTML = "Login";
+        userDetailsTab.innerHTML = "";
+        userDetailsTab.style.display = "none";
+    }
 
     // Check User Profile
-    if (sessionStorage.getItem("userProfile") === "admin"){
-        // Toggling tabs between on/off/
+    if (currentUserProfile === "admin"){
+        // Toggling tabs between on/off
         // Only admin should see User Acct tab and User Profile tab
-        document.getElementById("mngUsrAcctTab").style.display = "block";  
-        document.getElementById("mngUsrPrfTab").style.display = "block";  
+        manageUserAcctTab.style.display = "block";  
+        manageUserPrfTab.style.display = "block";
 
         // Set login page to none
         // Make it unable to be viewed
         document.getElementById("login").style.display = "none";
     }
-    else if (sessionStorage.getItem("userProfile") === "staff"){
-        // Toggling tabs between on/off/
+    else if (currentUserProfile === "staff"){
+        // Toggling tabs between on/off
         // Only admin should see User Acct tab and User Profile tab
-        document.getElementById("mngOrderTab").style.display = "block";  
+        manageOrderTab.style.display = "block";  
 
         // Set login page to none
         // Make it unable to be viewed
-        document.getElementById("login").style.display = "none";        
+        document.getElementById("login").style.display = "none";
     }
     else {
-        document.getElementById("mngUsrAcctTab").style.display = "none";  
-        document.getElementById("mngUsrPrfTab").style.display = "none";
-        document.getElementById("mngOrderTab").style.display = "none";  
+        manageUserAcctTab.style.display = "none";  
+        manageUserPrfTab.style.display = "none";
+        manageOrderTab.style.display = "none";  
     }
 }

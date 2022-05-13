@@ -1,23 +1,22 @@
-import { OrdersController } from "../controller/ordersController.js";
+import { CreateOrdersCtrl, SearchOrdersCtrl, UpdateOrdersCtrl, CloseOrdersCtrl } from "../controller/ordersController.js";
 
 export class OrdersUI {
-    constructor () {
-        this.ordersController = new OrdersController();
-    }
 
     async createOrder (form) {
-        return await this.ordersController.doCreateOrder(form.phoneNumber.value, form.totalPrice.value);
+        const ordersController = new CreateOrdersCtrl();
+        return await ordersController.doCreateOrder(form.phoneNumber.value, form.totalPrice.value);
     }
 
     async searchOrder(form, searchData, searchType) {
+        const ordersController = new SearchOrdersCtrl();
         let searchResult;
 
         if (searchData === "phoneNumber") {
             let phoneNumber = (form != null) ? form.phoneNumber.value : "";
-            searchResult = await this.ordersController.doSearchOrder(phoneNumber, searchData, form.searchStatus.value);
+            searchResult = await ordersController.doSearchOrder(phoneNumber, searchData, form.searchStatus.value);
         }
         else if (searchData === "orderId") {            
-            searchResult = await this.ordersController.doSearchOrder(form ,searchData);
+            searchResult = await ordersController.doSearchOrder(form ,searchData);
         }
 
         if (searchType === "search") {
@@ -73,15 +72,18 @@ export class OrdersUI {
     }    
 
     async updateOrderStatus(form, orderId) {
-        await this.ordersController.doUpdateOrderStatus(form.orderStatus.value.toLowerCase(), orderId);
+        const ordersController = new UpdateOrdersCtrl();
+        await ordersController.doUpdateOrderStatus(form.orderStatus.value.toLowerCase(), orderId);
 
         document.getElementById("updateOut").innerHTML = "Order status updated";
     }
 
     async closeOrderTicket(orderId) {
-        await this.ordersController.doCloseOrder(orderId);
+        const ordersController = new CloseOrdersCtrl();
+        const orderSearchController = new SearchOrdersCtrl();
 
-        let searchResult = await this.ordersController.doSearchOrder(orderId, "orderId", "exact");
+        await ordersController.doCloseOrder(orderId);
+        let searchResult = await orderSearchController.doSearchOrder(orderId, "orderId", "exact");
         // Update browser with updated details
         sessionStorage.setItem("currentViewOrder", JSON.stringify((searchResult[0])));
         this.displayOrder(searchResult[0]);

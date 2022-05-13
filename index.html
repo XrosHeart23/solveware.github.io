@@ -16,35 +16,39 @@
         <button class="tablink" onclick="openTab('mngOrder', this)" id="mngOrderTab" style="display: none; width:150px">Manage Order</button>
         <button class="tablink" onclick="loginLogout()" id="loginTab" style="float:right">Login</button>
         <button class="tablink" onclick="openTab('cart', this)" id="cartTab" style="float:right">Cart <i class='fas fa-shopping-cart'></i></button>
-        <button class="tablink" onclick="openTab('userTab', this)" id="userTab" style="float:right; width:200px; display: none;">User profile</button>
-        
+        <button class="tablink" onclick="openTab('userDetails', this)" id="viewUserDetailsTab" style="float:right; width: auto; display: none;"></button>
     </div>
+
     <div id="menu" class="tabcontent">
-        <div include-html="menu.html"></div> 
+        <div include-html="menu.html"></div>
     </div>
 
     <div id="login" class="tabcontent">
-        <div include-html="login.html"></div> 
+        <div include-html="login.html"></div>
+    </div>
+
+    <div id="userDetails" class="tabcontent">
+        <div include-html="viewUserDetails.html"></div>
     </div>
 
     <div id="mngUsrAcct" class="tabcontent">
-        <div include-html="manageUserAccount.html"></div> 
+        <div include-html="manageUserAccount.html"></div>
     </div>
 
     <div id="mngUsrPrf" class="tabcontent">
-        <div include-html="manageUserProfile.html"></div> 
+        <div include-html="manageUserProfile.html"></div>
     </div>
 
     <div id="mngOrder" class="tabcontent">
-        <div include-html="manageOrder.html"></div> 
-    </div>    
+        <div include-html="manageOrder.html"></div>
+    </div>
 
     <div id="cart" class="tabcontent">
-        <div include-html="cart.html"></div> 
+        <div include-html="cart.html"></div>
     </div>
 
     <div id="payment" class="tabcontent">
-        <div include-html="payment.html"></div> 
+        <div include-html="payment.html"></div>
     </div>
 
 </body>
