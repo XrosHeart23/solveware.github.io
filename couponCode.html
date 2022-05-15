@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <br><br><br><br>
+    <div class="couponCodeTab">
+        <button class="innertab" id="newCouponCode_btn">Add New Coupon Code</button>
+        <form name="search" id="searchCoupon_form" method="get">
+            <input type="text" placeholder="Search coupon code.." name="couponCode" class="searchBar" id="search_couponCode">
+            <button type="submit" class="searchBtn" id="search_couponCodebtn">Search</button>
+        </form>
+
+        <br>
+
+        <div class="couponCodeDisplay">
+            <form name="creatCoupon" id="createCoupon_form" class="userCenterTable">
+                <table class="createCouponTable" id="createCouponTable" style="display:none">
+                    <th colspan="2">Create Coupon Code</th>
+                    <tr>
+                        <td>Coupon Code:</td>
+                        <td><input type="text" placeholder="Enter coupon code" name="couponCode" id="createCoupon_code" 
+                            oninput="javascript: if (!/^[a-zA-Z0-9]+$/.test(this.value)) this.value = this.value.slice(0, (this.value.length-1));"></td>
+                    </tr>
+                    <tr class="errorRow">
+                        <td></td>
+                        <td><span id="createCouponCodeError"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Category:</td>
+                        <td><select name="category" id="createCoupon_category"></select></td>
+                    </tr>
+                    <tr class="errorRow">
+                        <td></td>
+                        <td><span id="createCategoryError"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Discount(%):</td>
+                        <td><input type="number" placeholder="Enter discount (0-100)%" name="discount" id="createCoupon_discount"
+                            oninput="javascript: if (this.value > 100) this.value = 100; 
+                            if (this.value < 0) this.value = 0; 
+                            if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="3"></td>
+                    </tr>
+                    <tr class="errorRow">
+                        <td></td>
+                        <td><span id="createDiscountError"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="submit" id="createCoupon_btn" class="btn default">Create</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><span id="createCoupon_Out"></span></td>
+                    </tr>
+                </table>
+            </form>
+
+            <table class="searchCouponTable" id="searchCoupon_result"></table>
+
+            <form name="updateCouponForm" id="updateCoupon_form" class="userCenterTable">
+                <table class="viewCouponTable"  id="view_coupon"></table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -3,6 +3,7 @@ import { AdminUI } from "./boundary/adminUI.js";
 import { MenuUI } from "./boundary/menuUI.js";
 import { CartUI } from "./boundary/cartUI.js";
 import { OrdersUI } from "./boundary/ordersUI.js";
+import { CouponUI } from "./boundary/couponUI.js";
 import * as Validation from "./validation.js";
 
 // Add event listener for login click button
@@ -334,7 +335,60 @@ orderUpdateForm.addEventListener("change", async function (e) {
 // ====== End of Manage Order functions =======
 
 
+// ====== Coupon Code functions ======
+const couponCodeForm = document.getElementById("createCoupon_form");
+couponCodeForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
 
+    let checkValid = Validation.checkNewCouponForm(couponCodeForm);
+    if (checkValid) {
+        const coupon = new CouponUI();
+        await coupon.createCouponCode(couponCodeForm);
+    }
+});
+
+const newCouponCodeBtn = document.getElementById("newCouponCode_btn");
+newCouponCodeBtn.addEventListener("click", async function (e) {
+    e.preventDefault();
+    //Display new coupon code form table
+    document.getElementById("createCouponTable").style.display = "table";
+    document.getElementById("searchCoupon_result").style.display = "none";
+    document.getElementById("view_coupon").style.display = "none";
+    couponCodeForm.reset(); // Form whenever new coupoon code button is clicked
+
+    const coupon = new CouponUI();
+    await coupon.displayCategoryDropdown("createCoupon_category");
+});
+
+const searchCouponForm = document.getElementById("searchCoupon_form");
+searchCouponForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    document.getElementById("searchCoupon_result").style.display = "table";
+    document.getElementById("view_coupon").style.display = "none";
+    document.getElementById("createCouponTable").style.display = "none";
+
+    const coupon = new CouponUI();
+    await coupon.searchCouponCode(searchCouponForm, "search");
+});
+
+const updateCouponForm = document.getElementById("updateCoupon_form");
+updateCouponForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const coupon = new CouponUI();
+    let action = e.submitter.name;
+    
+    if (action === "update") {
+        let checkValid = Validation.checkUpdateCouponForm(updateCouponForm);
+        if (checkValid) {
+            
+            await coupon.updateCouponCode(updateCouponForm);
+        }
+    }
+    else if (action === "suspend") {
+        await coupon.suspendCouponCode(updateCouponForm);
+    }
+});
+// ====== End of Coupon Code functions ======
 
 
 

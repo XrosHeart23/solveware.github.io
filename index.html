@@ -14,6 +14,7 @@
         <button class="tablink" onclick="openTab('mngUsrAcct', this)" id="mngUsrAcctTab" style="display: none;width:200px">Manage User Account</button>
         <button class="tablink" onclick="openTab('mngUsrPrf', this)" id="mngUsrPrfTab" style="display: none; width:200px">Manage User Profile</button>
         <button class="tablink" onclick="openTab('mngOrder', this)" id="mngOrderTab" style="display: none; width:150px">Manage Order</button>
+        <button class="tablink" onclick="openTab('cpnCode', this)" id="cpnCodeTab" style="display: none; width: auto">Coupon Code</button>
         <button class="tablink" onclick="loginLogout()" id="loginTab" style="float:right">Login</button>
         <button class="tablink" onclick="openTab('cart', this)" id="cartTab" style="float:right">Cart <i class='fas fa-shopping-cart'></i></button>
         <button class="tablink" onclick="openTab('userDetails', this)" id="viewUserDetailsTab" style="float:right; width: auto; display: none;"></button>
@@ -41,6 +42,10 @@
 
     <div id="mngOrder" class="tabcontent">
         <div include-html="manageOrder.html"></div>
+    </div>
+
+    <div id="cpnCode" class="tabcontent">
+        <div include-html="couponCode.html"></div>
     </div>
 
     <div id="cart" class="tabcontent">

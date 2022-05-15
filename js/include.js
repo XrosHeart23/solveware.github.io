@@ -57,6 +57,7 @@ function checkUser() {
     let manageUserAcctTab = document.getElementById("mngUsrAcctTab");
     let manageUserPrfTab = document.getElementById("mngUsrPrfTab");
     let manageOrderTab = document.getElementById("mngOrderTab");
+    let couponCodeTab = document.getElementById("cpnCodeTab");
     let currentUserProfile = sessionStorage.getItem("userProfile");
 
     // Check login status
@@ -70,6 +71,10 @@ function checkUser() {
         userDetailsTab.innerHTML = "Welcome ";
         userDetailsTab.appendChild(name);
         userDetailsTab.style.display = "block";
+
+        // Set login page to none
+        // Make it unable to be viewed
+        document.getElementById("login").style.display = "none";
     }
     else {
         document.getElementById("loginTab").innerHTML = "Login";
@@ -78,28 +83,26 @@ function checkUser() {
     }
 
     // Check User Profile
-    if (currentUserProfile === "admin"){
+    if (currentUserProfile === "admin") {
         // Toggling tabs between on/off
         // Only admin should see User Acct tab and User Profile tab
         manageUserAcctTab.style.display = "block";  
         manageUserPrfTab.style.display = "block";
-
-        // Set login page to none
-        // Make it unable to be viewed
-        document.getElementById("login").style.display = "none";
     }
-    else if (currentUserProfile === "staff"){
+    else if (currentUserProfile === "staff") {
         // Toggling tabs between on/off
-        // Only admin should see User Acct tab and User Profile tab
+        // Only staff should see Order tab
         manageOrderTab.style.display = "block";  
-
-        // Set login page to none
-        // Make it unable to be viewed
-        document.getElementById("login").style.display = "none";
+    }
+    else if (currentUserProfile === "manager") {
+        // Toggling tabs between on/off
+        // Only admin should see Manage menu item and coupon code tab
+        couponCodeTab.style.display = "block";
     }
     else {
         manageUserAcctTab.style.display = "none";  
         manageUserPrfTab.style.display = "none";
-        manageOrderTab.style.display = "none";  
+        manageOrderTab.style.display = "none";
+        couponCodeTab.style.display = "none";
     }
 }
