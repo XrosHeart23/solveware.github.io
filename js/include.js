@@ -58,6 +58,7 @@ function checkUser() {
     let manageUserPrfTab = document.getElementById("mngUsrPrfTab");
     let manageOrderTab = document.getElementById("mngOrderTab");
     let couponCodeTab = document.getElementById("cpnCodeTab");
+    let manageMenuTab = document.getElementById("mngMenuTab");
     let currentUserProfile = sessionStorage.getItem("userProfile");
 
     // Check login status
@@ -98,6 +99,15 @@ function checkUser() {
         // Toggling tabs between on/off
         // Only admin should see Manage menu item and coupon code tab
         couponCodeTab.style.display = "block";
+    }
+    else if (currentUserProfile === "manager"){
+        // Toggling tabs between on/off
+        // Only admin should see User Acct tab and User Profile tab
+        manageMenuTab.style.display = "block";  
+
+        // Set login page to none
+        // Make it unable to be viewed
+        document.getElementById("login").style.display = "none";
     }
     else {
         manageUserAcctTab.style.display = "none";  

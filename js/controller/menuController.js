@@ -28,6 +28,55 @@ export class GetMenuCatCtrl {
 // ========= End Menu Category controller =========
 
 
+// ========= Manage Menu Item Controller ==========
+
+// Create menu item controller
+export class CreateMenuItemCtrl {
+    constructor() {
+        this.menuItem = new MenuItem()
+    }
+
+    async doCreateMenuItem(category, itemName, imageName, price) {
+        let menuItemStatus = true; // Menu item status = True - Default setting when creating new menu item
+        return await this.menuItem.addMenuItem(category, imageName, itemName, price, menuItemStatus);
+    }
+}
+
+// Update menu item controller
+export class UpdateMenuItemCtrl {
+    constructor() {
+        this.menuItem = new MenuItem();
+    }
+
+    async doUpdateMenuItem(category, imageName, itemName, price, menuItemID) {
+        return await this.menuItem.updateMenuItem(category, imageName, itemName, price, menuItemID);
+    }
+}
+
+export class SuspendMenuItemCtrl {
+    constructor() {
+        this.menuItem = new MenuItem();
+    }
+
+    async doSuspendMenuItem(menuItemID, status) {
+        status = !status; // Toggle status boolean
+        await this.menuItem.suspendMenuItem(menuItemID, status);
+
+        return status;
+    }
+}
+
+// Search menu item controller
+export class SearchMenuItemCtrl {
+    constructor() {
+        this.menuItem = new MenuItem();
+    }
+
+    async doSearchMenuItem(name, searchData) {
+        return await this.menuItem.searchMenuItem(name, searchData);
+    }
+}
+
 /* Depecrated
 export class MenuController {
     constructor() {

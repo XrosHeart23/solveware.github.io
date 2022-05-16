@@ -343,6 +343,97 @@ orderUpdateForm.addEventListener("change", async function (e) {
 });    
 // ====== End of Manage Order functions =======
 
+// ====== Manage Menu Item functions ==========
+// Add event listener for create new user button
+const createMenuItemForm = document.getElementById("createMenuItem_form");
+createMenuItemForm.addEventListener("submit", async function (e) {
+    e.preventDefault(); // Stop page from changing
+    let checkValid = Validation.checkCreateMenuItemForm(createMenuItemForm);
+    if (checkValid) {
+        const menu = new MenuUI();
+        await menu.createMenuItem(createMenuItemForm);
+    }
+});
+
+const createMenuItemDropdown = document.getElementById("createMenuItem_category");
+const newMenuItemBtn = document.getElementById("newMenuItem_btn");
+newMenuItemBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    const menu = new MenuUI();
+
+    createMenuItemForm.reset();
+    menu.displayCategoryDropDown(createMenuItemDropdown); // Display profile dropdown in create user
+    Validation.resetCreateMenuItemForm();
+
+    document.getElementById("createMenuItemtable").style.display = "table";
+    document.getElementById("searchMenuItem_result").style.display = "none";
+    document.getElementById("view_menuItem").style.display = "none";
+});
+
+// Add event listener for search function
+const searchMenuItemForm = document.getElementById("search_menuItemForm");
+searchMenuItemForm.addEventListener("submit", async function (e) {
+    e.preventDefault(); // Stop page from changing
+    document.getElementById("searchMenuItem_result").style.display = "table";
+    document.getElementById("createMenuItemtable").style.display = "none";
+    document.getElementById("view_menuItem").style.display = "none";
+
+    const menu = new MenuUI();
+    await menu.searchMenuItem(searchMenuItemForm, "name", "search");    
+});
+
+// Add event listener for update form
+const updateMenuItemForm = document.getElementById("updateMenuItem_form");
+updateMenuItemForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    const menu = new MenuUI();
+    let action = e.submitter.name;
+    let formAction = false;
+    let formMsg;
+    let oldMenuItemData = JSON.parse(sessionStorage.getItem("currentViewMenuItem"));
+
+    // Suspend or Activate account
+    if (action === "suspend") {
+        formMsg = await menu.suspendMenuItem(updateMenuItemForm, oldMenuItemData.id);
+        formAction = true;
+    }
+    // Update account
+    else if (action === "update") {
+        // Check for update
+        let validation = Validation.checkUpdateMenuItemForm(updateMenuItemForm, oldMenuItemData);
+        let proceed = false;
+
+        // Search if username exist
+        if (validation == 1) {
+            let searchResult = await menu.searchMenuItem(updateMenuItemForm, "username", "update");
+            if (searchResult.length > 0) {
+                document.getElementById("updateMenuItemOut").innerHTML = "Item name taken";
+            } else {
+                proceed = true;
+                document.getElementById("updateMenuItemOut").innerHTML = "";
+            }
+        } else if (validation == 2){
+            proceed = true;
+        }
+        
+        if (proceed) { 
+            await menu.updateMenuItem(updateMenuItemForm, oldMenuItemData.id);
+            formMsg = "Menu Item updated";
+            formAction = true;
+        };
+    }
+
+    if (formAction) {
+        let searchResult = await menu.searchMenuItem(updateMenuItemForm, "username", "update");
+        // Update browser with updated details
+        sessionStorage.setItem("currentViewMenuItem", JSON.stringify((searchResult[0])));
+        
+        menu.displayMenuItem(searchResult[0]);
+        document.getElementById("updateMenuItemOut").innerHTML = formMsg;
+    }
+});
+// ====== End Manage Menu Item functions ==========
+
 
 // ====== Coupon Code functions ======
 const couponCodeForm = document.getElementById("createCoupon_form");
@@ -398,10 +489,6 @@ updateCouponForm.addEventListener("submit", async function(e) {
     }
 });
 // ====== End of Coupon Code functions ======
-
-
-
-
 
 
 

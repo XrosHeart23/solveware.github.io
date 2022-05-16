@@ -1083,13 +1083,8 @@ label {
 .createCouponTable #createCoupon_category {
     /* staff order page - dropdown box */
     width: 214px;
-    height: 30px;
-    border: 1px solid;
-    border-radius: 3px;
-    padding-left: 8px;
 }
-
-/* ======================= */
+/* ======= End New Coupon Code ======== */
 
 
 /* ======= Coupon Code Search table ======== */
@@ -1115,11 +1110,14 @@ label {
 }
 
 .searchCouponTable tr {
-    height: 30px;
-    text-align: left;
+    float: left;
 }
 
+
 .searchCouponTable td {
+    /* display: none;
+    margin-left: auto;
+    margin-right: auto; */
     border-bottom: 1px solid #ddd;
     padding: 8px;
     text-align: left;
@@ -1128,7 +1126,7 @@ label {
 .searchCouponTable .viewCoupon_row:hover {
     background-color: rgb(203, 203, 203);
 }
-/* ======================= */
+/* ======= End Coupon Code Search table ======== */
 
 
 /* ======= View and Update Coupon Code table ======== */
@@ -1187,4 +1185,130 @@ label {
     color: red;
     text-align: left;
 }
-/* ======================= */
+
+
+/* ======= Manage Menu Item ======== */
+.manageMenuItemMenu {
+    width: 500px;
+    min-height: 500px;
+    overflow: hidden;
+    margin: auto;
+    margin: 20 0 0 450px;
+    padding: 16px;
+    border-color: #333;
+    box-shadow: 4px 2px #888888;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.manageMenuItemArea {
+    width: 474px;
+    min-height: 410px;
+    overflow: hidden;
+    margin: auto;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 8px;
+    /* overflow: auto; */
+}
+
+#createMenuItem_name,
+#viewMenuItem_name,
+#createMenuItem_imageName,
+#viewMenuItem_imageName,
+#createMenuItem_price,
+#viewMenuItem_price {
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+    text-align: left;
+}
+
+#createMenuItem_category,
+#viewMenuItem_category {
+    width: 213px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+/* ======= End Manage Menu Item ======== */
+
+
+/* ======= Search Item Menu Table ======== */
+.searchMenuItemResultTable {
+    /* manage user account page: grey hover width */
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+.searchMenuItemResultTable tr:hover {
+    /* manage user account page: grey hover */
+    background-color: rgb(203, 203, 203);
+}
+
+.searchMenuItemResultTable tr {
+    height: 30px;
+    text-align: left;
+}
+
+#searchMenuItem_result td {
+    /* display: none;
+    margin-left: auto;
+    margin-right: auto; */
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#searchMenuItem_result tr:hover {
+    background-color: #ddd;
+}
+
+#searchMenuItemResult_header {
+    text-align: center;
+    pointer-events: none;
+    /* position: sticky;
+    top: 0;
+    background: #eee;
+    padding: 8px 20px; */
+}
+/* ======= End Search Item Menu Table ======== */
+
+
+/* ======= View and Update Menu Item ======== */
+.createMenuItemTable,
+.viewMenuItemTable {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+.createMenuItemTable tr,
+.viewMenuItemTable tr {
+    height: 30px;
+}
+
+.createMenuItemTable td,
+.viewMenuItemTable td {
+    padding: 5px;
+}
+
+.createMenuItemTable th,
+.searchMenuItemResultTable th,
+.viewMenuItemTable th {
+    font-size: 28px;
+    padding: 5px;
+}
+
+.createMenuItemTable .errorRow,
+.viewMenuItemTable .errorRow {
+    height: 16px;
+    font-size: 12px;
+    color: red;
+    text-align: left;
+}
+/* ======= End View and Update Menu Item ======== */
