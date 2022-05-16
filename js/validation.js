@@ -201,3 +201,113 @@ export function checkPaymentForm (form) {
 
     return status;
 }
+
+// ============ Manage Menu Item Validation ===============
+
+export function checkCreateMenuItemForm (form) {
+    let status = true;
+    let itemNameError = document.getElementById("createMenuItemNameError");
+    let itemImageNameError = document.getElementById("createMenuItemImageNameError");
+    let itemPriceError = document.getElementById("createMenuItemPriceError");
+
+    if (!form.menuitemname.value || form.menuitemname.value.trim() === "") {
+        itemNameError.innerHTML = "Please enter name";
+        status = false;
+    } else {
+        itemNameError.innerHTML = "";
+    }
+
+    if (!form.menuitemimagename.value) {
+        itemImageNameError.innerHTML = "Please enter image name";
+        status = false;
+    } else {
+        itemImageNameError.innerHTML = "";
+    }
+
+    if (!form.menuitemprice.value) {
+        itemPriceError.innerHTML = "Please price";
+        status = false;
+    } else {
+        itemPriceError.innerHTML = "";
+    }
+
+    return status;
+}
+
+export function resetCreateMenuItemForm() {
+    document.getElementById("createMenuItemNameError").innerHTML = "";
+    document.getElementById("createMenuItemImageNameError").innerHTML = "";
+    document.getElementById("createMenuItemPriceError").innerHTML = "";
+}
+
+
+export function checkUpdateMenuItemForm (form, oldMenuItemData) {
+    let status = true;
+    let outMsg = document.getElementById("updateMenuItemOut");
+    let itemNameError = document.getElementById("updateMenuItemNameError");
+    let itemImageNameError = document.getElementById("updateMenuItemImageNameError");
+    let itemPriceError = document.getElementById("updateMenuItemPriceError");
+
+    if (!form.itemName.value || form.itemName.value.trim() === "") {
+        itemNameError.innerHTML = "Please enter name";
+        status = false;
+    } else {
+        itemNameError.innerHTML = "";
+    }
+
+    if (!form.imageName.value || form.imageName.value.trim() === "") {
+        itemImageNameError.innerHTML = "Please enter image name";
+        status = false;
+    } else {
+        itemImageNameError.innerHTML = "";
+    }
+
+    if (!form.itemPrice.value || form.itemPrice.value.trim() === "") {
+        itemPriceError.innerHTML = "Please enter price";
+        status = false;
+    } else {
+        itemPriceError.innerHTML = "";
+    }
+
+    // 4 possible state
+    // 0 - No change to form
+    // 1 - Change to item name (Verify in db that no conflict)
+    // 2 - Change to everything other than item name (No verification need with db)
+    // 3 - Any of the fields are empty
+    // 4 - Value in price field is not a number
+
+    if (status) {
+        if (form.itemName.value.toLowerCase() === oldMenuItemData.itemName.toLowerCase() &&
+        form.imageName.value === oldMenuItemData.itemImage &&
+        parseFloat(form.itemPrice.value) === oldMenuItemData.itemPrice &&
+        form.itemCategory.value === oldMenuItemData.itemCategory) {
+            outMsg.innerHTML = "No changes in user data";
+            status = 0;
+        }
+        else if (!(form.itemName.value.toLowerCase() === oldMenuItemData.itemName.toLowerCase()) && 
+        !form.itemName.value == "") {
+            outMsg.innerHTML = "";
+            status = 1;
+        }
+        else if (!isNaN(parseInt(form.itemPrice.value)) &&
+        (!(parseFloat(form.itemPrice.value) === oldMenuItemData.itemPrice) ||
+        !(form.imageName.value === oldMenuItemData.itemImage ||
+            form.itemCategory.value === oldMenuItemData.itemCategory))) {
+            outMsg.innerHTML = "";
+            status = 2;
+        }    
+        else if (isNaN(parseInt(form.itemPrice.value))) {
+            outMsg.innerHTML = "Input in price field is not a number";
+            status = 4;            
+        }
+        else {
+            outMsg.innerHTML = "";
+        }
+    } else {
+        outMsg.innerHTML = "";
+    }
+
+    return status;
+}
+
+// ============  End of Manage Menu Item Validation ===============

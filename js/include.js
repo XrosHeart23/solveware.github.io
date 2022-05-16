@@ -57,6 +57,7 @@ function checkUser() {
     let manageUserAcctTab = document.getElementById("mngUsrAcctTab");
     let manageUserPrfTab = document.getElementById("mngUsrPrfTab");
     let manageOrderTab = document.getElementById("mngOrderTab");
+    let manageMenuTab = document.getElementById("mngMenuTab");
     let currentUserProfile = sessionStorage.getItem("userProfile");
 
     // Check login status
@@ -92,6 +93,15 @@ function checkUser() {
         // Toggling tabs between on/off
         // Only admin should see User Acct tab and User Profile tab
         manageOrderTab.style.display = "block";  
+
+        // Set login page to none
+        // Make it unable to be viewed
+        document.getElementById("login").style.display = "none";
+    }
+    else if (currentUserProfile === "manager"){
+        // Toggling tabs between on/off
+        // Only admin should see User Acct tab and User Profile tab
+        manageMenuTab.style.display = "block";  
 
         // Set login page to none
         // Make it unable to be viewed
