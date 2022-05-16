@@ -202,8 +202,8 @@ export function checkPaymentForm (form) {
     return status;
 }
 
-// ============ Manage Menu Item Validation ===============
 
+// ============ Manage Menu Item Validation ===============
 export function checkCreateMenuItemForm (form) {
     let status = true;
     let itemNameError = document.getElementById("createMenuItemNameError");
@@ -239,7 +239,6 @@ export function resetCreateMenuItemForm() {
     document.getElementById("createMenuItemImageNameError").innerHTML = "";
     document.getElementById("createMenuItemPriceError").innerHTML = "";
 }
-
 
 export function checkUpdateMenuItemForm (form, oldMenuItemData) {
     let status = true;
@@ -303,11 +302,83 @@ export function checkUpdateMenuItemForm (form, oldMenuItemData) {
         else {
             outMsg.innerHTML = "";
         }
-    } else {
+    }
+    else {
         outMsg.innerHTML = "";
     }
 
     return status;
 }
 
+
 // ============  End of Manage Menu Item Validation ===============
+
+export function checkNewCouponForm(form) {
+    let status = true;
+    let couponCodeErr = document.getElementById("createCouponCodeError");
+    let discountErr = document.getElementById("createDiscountError");
+
+    if (form.couponCode.value.trim() === "" || !form.couponCode.value) {
+        couponCodeErr.innerHTML = "Please enter coupon code";
+        status = false;
+    }
+    else {
+        couponCodeErr.innerHTML = "";
+    }
+
+    if (form.discount.value.trim() === "" || !form.discount.value) {
+        discountErr.innerHTML = "Please enter discount (0-100)%";
+        status = false;
+    }
+    else {
+        discountErr.innerHTML = "";
+    }
+        return status;
+}
+
+export function checkUpdateCouponForm(form) {
+    let status = true;
+    let couponCodeErr = document.getElementById("updateCouponCodeError");
+    let couponCodeRowStyle = document.getElementById("updateCouponCodeErrorRow");
+    let discountErr = document.getElementById("updateDiscountError");
+    let discountRowStyle = document.getElementById("updateDiscountErrorRow");
+    let currentViewCoupon = JSON.parse(sessionStorage.getItem("currentViewCoupon"));
+
+    if (form.couponCode.value.trim() === "" || !form.couponCode.value) {
+        couponCodeErr.innerHTML = "Please enter coupon code";
+        couponCodeRowStyle.style.display = "table-row";
+        status = false;
+    }
+    else {
+        couponCodeErr.innerHTML = "";
+        couponCodeRowStyle = "none";
+    }
+
+    if (form.discount.value.trim() === "" || !form.discount.value) {
+        discountErr.innerHTML = "Please enter discount (0-100)%";
+        discountRowStyle.style.display = "table-row";
+        status = false;
+    }
+    else {
+        discountErr.innerHTML = "";
+        discountRowStyle = "none";
+    }
+    
+    let outMsg = document.getElementById("coupon_updateOut");
+    if (status) {
+        if (form.couponCode.value === currentViewCoupon.couponCode &&
+            form.category.value === currentViewCoupon.catID &&
+            (form.discount.value/100) == currentViewCoupon.discount) {
+            outMsg.innerHTML = "No changes in coupon code";
+            status = false;
+        }
+        else {
+            outMsg.innerHTML = "";
+        }
+    }
+    else {
+        outMsg.innerHTML = "";
+    }
+
+    return status;
+}

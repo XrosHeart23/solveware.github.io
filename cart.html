@@ -17,6 +17,15 @@
 
             </tbody>
         </table>
+        <div class="cartCoupon_container">
+            <div id="couponLabel">
+                <input type="text" name="couponCode" placeholder="Enter coupon code" id="cartCoupon_code"
+                oninput="javascript: if (!/^[a-zA-Z0-9]+$/.test(this.value)) this.value = this.value.slice(0, (this.value.length-1));">
+            </div>
+            <div id="couponField">
+                <input type="button" value="Apply" id="cartCoupon_apply">
+            </div>
+        </div>
         <input type="submit" value="Make payment" class="cartPayment">
         <br><br>
         <span class="cartFormErr" id="cartErr"></span>

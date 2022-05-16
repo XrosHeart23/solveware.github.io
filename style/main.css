@@ -768,6 +768,42 @@ label {
     font-size: 12px;
 }
 
+.cartCoupon_container {
+    display: flex;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+#couponField {
+    margin-left: 10px;
+}
+
+#cartCoupon_code {
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+    text-align: left;
+}
+
+#cartCoupon_apply {
+    /* Create button */
+    width: auto;
+    border: 2px solid #ddd;
+    background-color: white;
+    color: black;
+    padding: 7px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#cartCoupon_apply:hover {
+    background-color: #ddd;
+}
 /* ======================= */
 
 /* ======= PAYMENT ======== */
@@ -992,6 +1028,166 @@ label {
 
 /* ======================= */
 
+/* ======= New Coupon Code ======== */
+.couponCodeTab {
+    width: 500px;
+    min-height: 500px;
+    overflow: hidden;
+    margin: auto;
+    margin: 20 0 0 450px;
+    padding: 16px;
+    border-color: #333;
+    box-shadow: 4px 2px #888888;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.couponCodeDisplay {
+    width: 474px;
+    min-height: 410px;
+    overflow: hidden;
+    margin: auto;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 8px;
+    /* overflow: auto; */
+}
+
+.createCouponTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.createCouponTable tr {
+    height: 30px;
+}
+
+.createCouponTable td {
+    padding: 5px;
+}
+
+.createCouponTable th {
+    font-size: 28px;
+}
+
+#createCoupon_code,
+#createCoupon_discount {
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+    text-align: left;
+}
+
+.createCouponTable #createCoupon_category {
+    /* staff order page - dropdown box */
+    width: 214px;
+}
+/* ======= End New Coupon Code ======== */
+
+
+/* ======= Coupon Code Search table ======== */
+.searchCouponTable {
+    width: 70%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.searchCouponTable th {
+    min-width: 200px;
+    font-size: 25px;
+}
+
+.searchCoupon_header {
+    text-align: center;
+    pointer-events: none;
+}
+
+.searchCouponTable .tableHead {
+    font-weight: bold;
+}
+
+.searchCouponTable tr {
+    float: left;
+}
+
+
+.searchCouponTable td {
+    /* display: none;
+    margin-left: auto;
+    margin-right: auto; */
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.searchCouponTable .viewCoupon_row:hover {
+    background-color: rgb(203, 203, 203);
+}
+/* ======= End Coupon Code Search table ======== */
+
+
+/* ======= View and Update Coupon Code table ======== */
+.viewCouponTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.viewCouponTable tr {
+    height: 30px;
+}
+
+.viewCouponTable td {
+    padding: 5px;
+}
+
+.viewCouponTable th {
+    font-size: 28px;
+}
+
+#view_couponCode,
+#view_discount,
+#view_status {
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+    text-align: left;
+}
+
+.viewCouponTable #view_category {
+    /* staff order page - dropdown box */
+    width: 214px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+
+.updateCouponBtn {
+    /* Create button */
+    width: auto;
+    border: 2px solid #ddd;
+    background-color: white;
+    color: black;
+    padding: 10px 40px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.viewCouponTable .errorRow {
+    height: 16px;
+    font-size: 12px;
+    color: red;
+    text-align: left;
+}
+
+
+/* ======= Manage Menu Item ======== */
 .manageMenuItemMenu {
     width: 500px;
     min-height: 500px;
@@ -1027,6 +1223,7 @@ label {
     border: 1px solid;
     border-radius: 3px;
     padding-left: 8px;
+    text-align: left;
 }
 
 #createMenuItem_category,
@@ -1036,9 +1233,11 @@ label {
     border: 1px solid;
     border-radius: 3px;
     padding-left: 8px;
-    float: left;
 }
+/* ======= End Manage Menu Item ======== */
 
+
+/* ======= Search Item Menu Table ======== */
 .searchMenuItemResultTable {
     /* manage user account page: grey hover width */
     margin-left: auto;
@@ -1077,7 +1276,10 @@ label {
     background: #eee;
     padding: 8px 20px; */
 }
+/* ======= End Search Item Menu Table ======== */
 
+
+/* ======= View and Update Menu Item ======== */
 .createMenuItemTable,
 .viewMenuItemTable {
     margin-left: auto;
@@ -1109,3 +1311,4 @@ label {
     color: red;
     text-align: left;
 }
+/* ======= End View and Update Menu Item ======== */
