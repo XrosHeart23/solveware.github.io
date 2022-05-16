@@ -271,11 +271,20 @@ cartForm.addEventListener("submit", async function (e) {
         document.getElementById("cart").style.display = "none";
         document.getElementById("payment").style.display = "block";
 
-        document.getElementById("payment_totalPrice").setAttribute("value", cartForm.totalPrice.value);
+        let totalPrice = Number(cartForm.totalPrice.value);
+        document.getElementById("payment_totalPrice").setAttribute("value", totalPrice.toFixed(2));
     }
     else {
         document.getElementById("cartErr").innerHTML = "Please add item to cart before making payment"
     }
+});
+
+const couponApplyBtn = document.getElementById("cartCoupon_apply");
+couponApplyBtn.addEventListener("click", async function (e) {
+    e.preventDefault();
+
+    const cart = new CartUI();
+    await cart.applyCouponCode(cartForm);
 });
 
 // ====== End of Cart functions =======

@@ -768,6 +768,42 @@ label {
     font-size: 12px;
 }
 
+.cartCoupon_container {
+    display: flex;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+#couponField {
+    margin-left: 10px;
+}
+
+#cartCoupon_code {
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+    text-align: left;
+}
+
+#cartCoupon_apply {
+    /* Create button */
+    width: auto;
+    border: 2px solid #ddd;
+    background-color: white;
+    color: black;
+    padding: 7px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#cartCoupon_apply:hover {
+    background-color: #ddd;
+}
 /* ======================= */
 
 /* ======= PAYMENT ======== */

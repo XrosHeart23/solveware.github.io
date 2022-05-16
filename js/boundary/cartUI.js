@@ -1,5 +1,64 @@
+import { SearchCouponCtrl } from "../controller/couponController.js";
+
 export class CartUI {
     MAX_ORDER_QUANTITY = 10;
+
+    // Check if coupon code exist and apply discount
+    async applyCouponCode(form) {
+        const couponController = new SearchCouponCtrl();
+        let searchResult = await couponController.doSearchCoupon(form.couponCode.value.toUpperCase(), "exact");
+
+        if (searchResult.length > 0) {
+            const cartOrder = JSON.parse(sessionStorage.getItem("cartOrder"));
+            const menuItem = JSON.parse(sessionStorage.getItem("menuItem"));
+            //console.log("cartOrder: " + cartOrder.toString());
+
+            let sysMsg;
+            let category = searchResult[0].catID;
+            let discount = searchResult[0].discount;
+            
+            if (category === "all") {
+                let priceAfterDisc = form.totalPrice.value * (1 - discount);
+                
+                document.getElementById("cartTotal_price").setAttribute("value", priceAfterDisc);
+                document.getElementById("display_totalPrice").innerHTML = "$" + priceAfterDisc.toFixed(2);
+
+                sysMsg = "Coupon code have been applied";
+            }
+            else {
+                let priceAfterDisc = 0;
+                for (const [key, value] of Object.entries(cartOrder)) {
+                    let item;
+                    for (const itm of menuItem) {
+                        if (itm.id === key) {
+                            item = itm;
+                            break;
+                        }
+                    }
+                    if (item.itemCategory === category) {
+                        priceAfterDisc += (item.itemPrice * value) * (1 - discount);
+                    }
+                    else {
+                        priceAfterDisc += item.itemPrice * value;
+                    }
+                }
+
+                if (priceAfterDisc == form.totalPrice.value) {
+                    sysMsg = "No order item in cart can apply coupon code";
+                }
+                else {
+                    document.getElementById("cartTotal_price").setAttribute("value", priceAfterDisc);
+                    document.getElementById("display_totalPrice").innerHTML = "$" + priceAfterDisc.toFixed(2);
+                    sysMsg = "Coupon code have been applied";
+                }
+            }
+
+            document.getElementById("cartErr").innerHTML = sysMsg;
+        }
+        else {
+            document.getElementById("cartErr").innerHTML = "Coupon code not found";
+        }
+    }
 
     // Display cart function
     displayCart() {
@@ -66,12 +125,15 @@ export class CartUI {
         
             const totalPriceTd = totalPriceRow.insertCell();
             totalPriceTd.setAttribute("class", "totalPrice");
+            totalPriceTd.setAttribute("id", "display_totalPrice");
             totalPriceTd.innerHTML = "$" + totalPrice.toFixed(2);
             const totalPriceInput = document.createElement("input");
+            totalPriceInput.setAttribute("type", "number");
             totalPriceInput.setAttribute("name", "totalPrice");
+            totalPriceInput.setAttribute("id", "cartTotal_price");
             totalPriceInput.setAttribute("value", totalPrice.toFixed(2));
             totalPriceInput.setAttribute("style", "display:none");
-            totalPriceTd.appendChild(totalPriceInput);
+            totalPriceRow.appendChild(totalPriceInput);
         
             // Remove item from cart
             const removeBtn = document.getElementsByClassName("itemRemove");
