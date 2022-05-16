@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <br><br><br><br>
+
+    <div class="manageMenuItemMenu">
+        <button class="innertab" id="newMenuItem_btn">Add New Menu Item</button>
+        <form name="search" id="search_menuItemForm" method="get">
+            <input type="text" placeholder="Search item name.." name="itemName" class="searchBar" id="search_itemName">
+            <button type="submit" class="searchBtn" id="search_itemBtn">Search</button>
+        </form>
+
+    
+        <br>
+
+        <div class="manageMenuItemArea">
+            <form name="createMenuItem" id="createMenuItem_form" class="menuItemCenterTable">
+                <table class="createMenuItemTable" id="createMenuItemtable" style="display:none">
+                    <th colspan="2">Create Menu Item</th>
+                    <tr>
+                        <td>Category:</td>
+                        <td><select name="menuitemcategory" id="createMenuItem_category"></td>
+                    </tr>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input type="text" placeholder="Enter Name" name="menuitemname" id="createMenuItem_name"></td>
+                    </tr>
+                    <tr class="errorRow">
+                        <td></td>
+                        <td><span id="createMenuItemNameError"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Image Name:</td>
+                        <td><input type="text" placeholder="Enter Image File Name" name="menuitemimagename" id="createMenuItem_imageName"></td>
+                    </tr>
+                    <tr class="errorRow">
+                        <td></td>
+                        <td><span id="createMenuItemImageNameError"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td><input type="text" placeholder="Enter Price" name="menuitemprice" id="createMenuItem_price"></td>
+                    </tr>
+                    <tr class="errorRow">
+                        <td></td>
+                        <td><span id="createMenuItemPriceError"></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="submit" id="createMenuItem_btn" class="btn default">Create</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><span id="createMenuItem_out"></span></td>
+                    </tr>
+                </table>
+            </form>
+    
+            <table class="searchMenuItemResultTable" id="searchMenuItem_result"></table>
+    
+            <form name="updateMenuItemForm" id="updateMenuItem_form" class="menuItemCenterTable">
+                <table class="viewMenuItemTable"  id="view_menuItem"></table>
+            </form>
+        </div>            
+    </div>
+</body>
+</html> 
