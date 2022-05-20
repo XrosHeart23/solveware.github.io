@@ -1311,3 +1311,142 @@ label {
     text-align: left;
 }
 /* ======= End View and Update Menu Item ======== */
+
+
+/* ======= Report ======= */
+.reportTab {
+    width: 500px;
+    min-height: 500px;
+    overflow: hidden;
+    margin: auto;
+    margin: 20 0 0 450px;
+    padding: 16px;
+    border-color: #333;
+    box-shadow: 4px 2px #888888;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.reportOptionDisplay {
+    width: 474px;
+    min-height: 500px;
+    overflow: hidden;
+    margin: auto;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 8px;
+    /* overflow: auto; */
+}
+
+.generateReportTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.generateReportTable tr {
+    height: 30px;
+}
+
+.generateReportTable td {
+    padding: 5px;
+}
+
+.generateReportTable th {
+    font-size: 28px;
+}
+
+.generateReportTable #reportType,
+.generateReportTable #reportDuration_type,
+.generateReportTable #reportMonth,
+.generateReportTable #reportWeek,
+.generateReportTable #report_category{
+    /* staff order page - dropdown box */
+    width: 214px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+
+.generateReportTable #reportDate {
+    width: 202px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+    text-align: left;
+}
+
+
+.generateReportTable #reportSubmitBtn {
+    /* Create button */
+    width: 250px;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 10px 40px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.generateReportTable #reportSubmitBtn  {
+    border-color: #ddd;
+    color: black;
+}
+
+.generateReportTable #reportSubmitBtn:hover {
+    background: #ddd;
+}
+/* ======= End Report ======= */
+
+
+/* ======= Report Output Result ======= */
+.reportResultTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reportResultTable tr {
+    height: 30px;
+}
+
+.reportResultTable td {
+    padding: 5px;
+}
+
+.reportResultTable th {
+    font-size: 28px;
+}
+
+#report_date,
+#report_totalOrders,
+#report_uniqueCustomer,
+#report_avg,
+#food_category {
+    width: 200px;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding-left: 8px;
+    text-align: left;
+}
+
+/* #itemOrderedTable td {
+    padding-left: 5px;
+    padding-right: 5px;
+} */
+.itemOrderedTable {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black; /* remove later */
+    width: 100%;
+    padding: 0px 5px 0px 5px;
+}
+
+.itemOrderedTable th {
+    font-size: 18px;
+}
+/* ======= End Report Output Result ======= */

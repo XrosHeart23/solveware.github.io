@@ -4,7 +4,9 @@ import { MenuUI } from "./boundary/menuUI.js";
 import { CartUI } from "./boundary/cartUI.js";
 import { OrdersUI } from "./boundary/ordersUI.js";
 import { CouponUI } from "./boundary/couponUI.js";
+import { ReportUI } from "./boundary/reportUI.js";
 import * as Validation from "./validation.js";
+
 
 // Add event listener for login click button
 const loginForm = document.getElementById("login_form");
@@ -489,6 +491,42 @@ updateCouponForm.addEventListener("submit", async function(e) {
     }
 });
 // ====== End of Coupon Code functions ======
+
+
+// ====== Generate Report functions ======
+const reportBtn = document.getElementById("reportTab");
+reportBtn.addEventListener("click", async function(e) {
+    e.preventDefault();
+
+    document.getElementById("generateReportTable").style.display = "table";
+    document.getElementById("generateReport_form").reset();
+    document.getElementById("displayTableByOptions").innerHTML = "";
+    document.getElementById("reportSubmitBtn").style.display = "none";
+    document.getElementById("report_result").style.display = "none";
+});
+
+const reportTypeDropdown = document.getElementById("reportType");
+reportTypeDropdown.addEventListener("change", async function(e) {
+    e.preventDefault();
+    
+    const report = new ReportUI();
+    await report.displayReportFormTable(reportTypeDropdown.value);
+});
+
+const reportForm = document.getElementById("generateReport_form");
+reportForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const report = new ReportUI();
+    await report.generatReport(reportForm);
+});
+
+// ====== End Generate Report functions ======
+
+
+
+
+
 
 
 

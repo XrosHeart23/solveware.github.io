@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <br><br><br><br>
+    <div class="reportTab">
+        <!-- <button class="innertab" id="newCouponCode_btn">Add New Coupon Code</button>
+        <form name="search" id="searchCoupon_form" method="get">
+            <input type="text" placeholder="Search coupon code.." name="couponCode" class="searchBar" id="search_couponCode">
+            <button type="submit" class="searchBtn" id="search_couponCodebtn">Search</button>
+        </form>
+
+        <br> -->
+
+        <div class="reportOptionDisplay">
+            <form name="generateReport" id="generateReport_form" class="userCenterTable">
+                <table class="generateReportTable" id="generateReportTable">
+                    <th colspan="2">Generate Report</th>
+                    <tr>
+                        <td>Report type</td>
+                        <td>
+                            <select name="reportType" id="reportType">
+                                <option selected disabled hidden style='display: none' value=''></option>
+                                <option value="time">Average Time Spent per Visit</option>
+                                <option value="money">Average Money Spent per Visit</option>
+                                <option value="preference">Food Preference</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tbody id="displayTableByOptions">
+                        
+                    </tbody>
+                    <tr>
+                        <td colspan="2"><input type="submit" name="submit" id="reportSubmitBtn" style="display:none;" value="Generate Report"></td>
+                    </tr>
+                </table>
+            </form>
+
+            <table class="reportResultTable" id="report_result" style="display:none"></table>
+        </div>
+    </div>
+</body>
+</html>
