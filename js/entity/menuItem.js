@@ -24,13 +24,6 @@ export class MenuItem {
             items.push({...doc.data(), id: doc.id})
         });
 
-        // items.forEach(async (item) => {
-        //     let catName = await this.menuCategory.getCatNameById(item.itemCategory);
-        //     console.log(catName);
-        //     item.itemCategory = catName;
-        // });
-
-
         return items;
     }
     

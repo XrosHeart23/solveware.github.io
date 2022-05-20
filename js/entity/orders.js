@@ -21,7 +21,7 @@ export class Orders {
         });
     }
 
-    async searchOrder(orderDetail, type, searchOption) {
+    async searchOrder(orderDetail = "", type = "", searchOption = "") {
         let qry;
         if (searchOption === "") {
             qry = query(collection(db, this.#ordersTable),
@@ -49,10 +49,29 @@ export class Orders {
             result.docs.forEach((doc) => {
                 if (orderDetail === doc.id)
                     order.push({...doc.data(), id: doc.id});     
-                });       
+            });       
+        }
+        else {
+            result.docs.forEach((doc) => {
+                order.push({...doc.data(), id: doc.id});     
+            });  
         }
         
         return order;
+    }
+
+    async searchOrderByDate(searchStartDate, searchEndDate) {
+        const qry = query(collection(db, this.#ordersTable),
+                    where("visitDate", ">", searchStartDate),
+                    where("visitDate", "<", searchEndDate));
+
+        const result = await getDocs(qry);
+
+        let orders = [];
+        result.docs.forEach((doc) => {
+            orders.push({...doc.data(), id: doc.id});
+        });
+        return orders;
     }
 
     async updateOrderStatus(status, orderId) {

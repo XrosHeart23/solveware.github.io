@@ -19,7 +19,7 @@ export class AdminLoginController {
         const userAcct = await this.admin.getLogin();
         let status = 0;
         if (userAcct.length == 1){
-            if ((userAcct[0].password === this.admin.password) && (userAcct[0].userProfile === "admin")) {
+            if ((userAcct[0].password === this.admin.password) && (userAcct[0].userProfile.toLowerCase() === "admin")) {
                 status = 1;
                 this.loginStatus = true;
                 this.admin.setUserInfo(userAcct[0].fname, userAcct[0].lname, userAcct[0].userProfile, userAcct[0].acctStatus);
@@ -58,7 +58,7 @@ export class StaffLoginController {
         const userAcct = await this.staff.getLogin();
         let status = 0;
         if (userAcct.length == 1){
-            if ((userAcct[0].password === this.staff.password) && (userAcct[0].userProfile === "staff")) {
+            if ((userAcct[0].password === this.staff.password) && (userAcct[0].userProfile.toLowerCase() === "staff")) {
                 status = 1;
                 this.loginStatus = true;
                 this.staff.setUserInfo(userAcct[0].fname, userAcct[0].lname, userAcct[0].userProfile, userAcct[0].acctStatus);
@@ -97,7 +97,7 @@ export class ManagerLoginController {
         const userAcct = await this.manager.getLogin();
         let status = 0;
         if (userAcct.length == 1){
-            if ((userAcct[0].password === this.manager.password) && (userAcct[0].userProfile === "manager")) {
+            if ((userAcct[0].password === this.manager.password) && (userAcct[0].userProfile.toLowerCase() === "manager")) {
                 status = 1;
                 this.loginStatus = true;
                 this.manager.setUserInfo(userAcct[0].fname, userAcct[0].lname, userAcct[0].userProfile, userAcct[0].acctStatus);
@@ -137,7 +137,7 @@ export class OwnerLoginController {
 
         let status = 0;
         if (userAcct.length == 1){
-            if ((userAcct[0].password === this.owner.password) && (userAcct[0].userProfile === "owner")) {
+            if ((userAcct[0].password === this.owner.password) && (userAcct[0].userProfile.toLowerCase() === "owner")) {
                 status = 1;
                 this.loginStatus = true;
                 this.owner.setUserInfo(userAcct[0].fname, userAcct[0].lname, userAcct[0].userProfile, userAcct[0].acctStatus);
