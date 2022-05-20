@@ -118,6 +118,7 @@ export class ReportUI {
             
             let innerTable = document.createElement("table");
             innerTable.setAttribute("id", "itemOrderedTable");
+            innerTable.setAttribute("class", "itemOrderedTable");
             let innerThead = innerTable.insertRow();
             let innerTh = document.createElement("th");
             innerTh.innerHTML = "Item name"; 
@@ -126,7 +127,6 @@ export class ReportUI {
             innerTh.innerHTML = "Total ordered"; 
             innerThead.appendChild(innerTh);
 
-            console.log(report.totalOrdersPerItem);
             for (const [key, value] of Object.entries(report.totalOrdersPerItem)) {
                 let innerTr = innerTable.insertRow();
                 let innerTd = innerTr.insertCell();

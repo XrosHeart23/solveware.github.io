@@ -1433,4 +1433,20 @@ label {
     padding-left: 8px;
     text-align: left;
 }
+
+/* #itemOrderedTable td {
+    padding-left: 5px;
+    padding-right: 5px;
+} */
+.itemOrderedTable {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black; /* remove later */
+    width: 100%;
+    padding: 0px 5px 0px 5px;
+}
+
+.itemOrderedTable th {
+    font-size: 18px;
+}
 /* ======= End Report Output Result ======= */
