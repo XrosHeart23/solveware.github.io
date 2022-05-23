@@ -3,8 +3,11 @@ Do you use ESM and want to use browser modules? Replace all your import lines to
 import { } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-SERVICE.js'
 (where SERVICE is an SDK name such as firebase-firestore).
 */
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js";
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+// import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore/lite";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 

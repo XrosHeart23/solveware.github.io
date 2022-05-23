@@ -1,0 +1,30 @@
+{
+  "name": "solveware.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --experimental-network-imports --experimental-modules --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XrosHeart23/solveware.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XrosHeart23/solveware.github.io/issues"
+  },
+  "homepage": "https://github.com/XrosHeart23/solveware.github.io#readme",
+  "type": "module",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  },
+  "dependencies": {
+    "firebase": "^9.8.1"
+  },
+  "jest" : {
+    "verbose": true
+  }
+}
