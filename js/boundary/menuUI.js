@@ -233,11 +233,11 @@ export class MenuUI {
 
         tdValue = tr.insertCell();
         let inputField = document.createElement("input");
-
         inputField.setAttribute("type", "text");
         inputField.setAttribute("name", "itemName");
         inputField.setAttribute("id", "viewMenuItem_name");    
         inputField.setAttribute("value", data.itemName);
+        inputField.setAttribute("oninput", "javascript: if (!/^[a-zA-Z0-9\s]+$/.test(this.value)) this.value = this.value.slice(0, (this.value.length-1));")
         tdValue.appendChild(inputField);
 
         // Error message row
@@ -282,7 +282,7 @@ export class MenuUI {
 
         tdValue = tr.insertCell();
         inputField = document.createElement("input");
-        inputField.setAttribute("type", "text");
+        inputField.setAttribute("type", "number");
         inputField.setAttribute("name", "itemPrice");
         inputField.setAttribute("id", "viewMenuItem_price");    
         inputField.setAttribute("value", data.itemPrice);

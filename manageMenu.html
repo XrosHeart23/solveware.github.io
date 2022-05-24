@@ -25,7 +25,8 @@
                     </tr>
                     <tr>
                         <td>Name:</td>
-                        <td><input type="text" placeholder="Enter Name" name="menuitemname" id="createMenuItem_name"></td>
+                        <td><input type="text" placeholder="Enter Name" name="menuitemname" id="createMenuItem_name"
+                            oninput="javascript: if (!/^[a-zA-Z0-9\s]+$/.test(this.value)) this.value = this.value.slice(0, (this.value.length-1));"></td>
                     </tr>
                     <tr class="errorRow">
                         <td></td>
@@ -41,7 +42,7 @@
                     </tr>
                     <tr>
                         <td>Price:</td>
-                        <td><input type="text" placeholder="Enter Price" name="menuitemprice" id="createMenuItem_price"></td>
+                        <td><input type="number" placeholder="Enter Price" name="menuitemprice" id="createMenuItem_price"></td>
                     </tr>
                     <tr class="errorRow">
                         <td></td>
