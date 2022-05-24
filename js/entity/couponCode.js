@@ -45,7 +45,7 @@ export class CouponCode {
         }
         else if (type === "exact") {
             qry = query(collection(db, this.#couponCodeTable),
-                    where("couponCode", "==", couponCode));
+                    where("couponCode", "==", couponCode.toUpperCase()));
             result = await getDocs(qry);
             result.docs.forEach((doc) => {
                 codes.push({...doc.data(), id: doc.id});

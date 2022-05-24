@@ -220,12 +220,17 @@ export function checkCreateMenuItemForm (form) {
     if (!form.menuitemimagename.value) {
         itemImageNameError.innerHTML = "Please enter image name";
         status = false;
-    } else {
+    } 
+    else if (!/^\w+\.(jpe?g|png|gif|bmp)$/.test(form.menuitemimagename.value)) {
+        itemImageNameError.innerHTML = "Please enter image name in correct format";
+        status = false;
+    }
+    else {
         itemImageNameError.innerHTML = "";
     }
 
     if (!form.menuitemprice.value) {
-        itemPriceError.innerHTML = "Please price";
+        itemPriceError.innerHTML = "Please enter price";
         status = false;
     } else {
         itemPriceError.innerHTML = "";
@@ -257,7 +262,12 @@ export function checkUpdateMenuItemForm (form, oldMenuItemData) {
     if (!form.imageName.value || form.imageName.value.trim() === "") {
         itemImageNameError.innerHTML = "Please enter image name";
         status = false;
-    } else {
+    } 
+    else if (!/^\w+\.(jpe?g|png|gif|bmp)$/.test(form.imageName.value)) {
+        itemImageNameError.innerHTML = "Please enter image name in correct format";
+        status = false;
+    }
+    else {
         itemImageNameError.innerHTML = "";
     }
 
@@ -366,7 +376,7 @@ export function checkUpdateCouponForm(form) {
     
     let outMsg = document.getElementById("coupon_updateOut");
     if (status) {
-        if (form.couponCode.value === currentViewCoupon.couponCode &&
+        if (form.couponCode.value.toLowerCase() === currentViewCoupon.couponCode.toLowerCase() &&
             form.category.value === currentViewCoupon.catID &&
             (form.discount.value/100) == currentViewCoupon.discount) {
             outMsg.innerHTML = "No changes in coupon code";

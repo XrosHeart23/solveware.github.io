@@ -25,8 +25,7 @@ export class CouponUI {
     // Search coupon code
     async searchCouponCode(form, searchType) {
         const couponController = new SearchCouponCtrl();
-        let code = (form != null) ? form.couponCode.value : "";
-        const searchResult = await couponController.doSearchCoupon(code, searchType)
+        const searchResult = await couponController.doSearchCoupon(form.couponCode.value, searchType)
 
         if (searchType === "search") {
             this.displaySearchResult(searchResult);
@@ -51,7 +50,8 @@ export class CouponUI {
         }
         else {
             const searchResult = await this.searchCouponCode(form, "exact");
-            if (searchResult.size == 0) {
+            console.log(searchResult.size);
+            if (searchResult.length == 0) {
                 await couponController.doUpdateCoupon(form.couponCode.value.toUpperCase(),
                     form.discount.value, form.category.value, currentViewCoupon.id);
                 sysMsg = "Coupon Code have been updated";

@@ -478,7 +478,7 @@ updateCouponForm.addEventListener("submit", async function(e) {
     e.preventDefault();
     const coupon = new CouponUI();
     let action = e.submitter.name;
-    
+
     if (action === "update") {
         let checkValid = Validation.checkUpdateCouponForm(updateCouponForm);
         if (checkValid) {
