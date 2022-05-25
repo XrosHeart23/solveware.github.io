@@ -49,11 +49,14 @@ export class CouponUI {
             sysMsg = "Coupon Code have been updated";
         }
         else {
-            const searchResult = await this.searchCouponCode(form, "exact");
-            console.log(searchResult.size);
+            let searchResult = await this.searchCouponCode(form, "exact");
+            
             if (searchResult.length == 0) {
                 await couponController.doUpdateCoupon(form.couponCode.value.toUpperCase(),
                     form.discount.value, form.category.value, currentViewCoupon.id);
+                
+                searchResult = await this.searchCouponCode(form, "exact");
+                sessionStorage.setItem("currentViewCoupon",  JSON.stringify(searchResult[0]));
                 sysMsg = "Coupon Code have been updated";
             }
             else {
