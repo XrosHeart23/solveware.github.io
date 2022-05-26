@@ -1,15 +1,15 @@
-import { GetMenuItemCtrl, GetMenuCatCtrl, CreateMenuItemCtrl, SearchMenuItemCtrl, UpdateMenuItemCtrl, SuspendMenuItemCtrl } from "../controller/menuController.js";
+import { GetMenuCtrl, CreateMenuItemCtrl, SearchMenuItemCtrl, UpdateMenuItemCtrl, SuspendMenuItemCtrl } from "../controller/menuController.js";
 
 export class MenuUI {
     MAX_ORDER_QUANTITY = 10;
 
     async getMenuItems() {
-        const menuController = new GetMenuItemCtrl();
+        const menuController = new GetMenuCtrl();
         return await menuController.doGetAllMenuItems();
     }
 
     async getMenuCat() {
-        const menuController = new GetMenuCatCtrl();
+        const menuController = new GetMenuCtrl();
         return await menuController.doGetAllCat();
     }
 
