@@ -518,7 +518,7 @@ reportForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const report = new ReportUI();
-    await report.generatReport(reportForm);
+    await report.generateReport(reportForm);
 });
 
 // ====== End Generate Report functions ======

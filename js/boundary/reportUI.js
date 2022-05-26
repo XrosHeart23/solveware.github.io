@@ -6,7 +6,7 @@ export class ReportUI {
     tbody = document.getElementById("displayTableByOptions");
 
     // Generate report base on owner input
-    async generatReport(form) {
+    async generateReport(form) {
         let reportController, report;
         switch (form.reportType.value.toLowerCase()) {
             case "time":
