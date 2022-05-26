@@ -1,5 +1,5 @@
 import { CreateCouponCtrl, SearchCouponCtrl, SuspendCouponCtrl, UpdateCouponCtrl } from "../controller/couponController.js";
-import { GetMenuCatCtrl } from "../controller/menuController.js";
+import { GetMenuCtrl } from "../controller/menuController.js";
 
 
 
@@ -268,7 +268,7 @@ export class CouponUI {
 
     async displayCategoryDropdown(dropdownId, optionSelected = "") {
         const dropdown = document.getElementById(dropdownId);
-        const menuController = new GetMenuCatCtrl();
+        const menuController = new GetMenuCtrl();
 
         let allCat = await menuController.doGetAllCat();
 

@@ -1,4 +1,4 @@
-import { GetMenuCatCtrl } from "../controller/menuController.js";
+import { GetMenuCtrl } from "../controller/menuController.js";
 import { ReportFoodCtrl, ReportMoneyCtrl, ReportTimeCtrl } from "../controller/reportController.js";
 
 
@@ -243,7 +243,7 @@ export class ReportUI {
         let td = tr.insertCell();
         td.appendChild(document.createTextNode("Food category"));
 
-        const menuController = new GetMenuCatCtrl();
+        const menuController = new GetMenuCtrl();
         let category = await menuController.doGetAllCat();
 
         td = tr.insertCell();
