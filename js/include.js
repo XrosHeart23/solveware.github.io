@@ -114,3 +114,5 @@ function checkUser() {
         couponCodeTab.style.display = "none";
     }
 }
+
+export { loginLogout }

@@ -1,6 +1,7 @@
 import { collection, query, where, orderBy, startAt, endAt,
     doc, getDoc, getDocs, addDoc, updateDoc
-} from "https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js";
+} from "firebase/firestore/lite";
+//"https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore.js";
 import { db } from "./database.js";
 
 export class Orders {
